@@ -16,6 +16,7 @@
 		AA1EFB0C1DEBE653002183D2 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA1EFB0B1DEBE653002183D2 /* Home.storyboard */; };
 		AA1EFB0E1DEBE65A002183D2 /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA1EFB0D1DEBE65A002183D2 /* Post.storyboard */; };
 		AA1EFB151DEBE755002183D2 /* Other.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA1EFB141DEBE755002183D2 /* Other.storyboard */; };
+		AA1EFB181DEBEB04002183D2 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1EFB171DEBEB04002183D2 /* Profile.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,8 @@
 		AA1EFB0B1DEBE653002183D2 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		AA1EFB0D1DEBE65A002183D2 /* Post.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
 		AA1EFB141DEBE755002183D2 /* Other.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Other.storyboard; sourceTree = "<group>"; };
+		AA1EFB161DEBEB04002183D2 /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
+		AA1EFB171DEBEB04002183D2 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				AA1EFB091DEBE63D002183D2 /* Profile.storyboard */,
+				AA1EFB161DEBEB04002183D2 /* Profile.h */,
+				AA1EFB171DEBEB04002183D2 /* Profile.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA1EFB181DEBEB04002183D2 /* Profile.m in Sources */,
 				AA1EFAF51DEBE4E6002183D2 /* AppDelegate.m in Sources */,
 				AA1EFAF21DEBE4E6002183D2 /* main.m in Sources */,
 			);
