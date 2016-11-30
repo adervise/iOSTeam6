@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0D4F1A411DEE8B43002B7296 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F1A401DEE8B43002B7296 /* Home.storyboard */; };
 		0D4F1A451DEE911D002B7296 /* UserInfomation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F1A441DEE911D002B7296 /* UserInfomation.m */; };
+		0D4F1A481DEEA770002B7296 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F1A471DEEA770002B7296 /* Login.storyboard */; };
 		0D7E019A1DEBEBB200B3C720 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7E01991DEBEBB200B3C720 /* HomeViewController.m */; };
 		0D7E019D1DEBFB5E00B3C720 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7E019C1DEBFB5E00B3C720 /* HomeTableViewCell.m */; };
 		0D9BD5C61DEC222F00517379 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9BD5C51DEC222F00517379 /* CollectionViewController.m */; };
@@ -35,6 +36,7 @@
 		0D4F1A401DEE8B43002B7296 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		0D4F1A431DEE911D002B7296 /* UserInfomation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfomation.h; sourceTree = "<group>"; };
 		0D4F1A441DEE911D002B7296 /* UserInfomation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfomation.m; sourceTree = "<group>"; };
+		0D4F1A471DEEA770002B7296 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		0D7E01981DEBEBB200B3C720 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		0D7E01991DEBEBB200B3C720 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		0D7E019B1DEBFB5E00B3C720 /* HomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewCell.h; sourceTree = "<group>"; };
@@ -87,6 +89,16 @@
 				0D4F1A441DEE911D002B7296 /* UserInfomation.m */,
 			);
 			name = DataModel;
+			sourceTree = "<group>";
+		};
+		0D4F1A461DEEA766002B7296 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				0D4F1A471DEEA770002B7296 /* Login.storyboard */,
+				0DE182D71DEE88A700AC3819 /* LoginPageViewController.h */,
+				0DE182D81DEE88A700AC3819 /* LoginPageViewController.m */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 		0D9BD5E21DED934200517379 /* HomeTable */ = {
@@ -158,6 +170,7 @@
 			children = (
 				AA1EFAF31DEBE4E6002183D2 /* AppDelegate.h */,
 				AA1EFAF41DEBE4E6002183D2 /* AppDelegate.m */,
+				0D4F1A461DEEA766002B7296 /* Login */,
 				0D4F1A421DEE9084002B7296 /* DataModel */,
 				AA1EFB121DEBE6EC002183D2 /* Home */,
 				AA1EFB111DEBE6E8002183D2 /* Post */,
@@ -184,8 +197,6 @@
 			isa = PBXGroup;
 			children = (
 				AA1EFB091DEBE63D002183D2 /* Profile.storyboard */,
-				0DE182D71DEE88A700AC3819 /* LoginPageViewController.h */,
-				0DE182D81DEE88A700AC3819 /* LoginPageViewController.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -248,7 +259,7 @@
 				TargetAttributes = {
 					AA1EFAEC1DEBE4E5002183D2 = {
 						CreatedOnToolsVersion = 8.1;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -285,6 +296,7 @@
 				0DE182D61DEDAA8500AC3819 /* location.png in Resources */,
 				AA1EFAFB1DEBE4E6002183D2 /* Main.storyboard in Resources */,
 				0DE182D41DEDA9D900AC3819 /* locationImage.png in Resources */,
+				0D4F1A481DEEA770002B7296 /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +436,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AnonymousSocial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.celeste.AnonymousSocial;
@@ -435,6 +448,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AnonymousSocial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.celeste.AnonymousSocial;
