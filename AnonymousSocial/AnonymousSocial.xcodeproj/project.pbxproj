@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D2761051DEEEECD009B92A8 /* LoginPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2761041DEEEECD009B92A8 /* LoginPageViewController.m */; };
 		0D4F1A411DEE8B43002B7296 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F1A401DEE8B43002B7296 /* Home.storyboard */; };
 		0D4F1A451DEE911D002B7296 /* UserInfomation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F1A441DEE911D002B7296 /* UserInfomation.m */; };
 		0D4F1A481DEEA770002B7296 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F1A471DEEA770002B7296 /* Login.storyboard */; };
@@ -21,7 +22,6 @@
 		0D9BD5E81DED939A00517379 /* FisrtCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9BD5E71DED939A00517379 /* FisrtCollectionViewLayout.m */; };
 		0DE182D41DEDA9D900AC3819 /* locationImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DE182D31DEDA9D900AC3819 /* locationImage.png */; };
 		0DE182D61DEDAA8500AC3819 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DE182D51DEDAA8500AC3819 /* location.png */; };
-		0DE182D91DEE88A700AC3819 /* LoginPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE182D81DEE88A700AC3819 /* LoginPageViewController.m */; };
 		AA1EFAF21DEBE4E6002183D2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1EFAF11DEBE4E6002183D2 /* main.m */; };
 		AA1EFAF51DEBE4E6002183D2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1EFAF41DEBE4E6002183D2 /* AppDelegate.m */; };
 		AA1EFAFB1DEBE4E6002183D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA1EFAF91DEBE4E6002183D2 /* Main.storyboard */; };
@@ -33,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D2761031DEEEECD009B92A8 /* LoginPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginPageViewController.h; sourceTree = "<group>"; };
+		0D2761041DEEEECD009B92A8 /* LoginPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginPageViewController.m; sourceTree = "<group>"; };
 		0D4F1A401DEE8B43002B7296 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		0D4F1A431DEE911D002B7296 /* UserInfomation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfomation.h; sourceTree = "<group>"; };
 		0D4F1A441DEE911D002B7296 /* UserInfomation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfomation.m; sourceTree = "<group>"; };
@@ -56,8 +58,6 @@
 		0D9BD5E71DED939A00517379 /* FisrtCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FisrtCollectionViewLayout.m; sourceTree = "<group>"; };
 		0DE182D31DEDA9D900AC3819 /* locationImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = locationImage.png; path = ../../../../../Downloads/locationImage.png; sourceTree = "<group>"; };
 		0DE182D51DEDAA8500AC3819 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = location.png; path = ../../../../../Downloads/location.png; sourceTree = "<group>"; };
-		0DE182D71DEE88A700AC3819 /* LoginPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginPageViewController.h; sourceTree = "<group>"; };
-		0DE182D81DEE88A700AC3819 /* LoginPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginPageViewController.m; sourceTree = "<group>"; };
 		AA1EFAED1DEBE4E6002183D2 /* AnonymousSocial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnonymousSocial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA1EFAF11DEBE4E6002183D2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AA1EFAF31DEBE4E6002183D2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -95,8 +95,8 @@
 			isa = PBXGroup;
 			children = (
 				0D4F1A471DEEA770002B7296 /* Login.storyboard */,
-				0DE182D71DEE88A700AC3819 /* LoginPageViewController.h */,
-				0DE182D81DEE88A700AC3819 /* LoginPageViewController.m */,
+				0D2761031DEEEECD009B92A8 /* LoginPageViewController.h */,
+				0D2761041DEEEECD009B92A8 /* LoginPageViewController.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -312,13 +312,13 @@
 				0D4F1A451DEE911D002B7296 /* UserInfomation.m in Sources */,
 				AA1EFAF21DEBE4E6002183D2 /* main.m in Sources */,
 				0D7E019D1DEBFB5E00B3C720 /* HomeTableViewCell.m in Sources */,
+				0D2761051DEEEECD009B92A8 /* LoginPageViewController.m in Sources */,
 				0D9BD5DF1DED633900517379 /* CustomFlowLayout.m in Sources */,
 				0D9BD5C91DEC4C9A00517379 /* CustomCollectionViewCell.m in Sources */,
 				0D9BD5DC1DED5D2E00517379 /* SingleCellCollectionViewController.m in Sources */,
 				0D9BD5C61DEC222F00517379 /* CollectionViewController.m in Sources */,
 				0D9BD5D91DED5B8100517379 /* CustomCellSingleCollectionView.m in Sources */,
 				0D7E019A1DEBEBB200B3C720 /* HomeViewController.m in Sources */,
-				0DE182D91DEE88A700AC3819 /* LoginPageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
