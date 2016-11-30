@@ -26,8 +26,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // Transparent NaviBar
+    [self transparentNavigationBar];
     self.mainCollectionView.collectionViewLayout = [[CustomFlowLayout alloc] init];
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,6 +37,15 @@
 }
 
 #pragma mark - Setting Methods
+
+- (void)transparentNavigationBar {
+    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                                                  forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.view.backgroundColor = [UIColor clearColor];
+}
 
 #pragma mark - CollectionView DateSource Method
 
@@ -48,6 +58,13 @@
     
     CustomCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     return cell;
+}
+
+#pragma mark - CollecionView Delegate 
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSLog(@"collecionCell is selected!!");
 }
 
 

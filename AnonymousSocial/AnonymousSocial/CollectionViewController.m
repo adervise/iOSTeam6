@@ -8,6 +8,7 @@
 
 #import "CollectionViewController.h"
 #import "CustomCollectionViewCell.h"
+#import "FisrtCollectionViewLayout.h"
 
 @interface CollectionViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -22,12 +23,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // UIRefreshContol
     [self setRefreshControl];
+    
+    // CollecionViewFlowLayout
+    [self settCustomCollecionFlowLayout];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+#pragma mark - CutomCollecionViewFlowLayout
+
+- (void)settCustomCollecionFlowLayout {
+    
+    self.mainCollectionView.collectionViewLayout = [[FisrtCollectionViewLayout alloc] init];
 }
 
 #pragma mark - Refresh CollectionView Data

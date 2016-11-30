@@ -11,7 +11,7 @@
 #import "CollectionViewController.h"
 #import "SingleCellCollectionViewController.h"
 
-@interface HomeViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface HomeViewController ()<UITableViewDataSource, UITableViewDelegate, UITabBarControllerDelegate>
 
 // ChildViewControllers
 @property (weak) CollectionViewController *collectionViewController;
@@ -22,6 +22,7 @@
 @property (nonatomic, weak) IBOutlet UIScrollView *mainScrollView;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *segControl;
 
+@property (nonatomic, weak) IBOutlet UISwitch *tempSwitch;
 
 
 @end
@@ -34,10 +35,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    HomeViewController __weak *wSelf = self;
+    self.tabBarController.delegate = wSelf;
+    
     [self settingForScrollView];
     [self setRefreshControl];
     [self settingAddChildViewController];
     [self setFrameCollectionViewCotroller];
+    
 }
 
 - (void)dealloc {
@@ -137,7 +142,6 @@
     // 스크롤뷰에 콜렉션뷰를 addSubView
     [self.mainScrollView addSubview:self.collectionViewController.view];
     
-    // 똑같은 작업을 두번째 collectionVC에도..
     [self.singleCollectionViewController.view setFrame:CGRectMake(self.view.bounds.size.width*2, 0, self.mainScrollView.bounds.size.width, self.mainScrollView.bounds.size.height)];
     [self.mainScrollView addSubview:self.singleCollectionViewController.view];
     
@@ -153,10 +157,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeTableCell" forIndexPath:indexPath];
-    
-//    cell.mainTextLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row];
     cell.mainTextLabel.text = @"테스트용 글...";
-    
+    cell.backGroundImage.image = [UIImage imageNamed:@"풍경.jpg"];
     
     return cell;
 }
@@ -171,6 +173,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSLog(@"Cell is selected!!");
+}
+
+#pragma mark - TabBarController Delegate Method
+
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    
+    // 프로필탭을 눌렀을 때 로그인여부를 확인
+    if (tabBarController.selectedIndex == 3) {
+        
+        // 로그인여부확인
+        
+        // 로그인상태가아닐시 얼럿뷰띄워서 로그인창을 띄우도록 유도
+        
+    }
+    
+    return NO;
 }
 
 @end

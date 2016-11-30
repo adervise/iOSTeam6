@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -26,6 +27,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ghu-B7-WI5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="159" y="115"/>
+        </scene>
+        <!--Login Page View Controller-->
+        <scene sceneID="604-m4-ln4">
+            <objects>
+                <viewController id="Rpx-By-ZDk" customClass="LoginPageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sAz-eI-quC"/>
+                        <viewControllerLayoutGuide type="bottom" id="luO-tt-zOG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Fzs-z9-3ic">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zba-3j-E7Q">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ljX-w8-l4J">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ePc-1Y-DkO">
+                                            <rect key="frame" x="56" y="133" width="262.5" height="400"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="ePc-1Y-DkO" firstAttribute="centerX" secondItem="ljX-w8-l4J" secondAttribute="centerX" id="922-oT-qsp"/>
+                                        <constraint firstItem="ePc-1Y-DkO" firstAttribute="centerY" secondItem="ljX-w8-l4J" secondAttribute="centerY" id="9Wn-pz-vHv"/>
+                                        <constraint firstItem="ePc-1Y-DkO" firstAttribute="height" secondItem="ljX-w8-l4J" secondAttribute="height" multiplier="0.6" id="BSV-Uc-7qn"/>
+                                        <constraint firstItem="ePc-1Y-DkO" firstAttribute="width" secondItem="ljX-w8-l4J" secondAttribute="width" multiplier="0.7" id="T0m-PS-d8K"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Zba-3j-E7Q" firstAttribute="top" secondItem="Fzs-z9-3ic" secondAttribute="top" id="0e0-gu-cpm"/>
+                            <constraint firstItem="Zba-3j-E7Q" firstAttribute="leading" secondItem="Fzs-z9-3ic" secondAttribute="leading" id="0tn-r2-IYf"/>
+                            <constraint firstItem="luO-tt-zOG" firstAttribute="top" secondItem="Zba-3j-E7Q" secondAttribute="bottom" id="UXJ-Bk-FZr"/>
+                            <constraint firstAttribute="trailing" secondItem="Zba-3j-E7Q" secondAttribute="trailing" id="eSE-To-zmt"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qpG-UN-PFG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1014" y="176"/>
         </scene>
     </scenes>
 </document>

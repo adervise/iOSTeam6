@@ -33,7 +33,7 @@
 - (void)setupCellLayoutStyle {
     
     //백그라운드이미지뷰의 layer를 조정하여 둥글게.
-    self.backGroundImage.layer.cornerRadius = 20.0f;
+    self.backGroundImage.layer.cornerRadius = 10.0f;
     
     // Cell에 섀도우이펙트(?)
     [self shadowEffectForCell];
