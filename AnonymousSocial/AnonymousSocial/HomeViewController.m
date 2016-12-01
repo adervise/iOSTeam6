@@ -197,36 +197,36 @@
 #pragma mark - TabBarController Delegate Method
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
-//    
-//    // 프로필탭을 눌렀을 때 로그인여부를 확인
-//    if (viewController == tabBarController.viewControllers[3]) {
-//        
-//        
-//        // 로그인상태가 아니면
-//        if (![UserInfomation sharedUserInfomation].isUserLogin) {
-//            
-//            // 얼럿창띄우기
-//            // 얼럿컨트롤러코드는 항상길다. 따로 클래스를만들어 코드를 간결하게 할 필요가 있을 듯.
-//            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"로그인 상태가 아닙니다." message:@"로그인 하시겠습니까?" preferredStyle:UIAlertControllerStyleAlert];
-//            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//                
-//                [self addLoginViewControllerForChildVC];
-//                NSLog(@"로그인!!");
-//            }];
-//            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"취소" style:UIAlertActionStyleCancel handler:nil];
-//            
-//            [alert addAction:okAction];
-//            [alert addAction:cancelAction];
-//            
-//            [self presentViewController:alert animated:YES completion:nil];
-//            
-//            return NO;
-//        }
-//        
-//        /*
-//         로그인 상태일시
-//         */
-//    }
+    
+    // 프로필탭을 눌렀을 때 로그인여부를 확인
+    if (viewController == tabBarController.viewControllers[3]) {
+        
+        
+        // 로그인상태가 아니면
+        if (![UserInfomation sharedUserInfomation].isUserLogin) {
+            
+            // 얼럿창띄우기
+            // 얼럿컨트롤러코드는 항상길다. 따로 클래스를만들어 코드를 간결하게 할 필요가 있을 듯.
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"로그인 상태가 아닙니다." message:@"로그인 하시겠습니까?" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+                UIStoryboard *story = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+                UINavigationController *nextVC = (UINavigationController *)[story instantiateViewControllerWithIdentifier:@"LoginNavigationCotroller"];
+                [self presentViewController:nextVC animated:YES completion:nil];
+                
+            }];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"취소" style:UIAlertActionStyleCancel handler:nil];
+            
+            [alert addAction:okAction];
+            [alert addAction:cancelAction];
+            [self presentViewController:alert animated:YES completion:nil];
+            return NO;
+        }
+        
+        /*
+         로그인 상태일시
+         */
+    }
     
     return YES;
 }
