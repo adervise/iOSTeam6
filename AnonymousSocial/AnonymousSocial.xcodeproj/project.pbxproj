@@ -19,10 +19,11 @@
 		0D9BD5D91DED5B8100517379 /* CustomCellSingleCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9BD5D81DED5B8100517379 /* CustomCellSingleCollectionView.m */; };
 		0D9BD5DC1DED5D2E00517379 /* SingleCellCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9BD5DB1DED5D2E00517379 /* SingleCellCollectionViewController.m */; };
 		0D9BD5DF1DED633900517379 /* CustomFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9BD5DE1DED633900517379 /* CustomFlowLayout.m */; };
-		0D9BD5E11DED787200517379 /* 풍경.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0D9BD5E01DED787200517379 /* 풍경.jpg */; };
+		0D9BD5E11DED787200517379 /* 풍경.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0D9BD5E01DED787200517379 /* 풍경.jpg */; };
 		0D9BD5E81DED939A00517379 /* FisrtCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9BD5E71DED939A00517379 /* FisrtCollectionViewLayout.m */; };
 		0DE182D41DEDA9D900AC3819 /* locationImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DE182D31DEDA9D900AC3819 /* locationImage.png */; };
 		0DE182D61DEDAA8500AC3819 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DE182D51DEDAA8500AC3819 /* location.png */; };
+		33A5BDE845E38066F6881BA7 /* libPods-AnonymousSocial.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F08EAD1911CDF7070E6BBC7 /* libPods-AnonymousSocial.a */; };
 		AA1EFAF21DEBE4E6002183D2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1EFAF11DEBE4E6002183D2 /* main.m */; };
 		AA1EFAF51DEBE4E6002183D2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1EFAF41DEBE4E6002183D2 /* AppDelegate.m */; };
 		AA1EFAFB1DEBE4E6002183D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA1EFAF91DEBE4E6002183D2 /* Main.storyboard */; };
@@ -56,11 +57,13 @@
 		0D9BD5DB1DED5D2E00517379 /* SingleCellCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleCellCollectionViewController.m; sourceTree = "<group>"; };
 		0D9BD5DD1DED633900517379 /* CustomFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomFlowLayout.h; sourceTree = "<group>"; };
 		0D9BD5DE1DED633900517379 /* CustomFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomFlowLayout.m; sourceTree = "<group>"; };
-		0D9BD5E01DED787200517379 /* 풍경.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "풍경.jpg"; path = "../../../../풍경.jpg"; sourceTree = "<group>"; };
+		0D9BD5E01DED787200517379 /* 풍경.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "풍경.jpg"; path = "../../../../풍경.jpg"; sourceTree = "<group>"; };
 		0D9BD5E61DED939A00517379 /* FisrtCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FisrtCollectionViewLayout.h; sourceTree = "<group>"; };
 		0D9BD5E71DED939A00517379 /* FisrtCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FisrtCollectionViewLayout.m; sourceTree = "<group>"; };
 		0DE182D31DEDA9D900AC3819 /* locationImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = locationImage.png; path = ../../../../../Downloads/locationImage.png; sourceTree = "<group>"; };
 		0DE182D51DEDAA8500AC3819 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = location.png; path = ../../../../../Downloads/location.png; sourceTree = "<group>"; };
+		2F08EAD1911CDF7070E6BBC7 /* libPods-AnonymousSocial.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AnonymousSocial.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B7CBD849F3533FF7B6FD88A /* Pods-AnonymousSocial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnonymousSocial.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AnonymousSocial/Pods-AnonymousSocial.debug.xcconfig"; sourceTree = "<group>"; };
 		AA1EFAED1DEBE4E6002183D2 /* AnonymousSocial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnonymousSocial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA1EFAF11DEBE4E6002183D2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AA1EFAF31DEBE4E6002183D2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -72,6 +75,7 @@
 		AA1EFB091DEBE63D002183D2 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		AA1EFB0D1DEBE65A002183D2 /* Post.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
 		AA1EFB141DEBE755002183D2 /* Other.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Other.storyboard; sourceTree = "<group>"; };
+		EC7A886A7E98AB8525606FCB /* Pods-AnonymousSocial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnonymousSocial.release.xcconfig"; path = "Pods/Target Support Files/Pods-AnonymousSocial/Pods-AnonymousSocial.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33A5BDE845E38066F6881BA7 /* libPods-AnonymousSocial.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,9 +161,17 @@
 			children = (
 				0DE182D31DEDA9D900AC3819 /* locationImage.png */,
 				0DE182D51DEDAA8500AC3819 /* location.png */,
-				0D9BD5E01DED787200517379 /* 풍경.jpg */,
+				0D9BD5E01DED787200517379 /* 풍경.jpg */,
 			);
 			name = TempImageResource;
+			sourceTree = "<group>";
+		};
+		7B49AC97D993512EDD12F740 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2F08EAD1911CDF7070E6BBC7 /* libPods-AnonymousSocial.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		AA1EFAE41DEBE4E5002183D2 = {
@@ -166,6 +179,8 @@
 			children = (
 				AA1EFAEF1DEBE4E6002183D2 /* AnonymousSocial */,
 				AA1EFAEE1DEBE4E6002183D2 /* Products */,
+				C07314A7CBBA5578EB45330E /* Pods */,
+				7B49AC97D993512EDD12F740 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -241,6 +256,15 @@
 			name = etc;
 			sourceTree = "<group>";
 		};
+		C07314A7CBBA5578EB45330E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6B7CBD849F3533FF7B6FD88A /* Pods-AnonymousSocial.debug.xcconfig */,
+				EC7A886A7E98AB8525606FCB /* Pods-AnonymousSocial.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -248,9 +272,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA1EFB041DEBE4E6002183D2 /* Build configuration list for PBXNativeTarget "AnonymousSocial" */;
 			buildPhases = (
+				4649ACD8D36EF991C779C7AE /* [CP] Check Pods Manifest.lock */,
 				AA1EFAE91DEBE4E5002183D2 /* Sources */,
 				AA1EFAEA1DEBE4E5002183D2 /* Frameworks */,
 				AA1EFAEB1DEBE4E5002183D2 /* Resources */,
+				2D74014369C8C3E29BC99A3B /* [CP] Embed Pods Frameworks */,
+				E246E63C039A2C34B1EF1BA8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -303,7 +330,7 @@
 				0D4F1A411DEE8B43002B7296 /* Home.storyboard in Resources */,
 				AA1EFAFD1DEBE4E6002183D2 /* Assets.xcassets in Resources */,
 				AA1EFB0A1DEBE63D002183D2 /* Profile.storyboard in Resources */,
-				0D9BD5E11DED787200517379 /* 풍경.jpg in Resources */,
+				0D9BD5E11DED787200517379 /* 풍경.jpg in Resources */,
 				AA1EFB151DEBE755002183D2 /* Other.storyboard in Resources */,
 				AA1EFB0E1DEBE65A002183D2 /* Post.storyboard in Resources */,
 				0DE182D61DEDAA8500AC3819 /* location.png in Resources */,
@@ -314,6 +341,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2D74014369C8C3E29BC99A3B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AnonymousSocial/Pods-AnonymousSocial-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4649ACD8D36EF991C779C7AE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E246E63C039A2C34B1EF1BA8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AnonymousSocial/Pods-AnonymousSocial-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AA1EFAE91DEBE4E5002183D2 /* Sources */ = {
@@ -448,6 +523,7 @@
 		};
 		AA1EFB051DEBE4E6002183D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B7CBD849F3533FF7B6FD88A /* Pods-AnonymousSocial.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
@@ -460,6 +536,7 @@
 		};
 		AA1EFB061DEBE4E6002183D2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC7A886A7E98AB8525606FCB /* Pods-AnonymousSocial.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
