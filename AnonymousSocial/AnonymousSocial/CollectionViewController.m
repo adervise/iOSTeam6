@@ -75,7 +75,7 @@
     
     CustomCollectionViewCell *collectionCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionCell" forIndexPath:indexPath];
  
-    collectionCell.mainTextLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row];
+    collectionCell.mainTextLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
     
     return collectionCell;
 }

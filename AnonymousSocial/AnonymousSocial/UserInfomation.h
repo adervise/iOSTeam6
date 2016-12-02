@@ -13,5 +13,7 @@
 @property (getter=isUserLogin) BOOL userLogin;
 
 + (instancetype)sharedUserInfomation;
+- (void)settingUserToken:(NSString *)token;
+- (NSString *)gettingUserToken;
 
 @end

@@ -124,6 +124,9 @@
                                 <rect key="frame" x="56" y="443.5" width="263" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="로그인"/>
+                                <connections>
+                                    <action selector="onTouchLoginButton:" destination="E8q-Hq-7YL" eventType="touchUpInside" id="1QO-zO-8Ls"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xlN-bH-JbG">
                                 <rect key="frame" x="56" y="508.5" width="263" height="50"/>
@@ -332,6 +335,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bda-vQ-jY4">
                                         <rect key="frame" x="10" y="350" width="280" height="50"/>
                                         <state key="normal" title="회원가입"/>
+                                        <connections>
+                                            <action selector="onTouchSignUpButton:" destination="C22-Eu-1jn" eventType="touchUpInside" id="jV9-ph-0py"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -368,11 +374,15 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="birthTextField" destination="xNa-vh-eN3" id="EDV-Fx-6jH"/>
+                        <outlet property="birthTextField" destination="xNa-vh-eN3" id="UiQ-WX-u9B"/>
                         <outlet property="birthView" destination="tAF-SQ-Dwc" id="Omn-cL-y17"/>
+                        <outlet property="genderSegment" destination="Jgb-ZX-4kG" id="aMu-JH-EcQ"/>
                         <outlet property="genderView" destination="8Tk-u6-WGb" id="g8z-fV-YAR"/>
+                        <outlet property="idTextField" destination="6nr-uU-gsf" id="ieF-e9-wgY"/>
                         <outlet property="idView" destination="pNA-vS-zlv" id="AJ2-7d-eCD"/>
+                        <outlet property="pwTextField" destination="2Yy-lz-Mzy" id="Rni-eP-crE"/>
                         <outlet property="pwView" destination="ec7-FS-Gbl" id="Dg3-FJ-IRe"/>
+                        <outlet property="rePwTextField" destination="1y0-LU-oZS" id="DED-9h-EcG"/>
                         <outlet property="repwView" destination="RQd-zc-7tK" id="SA3-jy-LiF"/>
                     </connections>
                 </viewController>

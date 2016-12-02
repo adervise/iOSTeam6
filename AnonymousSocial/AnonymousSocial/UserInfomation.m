@@ -10,7 +10,7 @@
 
 @interface UserInfomation ()
 
-
+@property NSString *userToken;
 
 @end
 
@@ -41,5 +41,15 @@
     return self;
 }
 
+- (void)settingUserToken:(NSString *)token {
+    
+    self.userToken = token;
+    self.userLogin = YES;
+}
+
+- (NSString *)gettingUserToken {
+    
+    return self.userToken;
+}
 
 @end

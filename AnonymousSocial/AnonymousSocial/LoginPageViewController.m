@@ -7,6 +7,7 @@
 //
 
 #import "LoginPageViewController.h"
+#import "UserInfomation.h"
 
 @interface LoginPageViewController () <UITextFieldDelegate>
 
@@ -26,6 +27,12 @@
 
 #pragma mark - View Life Cycle
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    [LoginPageManager sharedLoginManager].loginNavigationVC = self.navigationController;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -34,8 +41,9 @@
 
 - (void)dealloc {
     
-    [self removeObserver:self forKeyPath:@"UIKeyboardWillShowNotification"];
-    [self removeObserver:self forKeyPath:@"UIKeyboardWillHideNotification"];
+    [[NSNotificationCenter defaultCenter] removeObserver:UIKeyboardWillShowNotification];
+    [[NSNotificationCenter defaultCenter] removeObserver:UIKeyboardWillHideNotification];
+//    [[NSNotificationCenter defaultCenter] removeObserver:@"UserTokenChanged"];
 }
 
 #pragma mark - Observer
@@ -44,6 +52,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeOriginView:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeOriginView:) name:UIKeyboardWillHideNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeUserToken:) name:@"UserTokenChanged" object:nil];
 }
 
 
@@ -65,6 +74,21 @@
     }
 }
 
+//- (void)changeUserToken:(NSNotification *)notification {
+//    
+//    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+//       
+//        // 로그인 되었습니다 얼럿창
+//    }];
+//}
+
+#pragma mark - Button IBAction 
+
+- (IBAction)onTouchLoginButton:(UIButton *)sender {
+    
+    [[LoginPageManager sharedLoginManager] userLogin:self.emailTextField.text password:self.pwTextField.text];
+}
+
 #pragma mark - TextField Delegate Method
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -82,7 +106,6 @@
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     
     return YES;
-    
 }
 
 #pragma mark - Memory Issue

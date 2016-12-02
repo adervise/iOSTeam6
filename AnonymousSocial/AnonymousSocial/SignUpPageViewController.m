@@ -7,6 +7,8 @@
 //
 
 #import "SignUpPageViewController.h"
+#import "LoginPageManager.h"
+#import "UserInfomation.h"
 
 @interface SignUpPageViewController ()<UITextFieldDelegate>
 
@@ -15,7 +17,13 @@
 @property (weak, nonatomic) IBOutlet UIView *repwView;
 @property (weak, nonatomic) IBOutlet UIView *birthView;
 @property (weak, nonatomic) IBOutlet UIView *genderView;
+
+@property (weak, nonatomic) IBOutlet UITextField *idTextField;
+@property (weak, nonatomic) IBOutlet UITextField *pwTextField;
+@property (weak, nonatomic) IBOutlet UITextField *rePwTextField;
 @property (weak, nonatomic) IBOutlet UITextField *birthTextField;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *genderSegment;
+
 
 @property UIDatePicker *datePicker;
 
@@ -38,6 +46,68 @@
     
     
 }
+
+
+#pragma mark - Others..
+
+
+#pragma mark - Button Method (IBAction..)
+
+- (IBAction)onTouchSignUpButton:(id)sender {
+    
+    [[LoginPageManager sharedLoginManager] userSignUp:self.idTextField.text password:self.pwTextField.text rePassword:self.rePwTextField.text birthDay:self.birthTextField.text gender:nil];
+}
+
+
+#pragma mark - Custom ActionSheet
+
+- (void)showCustomActionSheet {
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"\n\n\n\n\n\n\n\n" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIView *dateView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200)];
+    [dateView setBackgroundColor:[UIColor clearColor]];
+    
+    self.datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200)];
+    self.datePicker.datePickerMode = UIDatePickerModeDate;
+    
+    [self.datePicker addTarget:self action:@selector(dateSelected:) forControlEvents:UIControlEventEditingDidEnd];
+    [dateView addSubview:self.datePicker];
+    [alert.view addSubview:dateView];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)dateSelected:(UIDatePicker *)datePicker {
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    df.dateStyle = NSDateFormatterMediumStyle;
+    [df setDateFormat:@"yyyy-mm-dd"];
+    self.birthTextField.text = [df stringFromDate:self.datePicker.date];
+}
+
+
+#pragma mark - TextField Delegate Method
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    
+    if (textField == self.birthTextField) {
+        
+        [self showCustomActionSheet];
+        [textField resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+
 
 #pragma mark - setSubViewLayout
 
@@ -81,55 +151,7 @@
     
     view.layer.cornerRadius = 10.0f;
     view.clipsToBounds = YES;
-}
 
-#pragma mark - Custom ActionSheet
-
-- (void)showCustomActionSheet {
-    
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"\n\n\n\n\n\n\n\n" preferredStyle:UIAlertControllerStyleActionSheet];
-    
-    UIView *dateView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200)];
-    [dateView setBackgroundColor:[UIColor clearColor]];
-    
-    self.datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200)];
-    self.datePicker.datePickerMode = UIDatePickerModeDate;
-    
-    [self.datePicker addTarget:self action:@selector(dateSelected:) forControlEvents:UIControlEventValueChanged];
-    [dateView addSubview:self.datePicker];
-    [alert.view addSubview:dateView];
-    
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-    [alert addAction:okAction];
-    [self presentViewController:alert animated:YES completion:nil];
-}
-
-- (void)dateSelected:(UIDatePicker *)datePicker {
-    
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    df.dateStyle = NSDateFormatterMediumStyle;
-    [df setDateFormat:@"yyyy-mm-dd"];
-    self.birthTextField.text = [df stringFromDate:self.datePicker.date];
-}
-
-
-#pragma mark - TextField Delegate Method
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    
-    [textField resignFirstResponder];
-    return YES;
-}
-
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    
-    if (textField == self.birthTextField) {
-        
-        NSLog(@"sdfsfdsfdsfs");
-        [self showCustomActionSheet];
-        return NO;
-    }
-    return YES;
 }
 
 #pragma mark - Memory Issue

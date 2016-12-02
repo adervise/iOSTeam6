@@ -19,8 +19,12 @@
 		0D9BD5D91DED5B8100517379 /* CustomCellSingleCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9BD5D81DED5B8100517379 /* CustomCellSingleCollectionView.m */; };
 		0D9BD5DC1DED5D2E00517379 /* SingleCellCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9BD5DB1DED5D2E00517379 /* SingleCellCollectionViewController.m */; };
 		0D9BD5DF1DED633900517379 /* CustomFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9BD5DE1DED633900517379 /* CustomFlowLayout.m */; };
-		0D9BD5E11DED787200517379 /* 풍경.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0D9BD5E01DED787200517379 /* 풍경.jpg */; };
+		0D9BD5E11DED787200517379 /* 풍경.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0D9BD5E01DED787200517379 /* 풍경.jpg */; };
 		0D9BD5E81DED939A00517379 /* FisrtCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9BD5E71DED939A00517379 /* FisrtCollectionViewLayout.m */; };
+		0DC7520D1DF008AA005BA6BB /* RequestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7520C1DF008AA005BA6BB /* RequestObject.m */; };
+		0DC752101DF008F0005BA6BB /* LoginPageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7520F1DF008F0005BA6BB /* LoginPageManager.m */; };
+		0DC752131DF13A4A005BA6BB /* CustomAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC752121DF13A4A005BA6BB /* CustomAlertController.m */; };
+		0DC752171DF16014005BA6BB /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC752161DF16014005BA6BB /* ProfileViewController.m */; };
 		0DE182D41DEDA9D900AC3819 /* locationImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DE182D31DEDA9D900AC3819 /* locationImage.png */; };
 		0DE182D61DEDAA8500AC3819 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DE182D51DEDAA8500AC3819 /* location.png */; };
 		33A5BDE845E38066F6881BA7 /* libPods-AnonymousSocial.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F08EAD1911CDF7070E6BBC7 /* libPods-AnonymousSocial.a */; };
@@ -57,9 +61,18 @@
 		0D9BD5DB1DED5D2E00517379 /* SingleCellCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleCellCollectionViewController.m; sourceTree = "<group>"; };
 		0D9BD5DD1DED633900517379 /* CustomFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomFlowLayout.h; sourceTree = "<group>"; };
 		0D9BD5DE1DED633900517379 /* CustomFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomFlowLayout.m; sourceTree = "<group>"; };
-		0D9BD5E01DED787200517379 /* 풍경.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "풍경.jpg"; path = "../../../../풍경.jpg"; sourceTree = "<group>"; };
+		0D9BD5E01DED787200517379 /* 풍경.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "풍경.jpg"; path = "../../../../풍경.jpg"; sourceTree = "<group>"; };
 		0D9BD5E61DED939A00517379 /* FisrtCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FisrtCollectionViewLayout.h; sourceTree = "<group>"; };
 		0D9BD5E71DED939A00517379 /* FisrtCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FisrtCollectionViewLayout.m; sourceTree = "<group>"; };
+		0DC7520B1DF008AA005BA6BB /* RequestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestObject.h; sourceTree = "<group>"; };
+		0DC7520C1DF008AA005BA6BB /* RequestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestObject.m; sourceTree = "<group>"; };
+		0DC7520E1DF008F0005BA6BB /* LoginPageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginPageManager.h; sourceTree = "<group>"; };
+		0DC7520F1DF008F0005BA6BB /* LoginPageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginPageManager.m; sourceTree = "<group>"; };
+		0DC752111DF13A4A005BA6BB /* CustomAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAlertController.h; sourceTree = "<group>"; };
+		0DC752121DF13A4A005BA6BB /* CustomAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAlertController.m; sourceTree = "<group>"; };
+		0DC752151DF16014005BA6BB /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		0DC752161DF16014005BA6BB /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		0DC752181DF16F89005BA6BB /* AnonymousSocial.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AnonymousSocial.entitlements; sourceTree = "<group>"; };
 		0DE182D31DEDA9D900AC3819 /* locationImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = locationImage.png; path = ../../../../../Downloads/locationImage.png; sourceTree = "<group>"; };
 		0DE182D51DEDAA8500AC3819 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = location.png; path = ../../../../../Downloads/location.png; sourceTree = "<group>"; };
 		2F08EAD1911CDF7070E6BBC7 /* libPods-AnonymousSocial.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AnonymousSocial.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +106,8 @@
 		0D086BFC1DF004C100FA3B49 /* NetworkObjects */ = {
 			isa = PBXGroup;
 			children = (
+				0DC7520B1DF008AA005BA6BB /* RequestObject.h */,
+				0DC7520C1DF008AA005BA6BB /* RequestObject.m */,
 			);
 			name = NetworkObjects;
 			sourceTree = "<group>";
@@ -114,6 +129,8 @@
 				0D2761041DEEEECD009B92A8 /* LoginPageViewController.m */,
 				0D086BF81DEFD55700FA3B49 /* SignUpPageViewController.h */,
 				0D086BF91DEFD55700FA3B49 /* SignUpPageViewController.m */,
+				0DC7520E1DF008F0005BA6BB /* LoginPageManager.h */,
+				0DC7520F1DF008F0005BA6BB /* LoginPageManager.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -161,9 +178,18 @@
 			children = (
 				0DE182D31DEDA9D900AC3819 /* locationImage.png */,
 				0DE182D51DEDAA8500AC3819 /* location.png */,
-				0D9BD5E01DED787200517379 /* 풍경.jpg */,
+				0D9BD5E01DED787200517379 /* 풍경.jpg */,
 			);
 			name = TempImageResource;
+			sourceTree = "<group>";
+		};
+		0DC752141DF13A4F005BA6BB /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				0DC752111DF13A4A005BA6BB /* CustomAlertController.h */,
+				0DC752121DF13A4A005BA6BB /* CustomAlertController.m */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		7B49AC97D993512EDD12F740 /* Frameworks */ = {
@@ -195,8 +221,10 @@
 		AA1EFAEF1DEBE4E6002183D2 /* AnonymousSocial */ = {
 			isa = PBXGroup;
 			children = (
+				0DC752181DF16F89005BA6BB /* AnonymousSocial.entitlements */,
 				AA1EFAF31DEBE4E6002183D2 /* AppDelegate.h */,
 				AA1EFAF41DEBE4E6002183D2 /* AppDelegate.m */,
+				0DC752141DF13A4F005BA6BB /* Utilities */,
 				0D086BFC1DF004C100FA3B49 /* NetworkObjects */,
 				0D4F1A461DEEA766002B7296 /* Login */,
 				0D4F1A421DEE9084002B7296 /* DataModel */,
@@ -225,6 +253,8 @@
 			isa = PBXGroup;
 			children = (
 				AA1EFB091DEBE63D002183D2 /* Profile.storyboard */,
+				0DC752151DF16014005BA6BB /* ProfileViewController.h */,
+				0DC752161DF16014005BA6BB /* ProfileViewController.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -299,7 +329,13 @@
 				TargetAttributes = {
 					AA1EFAEC1DEBE4E5002183D2 = {
 						CreatedOnToolsVersion = 8.1;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = NN7QXHC8A3;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -330,7 +366,7 @@
 				0D4F1A411DEE8B43002B7296 /* Home.storyboard in Resources */,
 				AA1EFAFD1DEBE4E6002183D2 /* Assets.xcassets in Resources */,
 				AA1EFB0A1DEBE63D002183D2 /* Profile.storyboard in Resources */,
-				0D9BD5E11DED787200517379 /* 풍경.jpg in Resources */,
+				0D9BD5E11DED787200517379 /* 풍경.jpg in Resources */,
 				AA1EFB151DEBE755002183D2 /* Other.storyboard in Resources */,
 				AA1EFB0E1DEBE65A002183D2 /* Post.storyboard in Resources */,
 				0DE182D61DEDAA8500AC3819 /* location.png in Resources */,
@@ -395,13 +431,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DC7520D1DF008AA005BA6BB /* RequestObject.m in Sources */,
 				AA1EFAF51DEBE4E6002183D2 /* AppDelegate.m in Sources */,
 				0D9BD5E81DED939A00517379 /* FisrtCollectionViewLayout.m in Sources */,
 				0D086BFA1DEFD55700FA3B49 /* SignUpPageViewController.m in Sources */,
 				0D4F1A451DEE911D002B7296 /* UserInfomation.m in Sources */,
+				0DC752101DF008F0005BA6BB /* LoginPageManager.m in Sources */,
 				AA1EFAF21DEBE4E6002183D2 /* main.m in Sources */,
 				0D7E019D1DEBFB5E00B3C720 /* HomeTableViewCell.m in Sources */,
 				0D2761051DEEEECD009B92A8 /* LoginPageViewController.m in Sources */,
+				0DC752171DF16014005BA6BB /* ProfileViewController.m in Sources */,
+				0DC752131DF13A4A005BA6BB /* CustomAlertController.m in Sources */,
 				0D9BD5DF1DED633900517379 /* CustomFlowLayout.m in Sources */,
 				0D9BD5C91DEC4C9A00517379 /* CustomCollectionViewCell.m in Sources */,
 				0D9BD5DC1DED5D2E00517379 /* SingleCellCollectionViewController.m in Sources */,
@@ -526,10 +566,13 @@
 			baseConfigurationReference = 6B7CBD849F3533FF7B6FD88A /* Pods-AnonymousSocial.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_ENTITLEMENTS = AnonymousSocial/AnonymousSocial.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = NN7QXHC8A3;
 				INFOPLIST_FILE = AnonymousSocial/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.celeste.AnonymousSocial;
+				PRODUCT_BUNDLE_IDENTIFIER = net.yagom.JustSettingTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -539,10 +582,13 @@
 			baseConfigurationReference = EC7A886A7E98AB8525606FCB /* Pods-AnonymousSocial.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_ENTITLEMENTS = AnonymousSocial/AnonymousSocial.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = NN7QXHC8A3;
 				INFOPLIST_FILE = AnonymousSocial/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.celeste.AnonymousSocial;
+				PRODUCT_BUNDLE_IDENTIFIER = net.yagom.JustSettingTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
