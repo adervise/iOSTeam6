@@ -11,6 +11,7 @@
 @interface UserInfomation : NSObject
 
 @property (getter=isUserLogin) BOOL userLogin;
+@property (getter=isAutoLogin) BOOL autoLogin;
 
 + (instancetype)sharedUserInfomation;
 - (void)settingUserToken:(NSString *)token;

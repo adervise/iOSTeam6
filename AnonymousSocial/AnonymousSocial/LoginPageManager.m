@@ -42,19 +42,6 @@
     [RequestObject requestSignUp:userInfoDic];
 }
 
-- (void)completeLogin:(nonnull NSString *)token {
-    
-/*
- RequestObject에서 토큰을 받아와서
- UserInfomagion 싱글톤객체에 유저정보를 업데이트
- LoginNavigation 을 해제
- */
-    [[UserInfomation sharedUserInfomation] settingUserToken:token];
-    
-    //이부분에 "로그인되었습니다" 란 얼럿창 띄우기
-    [CustomAlertController showCutomAlert:self.loginNavigationVC type:CustomAlertTypeCompleteLogin];
-    
-}
 
 - (void)userLogin:(NSString *)email password:(NSString *)password {
     
@@ -70,10 +57,30 @@
     [RequestObject requestLogout:token];
 }
 
+#pragma mark - Complete Method
+
+- (void)completeLogin:(nonnull NSString *)token {
+    
+    /*
+     RequestObject에서 토큰을 받아와서
+     UserInfomagion 싱글톤객체에 유저정보를 업데이트
+     LoginNavigation 을 해제
+     
+     오토로그인을 체크하였다면 키체인에 토큰을 등록!!
+     */
+    [[UserInfomation sharedUserInfomation] settingUserToken:token];
+    
+    //이부분에 "로그인되었습니다" 란 얼럿창 띄우기
+    [CustomAlertController showCutomAlert:self.loginNavigationVC type:CustomAlertTypeCompleteLogin];
+    
+}
+
 - (void)completeUserLogout:(nonnull NSString *)token {
     
     // 로그아웃 되었으니 유저정보를 다시세팅!!
+    // 오토로그인상태였다면 키체인을 지운다!!
     [[UserInfomation sharedUserInfomation] settingUserToken:nil];
+    [UserInfomation sharedUserInfomation].userLogin = NO;
     [CustomAlertController showCustomLogoutAlert:self.homeViewController];
 }
 

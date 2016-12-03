@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0D086BFA1DEFD55700FA3B49 /* SignUpPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D086BF91DEFD55700FA3B49 /* SignUpPageViewController.m */; };
 		0D2761051DEEEECD009B92A8 /* LoginPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2761041DEEEECD009B92A8 /* LoginPageViewController.m */; };
+		0D44CAB91DF2AE560038A26E /* UserInfoValidationCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D44CAB81DF2AE560038A26E /* UserInfoValidationCheck.m */; };
+		0D44CAE51DF2BDA90038A26E /* ValidationSubView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D44CAE31DF2BDA90038A26E /* ValidationSubView.m */; };
+		0D44CAE61DF2BDA90038A26E /* ValidationSubView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D44CAE41DF2BDA90038A26E /* ValidationSubView.xib */; };
 		0D4F1A411DEE8B43002B7296 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F1A401DEE8B43002B7296 /* Home.storyboard */; };
 		0D4F1A451DEE911D002B7296 /* UserInfomation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F1A441DEE911D002B7296 /* UserInfomation.m */; };
 		0D4F1A481DEEA770002B7296 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F1A471DEEA770002B7296 /* Login.storyboard */; };
@@ -43,6 +46,11 @@
 		0D086BF91DEFD55700FA3B49 /* SignUpPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpPageViewController.m; sourceTree = "<group>"; };
 		0D2761031DEEEECD009B92A8 /* LoginPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginPageViewController.h; sourceTree = "<group>"; };
 		0D2761041DEEEECD009B92A8 /* LoginPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginPageViewController.m; sourceTree = "<group>"; };
+		0D44CAB71DF2AE560038A26E /* UserInfoValidationCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoValidationCheck.h; sourceTree = "<group>"; };
+		0D44CAB81DF2AE560038A26E /* UserInfoValidationCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoValidationCheck.m; sourceTree = "<group>"; };
+		0D44CAE21DF2BDA90038A26E /* ValidationSubView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ValidationSubView.h; path = ../../../../../.Trash/ValidationSubView.h; sourceTree = "<group>"; };
+		0D44CAE31DF2BDA90038A26E /* ValidationSubView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ValidationSubView.m; path = ../../../../../.Trash/ValidationSubView.m; sourceTree = "<group>"; };
+		0D44CAE41DF2BDA90038A26E /* ValidationSubView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ValidationSubView.xib; path = ../../../../../.Trash/ValidationSubView.xib; sourceTree = "<group>"; };
 		0D4F1A401DEE8B43002B7296 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		0D4F1A431DEE911D002B7296 /* UserInfomation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfomation.h; sourceTree = "<group>"; };
 		0D4F1A441DEE911D002B7296 /* UserInfomation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfomation.m; sourceTree = "<group>"; };
@@ -188,6 +196,11 @@
 			children = (
 				0DC752111DF13A4A005BA6BB /* CustomAlertController.h */,
 				0DC752121DF13A4A005BA6BB /* CustomAlertController.m */,
+				0D44CAB71DF2AE560038A26E /* UserInfoValidationCheck.h */,
+				0D44CAB81DF2AE560038A26E /* UserInfoValidationCheck.m */,
+				0D44CAE21DF2BDA90038A26E /* ValidationSubView.h */,
+				0D44CAE31DF2BDA90038A26E /* ValidationSubView.m */,
+				0D44CAE41DF2BDA90038A26E /* ValidationSubView.xib */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -364,6 +377,7 @@
 			files = (
 				AA1EFB001DEBE4E6002183D2 /* LaunchScreen.storyboard in Resources */,
 				0D4F1A411DEE8B43002B7296 /* Home.storyboard in Resources */,
+				0D44CAE61DF2BDA90038A26E /* ValidationSubView.xib in Resources */,
 				AA1EFAFD1DEBE4E6002183D2 /* Assets.xcassets in Resources */,
 				AA1EFB0A1DEBE63D002183D2 /* Profile.storyboard in Resources */,
 				0D9BD5E11DED787200517379 /* 풍경.jpg in Resources */,
@@ -431,8 +445,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D44CAB91DF2AE560038A26E /* UserInfoValidationCheck.m in Sources */,
 				0DC7520D1DF008AA005BA6BB /* RequestObject.m in Sources */,
 				AA1EFAF51DEBE4E6002183D2 /* AppDelegate.m in Sources */,
+				0D44CAE51DF2BDA90038A26E /* ValidationSubView.m in Sources */,
 				0D9BD5E81DED939A00517379 /* FisrtCollectionViewLayout.m in Sources */,
 				0D086BFA1DEFD55700FA3B49 /* SignUpPageViewController.m in Sources */,
 				0D4F1A451DEE911D002B7296 /* UserInfomation.m in Sources */,
@@ -491,6 +507,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -538,6 +555,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

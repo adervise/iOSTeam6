@@ -16,9 +16,11 @@
 @property (weak, nonatomic) IBOutlet UIView *otherButtonContainerView;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UITextField *pwTextField;
-@property (weak, nonatomic) IBOutlet UIImageView *checkBoxImage;
 @property (weak, nonatomic) IBOutlet UIImageView *emailImage;
 @property (weak, nonatomic) IBOutlet UIImageView *pwImage;
+
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIButton *signupButton;
 
 @end
 
@@ -30,20 +32,62 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    [LoginPageManager sharedLoginManager].loginNavigationVC = self.navigationController;
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setSubViewLayout];
+    [LoginPageManager sharedLoginManager].loginNavigationVC = self.navigationController;
     [self addObserverForKeyboard];
+
 }
 
 - (void)dealloc {
     
     [[NSNotificationCenter defaultCenter] removeObserver:UIKeyboardWillShowNotification];
     [[NSNotificationCenter defaultCenter] removeObserver:UIKeyboardWillHideNotification];
-//    [[NSNotificationCenter defaultCenter] removeObserver:@"UserTokenChanged"];
+}
+
+#pragma mark - Layout Setting
+
+- (void)setSubViewLayout {
+    
+    [self transparentNavigationBar];
+    [self setLayerCustomize];
+}
+
+- (void)setLayerCustomize {
+    
+    [self setCornerRadiusSubView:self.loginButton];
+    [self setCornerRadiusSubView:self.signupButton];
+    
+    [self setBorderLineSubView:self.loginButton];
+    [self setBorderLineSubView:self.signupButton];
+}
+
+- (void)setCornerRadiusSubView:(UIView *)view {
+    
+    view.layer.cornerRadius = 10.0f;
+    view.clipsToBounds = YES;
+    
+}
+
+- (void)setBorderLineSubView:(UIView *)view {
+    
+    view.layer.borderWidth = 0.5f;
+    view.layer.borderColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5].CGColor;
+}
+
+
+- (void)transparentNavigationBar {
+    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                                                  forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.view.backgroundColor = [UIColor clearColor];
 }
 
 #pragma mark - Observer
@@ -52,7 +96,6 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeOriginView:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeOriginView:) name:UIKeyboardWillHideNotification object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeUserToken:) name:@"UserTokenChanged" object:nil];
 }
 
 
@@ -87,6 +130,20 @@
 - (IBAction)onTouchLoginButton:(UIButton *)sender {
     
     [[LoginPageManager sharedLoginManager] userLogin:self.emailTextField.text password:self.pwTextField.text];
+}
+
+- (IBAction)onTouchAutoLoginButton:(UIButton *)sender {
+    
+    // Autologin check
+    if (sender.selected) {
+        [UserInfomation sharedUserInfomation].autoLogin = YES;
+        
+    } else {
+    // Not autologin
+        
+        [UserInfomation sharedUserInfomation].autoLogin = NO;
+    }
+    [sender setSelected:!sender.selected];
 }
 
 #pragma mark - TextField Delegate Method
