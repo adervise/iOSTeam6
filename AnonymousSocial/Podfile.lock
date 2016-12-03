@@ -14,18 +14,21 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - KeychainItemWrapper (1.2)
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
   - SDWebImage/Core (3.8.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1)
+  - KeychainItemWrapper
   - SDWebImage (~> 3.8)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  KeychainItemWrapper: 67a240172ed669842bc6bc13ed554dcd50469fa2
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
 
-PODFILE CHECKSUM: 406ade2aa4c9889883f881da9857583fc8c11bd4
+PODFILE CHECKSUM: 1bacfc4881af26c15e839d690332ec42d58c16c1
 
 COCOAPODS: 1.1.1
