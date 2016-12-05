@@ -98,13 +98,10 @@
 		AA1EFB011DEBE4E6002183D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA1EFB091DEBE63D002183D2 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		AA1EFB0D1DEBE65A002183D2 /* Post.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		EC7A886A7E98AB8525606FCB /* Pods-AnonymousSocial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnonymousSocial.release.xcconfig"; path = "Pods/Target Support Files/Pods-AnonymousSocial/Pods-AnonymousSocial.release.xcconfig"; sourceTree = "<group>"; };
-=======
 		AA1EFB141DEBE755002183D2 /* Other.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Other.storyboard; sourceTree = "<group>"; };
 		AA1EFB161DEBEB04002183D2 /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
 		AA1EFB171DEBEB04002183D2 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
->>>>>>> 5eaae30f02e1dfb9f0b7e74c6db6531686b0f625
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,13 +271,10 @@
 			isa = PBXGroup;
 			children = (
 				AA1EFB091DEBE63D002183D2 /* Profile.storyboard */,
-<<<<<<< HEAD
 				0DC752151DF16014005BA6BB /* ProfileViewController.h */,
 				0DC752161DF16014005BA6BB /* ProfileViewController.m */,
-=======
 				AA1EFB161DEBEB04002183D2 /* Profile.h */,
 				AA1EFB171DEBEB04002183D2 /* Profile.m */,
->>>>>>> 5eaae30f02e1dfb9f0b7e74c6db6531686b0f625
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -458,12 +452,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
 				0D44CAB91DF2AE560038A26E /* UserInfoValidationCheck.m in Sources */,
 				0DC7520D1DF008AA005BA6BB /* RequestObject.m in Sources */,
-=======
 				AA1EFB181DEBEB04002183D2 /* Profile.m in Sources */,
->>>>>>> 5eaae30f02e1dfb9f0b7e74c6db6531686b0f625
 				AA1EFAF51DEBE4E6002183D2 /* AppDelegate.m in Sources */,
 				0D44CAE51DF2BDA90038A26E /* ValidationSubView.m in Sources */,
 				0D9BD5E81DED939A00517379 /* FisrtCollectionViewLayout.m in Sources */,
