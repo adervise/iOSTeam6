@@ -21,6 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet UIButton *signupButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *exitButtonItem;
 
 @end
 
@@ -135,6 +136,11 @@
     // Not autologin
         [UserInfomation sharedUserInfomation].autoLogin = NO;
     }
+}
+
+- (IBAction)onTouchExitButton:(UIBarButtonItem *)sender {
+    
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - TextField Delegate Method

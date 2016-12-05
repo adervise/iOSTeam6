@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Title-->
+        <!--Login Page View Controller-->
         <scene sceneID="LJA-RM-KsP">
             <objects>
                 <viewController id="E8q-Hq-7YL" customClass="LoginPageViewController" sceneMemberID="viewController">
@@ -170,11 +170,18 @@
                             <constraint firstItem="wtT-mw-tAU" firstAttribute="centerY" secondItem="Os9-eT-aQ1" secondAttribute="centerY" id="s8U-eg-QbY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="aeN-Vz-1tv"/>
+                    <navigationItem key="navigationItem" id="aeN-Vz-1tv">
+                        <barButtonItem key="rightBarButtonItem" systemItem="reply" id="cS0-kY-mZ0">
+                            <connections>
+                                <action selector="onTouchExitButton:" destination="E8q-Hq-7YL" id="DH4-D0-85W"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="backgroundImageView" destination="FIZ-xF-Wsq" id="Odc-tw-T4c"/>
                         <outlet property="emailImage" destination="PCD-VP-Z2D" id="R3L-ab-Jij"/>
                         <outlet property="emailTextField" destination="YZj-fX-DCp" id="Xc4-JF-LsL"/>
+                        <outlet property="exitButtonItem" destination="cS0-kY-mZ0" id="6pQ-vL-EfH"/>
                         <outlet property="loginButton" destination="gwl-7n-HYv" id="q56-7I-6rL"/>
                         <outlet property="otherButtonContainerView" destination="Ejw-4F-gde" id="Jqm-mX-3Pz"/>
                         <outlet property="pwImage" destination="kkV-Yr-iYD" id="guv-uQ-Oep"/>

@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" selectedImage="alarmIcon" id="Mhz-X5-mfH"/>
+                    <tabBarItem key="tabBarItem" title="" image="alarmIcon" id="Mhz-X5-mfH"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j91-NM-qPa" userLabel="First Responder" sceneMemberID="firstResponder"/>
