@@ -12,6 +12,7 @@
 		0D44CAB91DF2AE560038A26E /* UserInfoValidationCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D44CAB81DF2AE560038A26E /* UserInfoValidationCheck.m */; };
 		0D44CAE51DF2BDA90038A26E /* ValidationSubView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D44CAE31DF2BDA90038A26E /* ValidationSubView.m */; };
 		0D44CAE61DF2BDA90038A26E /* ValidationSubView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D44CAE41DF2BDA90038A26E /* ValidationSubView.xib */; };
+		0D4B676C1DF50C6A001BD436 /* Alarm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D4B676B1DF50C6A001BD436 /* Alarm.storyboard */; };
 		0D4F1A411DEE8B43002B7296 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F1A401DEE8B43002B7296 /* Home.storyboard */; };
 		0D4F1A451DEE911D002B7296 /* UserInfomation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F1A441DEE911D002B7296 /* UserInfomation.m */; };
 		0D4F1A481DEEA770002B7296 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F1A471DEEA770002B7296 /* Login.storyboard */; };
@@ -38,7 +39,6 @@
 		AA1EFB001DEBE4E6002183D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA1EFAFE1DEBE4E6002183D2 /* LaunchScreen.storyboard */; };
 		AA1EFB0A1DEBE63D002183D2 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA1EFB091DEBE63D002183D2 /* Profile.storyboard */; };
 		AA1EFB0E1DEBE65A002183D2 /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA1EFB0D1DEBE65A002183D2 /* Post.storyboard */; };
-		AA1EFB151DEBE755002183D2 /* Other.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA1EFB141DEBE755002183D2 /* Other.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +51,7 @@
 		0D44CAE21DF2BDA90038A26E /* ValidationSubView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ValidationSubView.h; path = ../../../../../.Trash/ValidationSubView.h; sourceTree = "<group>"; };
 		0D44CAE31DF2BDA90038A26E /* ValidationSubView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ValidationSubView.m; path = ../../../../../.Trash/ValidationSubView.m; sourceTree = "<group>"; };
 		0D44CAE41DF2BDA90038A26E /* ValidationSubView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ValidationSubView.xib; path = ../../../../../.Trash/ValidationSubView.xib; sourceTree = "<group>"; };
+		0D4B676B1DF50C6A001BD436 /* Alarm.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Alarm.storyboard; sourceTree = "<group>"; };
 		0D4F1A401DEE8B43002B7296 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		0D4F1A431DEE911D002B7296 /* UserInfomation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfomation.h; sourceTree = "<group>"; };
 		0D4F1A441DEE911D002B7296 /* UserInfomation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfomation.m; sourceTree = "<group>"; };
@@ -95,7 +96,6 @@
 		AA1EFB011DEBE4E6002183D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA1EFB091DEBE63D002183D2 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		AA1EFB0D1DEBE65A002183D2 /* Post.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
-		AA1EFB141DEBE755002183D2 /* Other.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Other.storyboard; sourceTree = "<group>"; };
 		EC7A886A7E98AB8525606FCB /* Pods-AnonymousSocial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnonymousSocial.release.xcconfig"; path = "Pods/Target Support Files/Pods-AnonymousSocial/Pods-AnonymousSocial.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -244,7 +244,7 @@
 				AA1EFB121DEBE6EC002183D2 /* Home */,
 				AA1EFB111DEBE6E8002183D2 /* Post */,
 				AA1EFB101DEBE6E3002183D2 /* Profile */,
-				AA1EFB131DEBE73C002183D2 /* etc */,
+				AA1EFB131DEBE73C002183D2 /* Alarm */,
 				AA1EFAFC1DEBE4E6002183D2 /* Assets.xcassets */,
 				AA1EFAFE1DEBE4E6002183D2 /* LaunchScreen.storyboard */,
 				AA1EFB011DEBE4E6002183D2 /* Info.plist */,
@@ -291,12 +291,12 @@
 			name = Home;
 			sourceTree = "<group>";
 		};
-		AA1EFB131DEBE73C002183D2 /* etc */ = {
+		AA1EFB131DEBE73C002183D2 /* Alarm */ = {
 			isa = PBXGroup;
 			children = (
-				AA1EFB141DEBE755002183D2 /* Other.storyboard */,
+				0D4B676B1DF50C6A001BD436 /* Alarm.storyboard */,
 			);
-			name = etc;
+			name = Alarm;
 			sourceTree = "<group>";
 		};
 		C07314A7CBBA5578EB45330E /* Pods */ = {
@@ -375,13 +375,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D4B676C1DF50C6A001BD436 /* Alarm.storyboard in Resources */,
 				AA1EFB001DEBE4E6002183D2 /* LaunchScreen.storyboard in Resources */,
 				0D4F1A411DEE8B43002B7296 /* Home.storyboard in Resources */,
 				0D44CAE61DF2BDA90038A26E /* ValidationSubView.xib in Resources */,
 				AA1EFAFD1DEBE4E6002183D2 /* Assets.xcassets in Resources */,
 				AA1EFB0A1DEBE63D002183D2 /* Profile.storyboard in Resources */,
 				0D9BD5E11DED787200517379 /* 풍경.jpg in Resources */,
-				AA1EFB151DEBE755002183D2 /* Other.storyboard in Resources */,
 				AA1EFB0E1DEBE65A002183D2 /* Post.storyboard in Resources */,
 				0DE182D61DEDAA8500AC3819 /* location.png in Resources */,
 				AA1EFAFB1DEBE4E6002183D2 /* Main.storyboard in Resources */,

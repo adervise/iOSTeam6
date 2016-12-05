@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "UserInfomation.h"
+#import <KeychainItemWrapper.h>
 
 @interface AppDelegate ()
 
@@ -16,7 +18,17 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    // KeyChain을 이용해 오토로그인!
+    KeychainItemWrapper *keyChain = [[KeychainItemWrapper alloc] initWithIdentifier:@"AnonymousSocial" accessGroup:nil];
+
+    // 키체인에 토큰이 있을시
+    if (![[keyChain objectForKey:(__bridge id)(kSecAttrAccount)] isEqualToString:@""]) {
+        
+        [UserInfomation sharedUserInfomation].userLogin = YES;
+        [[UserInfomation sharedUserInfomation] settingUserToken:[keyChain objectForKey:(__bridge id)(kSecAttrAccount)]];
+    }
+    
     return YES;
 }
 

@@ -44,12 +44,12 @@
     uploadTask = [manager uploadTaskWithStreamedRequest:request progress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         if (error) {
-            NSLog(@"RequestSignUp task error = %@", error);
+            NSLog(@"\n\nRequestSignUp task error = %@\n\n", error);
             
         }
         else {
             
-            NSLog(@"reponse = %@, reponseObject = %@", response, responseObject);
+            NSLog(@"\n\nreponse = %@\n\n, reponseObject = %@\n\n", response, responseObject);
             
             NSString *token = [responseObject objectForKey:@"key"];
             [[LoginPageManager sharedLoginManager] completeLogin:token];
@@ -88,12 +88,12 @@
     uploadTask = [manager uploadTaskWithStreamedRequest:request progress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         if (error) {
-            NSLog(@"RequestSignUp task error = %@", error);
+            NSLog(@"\n\nRequestSignUp task error = %@\n\n", error);
     
         }
         else {
             
-            NSLog(@"reponse = %@, reponseObject = %@", response, responseObject);
+            NSLog(@"\n\nreponse = %@\n\n, reponseObject = %@\n\n", response, responseObject);
             
             NSString *token = [responseObject objectForKey:@"key"];
             [[LoginPageManager sharedLoginManager] completeLogin:token];
@@ -118,10 +118,10 @@
     NSURLSessionDataTask *task = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         if (error) {
-            NSLog(@"Logout process error = %@", error);
+            NSLog(@"\n\nLogout process error = %@\n\n", error);
         } else {
             
-            NSLog(@"reponse = %@,  reponseObject = %@", response, responseObject);
+            NSLog(@"\n\nreponse = %@\n\n,  reponseObject = %@\n\n", response, responseObject);
             
             NSString *token = [responseObject objectForKey:@"key"];
             [[LoginPageManager sharedLoginManager] completeUserLogout:token];

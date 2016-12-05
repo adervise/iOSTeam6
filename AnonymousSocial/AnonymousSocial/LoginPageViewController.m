@@ -32,7 +32,6 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    
 }
 
 - (void)viewDidLoad {
@@ -117,14 +116,6 @@
     }
 }
 
-//- (void)changeUserToken:(NSNotification *)notification {
-//    
-//    [self.navigationController dismissViewControllerAnimated:YES completion:^{
-//       
-//        // 로그인 되었습니다 얼럿창
-//    }];
-//}
-
 #pragma mark - Button IBAction 
 
 - (IBAction)onTouchLoginButton:(UIButton *)sender {
@@ -134,16 +125,16 @@
 
 - (IBAction)onTouchAutoLoginButton:(UIButton *)sender {
     
+    [sender setSelected:!sender.selected];
+    
     // Autologin check
     if (sender.selected) {
         [UserInfomation sharedUserInfomation].autoLogin = YES;
         
     } else {
     // Not autologin
-        
         [UserInfomation sharedUserInfomation].autoLogin = NO;
     }
-    [sender setSelected:!sender.selected];
 }
 
 #pragma mark - TextField Delegate Method

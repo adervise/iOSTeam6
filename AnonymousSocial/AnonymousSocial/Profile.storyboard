@@ -32,10 +32,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="profileIcon" id="Ek9-3J-h1i"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ghu-B7-WI5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="157.59999999999999" y="114.69265367316342"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="profileIcon" width="25" height="25"/>
+    </resources>
 </document>

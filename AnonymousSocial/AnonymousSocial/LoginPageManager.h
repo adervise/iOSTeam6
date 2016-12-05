@@ -13,8 +13,8 @@
 
 @interface LoginPageManager : NSObject
 
-@property (weak) UINavigationController *loginNavigationVC;
-@property (weak) UITabBarController *homeViewController;
+@property UINavigationController *loginNavigationVC;
+@property UITabBarController *homeViewController;
 
 + (instancetype)sharedLoginManager;
 
@@ -22,10 +22,10 @@
 - (void)userSignUp:(NSString *)email password:(NSString *)userPW rePassword:(NSString *)rePW birthDay:(NSString *)birthDay gender:(NSString *)gender;
 
 - (void)userLogin:(NSString *)email password:(NSString *)password;
-- (void)userLogout:(nonnull NSString *)token;
+- (void)userLogout:(NSString *)token;
 
-- (void)completeLogin:(nonnull NSString *)token;
-- (void)completeUserLogout:(nonnull NSString *)token;
+- (void)completeLogin:(NSString *)token;
+- (void)completeUserLogout:(NSString *)token;
 
 
 @end

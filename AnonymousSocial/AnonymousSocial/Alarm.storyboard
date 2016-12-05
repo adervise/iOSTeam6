@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ybg-ho-30z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Bsd-kv-e6p">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,27 +10,27 @@
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="xE7-Xi-ZMb">
+        <scene sceneID="41s-Dh-nsN">
             <objects>
-                <viewController id="ybg-ho-30z" sceneMemberID="viewController">
+                <viewController id="Bsd-kv-e6p" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="VYB-4N-FWd"/>
-                        <viewControllerLayoutGuide type="bottom" id="EA6-4m-goe"/>
+                        <viewControllerLayoutGuide type="top" id="LCZ-dr-6Lr"/>
+                        <viewControllerLayoutGuide type="bottom" id="Hg9-2h-co7"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="wbk-gq-1zW">
+                    <view key="view" contentMode="scaleToFill" id="HkA-RX-abz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="postIcon" id="xRH-cU-6GO"/>
+                    <tabBarItem key="tabBarItem" title="" selectedImage="alarmIcon" id="Mhz-X5-mfH"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CqX-63-w3F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j91-NM-qPa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="118" y="85"/>
+            <point key="canvasLocation" x="183" y="143"/>
         </scene>
     </scenes>
     <resources>
-        <image name="postIcon" width="25" height="25"/>
+        <image name="alarmIcon" width="25" height="25"/>
     </resources>
 </document>
