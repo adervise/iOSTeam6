@@ -203,4 +203,54 @@
     [task resume];
 }
 
+
+
+
+
+
++ (void)inserMyPost:(NSString *)token postData:(NSDictionary *)postData {
+    
+    NSMutableDictionary *bodyParameters = [[NSMutableDictionary alloc] init];
+    [bodyParameters setObject:[postData objectForKey:@"content"] forKey:@"content"];
+    NSData *contentData = [[postData objectForKey:@"content"] dataUsingEncoding:NSUTF8StringEncoding];
+    
+    
+
+    
+    
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager * manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST"
+                                    URLString:@"http://team6-dev.ap-northeast-2.elasticbeanstalk.com/post/add/"
+                                    parameters:bodyParameters
+                                    constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+                                        [formData appendPartWithFormData:contentData name:@"content"];
+                                    } error:nil];
+    
+    NSString *appendToken = @"Token ";
+    NSString *resultToken = [appendToken stringByAppendingString:token];
+    [request setValue:resultToken forHTTPHeaderField:@"Authorization"];
+        
+    NSURLSessionUploadTask *uploadTask;
+    uploadTask = [manager uploadTaskWithStreamedRequest:request progress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        
+        if (error) {
+            NSLog(@"\n\nRequestPostUp task error = %@\n\n", error);
+            
+        }
+        else {
+            
+            NSLog(@"\n\nreponse = %@\n\n, reponseObject = %@\n\n", response, responseObject);
+            
+            NSString *token = [responseObject objectForKey:@"key"];
+            [[LoginPageManager sharedLoginManager] completeLogin:token];
+        }
+    }];
+    [uploadTask resume];
+    
+    
+}
+
 @end

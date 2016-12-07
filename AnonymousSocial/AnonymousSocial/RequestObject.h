@@ -16,4 +16,6 @@
 + (void)requestPost;
 + (void)requestMyPost:(NSString *)token;
 
++ (void)inserMyPost:(NSString *)token postData:(NSDictionary *)postData;
+
 @end
