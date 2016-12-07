@@ -12,9 +12,21 @@
 
 @property (getter=isUserLogin) BOOL userLogin;
 @property (getter=isAutoLogin) BOOL autoLogin;
+@property (getter=isUserLocation) BOOL userLocation;
+
+@property NSString *userEmail;
+@property NSString *userPassword;
+@property NSString *userBirthDay;
+@property NSString *userGender;
 
 + (instancetype)sharedUserInfomation;
 - (void)settingUserToken:(NSString *)token;
 - (NSString *)gettingUserToken;
+
+// Location
+- (void)confirmUserLocation;
+
+// UpdateUserInfomation
+
 
 @end

@@ -21,7 +21,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet UIButton *signupButton;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *exitButtonItem;
 
 @end
 
@@ -119,6 +118,12 @@
 
 #pragma mark - Button IBAction 
 
+- (IBAction)onTouchExit:(UIButton *)sender {
+    
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 - (IBAction)onTouchLoginButton:(UIButton *)sender {
     
     [[LoginPageManager sharedLoginManager] userLogin:self.emailTextField.text password:self.pwTextField.text];
@@ -138,10 +143,6 @@
     }
 }
 
-- (IBAction)onTouchExitButton:(UIBarButtonItem *)sender {
-    
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-}
 
 #pragma mark - TextField Delegate Method
 

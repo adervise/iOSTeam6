@@ -7,12 +7,13 @@
 //
 
 #import "SingleCellCollectionViewController.h"
-#import "CustomCollectionViewCell.h"
 #import "CustomFlowLayout.h"
+#import "HomeVCManager.h"
+#import "CustomCellSingleCollectionView.h"
 
 @interface SingleCellCollectionViewController ()
 
-@property (nonatomic, weak) IBOutlet UICollectionView *mainCollectionView;
+
 
 @end
 
@@ -25,6 +26,9 @@
 #pragma mark - View Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.postDataArray = [[NSArray alloc] init];
+    [HomeVCManager sharedManager].singleCollectionVC = self;
     
     // Transparent NaviBar
     [self transparentNavigationBar];
@@ -51,12 +55,19 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return 20;
+    return [self.postDataArray count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    CustomCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    CustomCellSingleCollectionView *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    
+    cell.textView.text = [self.postDataArray[indexPath.row] objectForKey:@"content"];
+    cell.backgroundImageView.image = [UIImage imageNamed:@"loginImage"];
+    cell.commentLabel.text = [NSString stringWithFormat:@"%@", [self.postDataArray[indexPath.row] objectForKey:@"comments_counts"]];
+    cell.likeLabel.text = [NSString stringWithFormat:@"%@", [self.postDataArray[indexPath.row] objectForKey:@"like_users_counts"]];
+    cell.postTimeLabel.text = [NSString stringWithFormat:@"%@", [self.postDataArray[indexPath.row] objectForKey:@"modified_date"]];
+    
     return cell;
 }
 

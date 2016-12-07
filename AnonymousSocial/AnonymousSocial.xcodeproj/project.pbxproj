@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0D086BFA1DEFD55700FA3B49 /* SignUpPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D086BF91DEFD55700FA3B49 /* SignUpPageViewController.m */; };
+		0D086CB71DF65056006D7E2B /* MyCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D086CB61DF65056006D7E2B /* MyCommentViewController.m */; };
+		0D086CB91DF6641A006D7E2B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D086CB81DF6641A006D7E2B /* CoreLocation.framework */; };
+		0D086CBF1DF6A060006D7E2B /* HomeVCManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D086CBE1DF6A060006D7E2B /* HomeVCManager.m */; };
+		0D086CC21DF6DFBA006D7E2B /* ProfileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D086CC11DF6DFBA006D7E2B /* ProfileManager.m */; };
 		0D2761051DEEEECD009B92A8 /* LoginPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2761041DEEEECD009B92A8 /* LoginPageViewController.m */; };
 		0D44CAB91DF2AE560038A26E /* UserInfoValidationCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D44CAB81DF2AE560038A26E /* UserInfoValidationCheck.m */; };
 		0D44CAE51DF2BDA90038A26E /* ValidationSubView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D44CAE31DF2BDA90038A26E /* ValidationSubView.m */; };
@@ -16,6 +20,8 @@
 		0D4F1A411DEE8B43002B7296 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F1A401DEE8B43002B7296 /* Home.storyboard */; };
 		0D4F1A451DEE911D002B7296 /* UserInfomation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F1A441DEE911D002B7296 /* UserInfomation.m */; };
 		0D4F1A481DEEA770002B7296 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F1A471DEEA770002B7296 /* Login.storyboard */; };
+		0D7C6A611DF55DC50013A050 /* LayerCustomUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7C6A601DF55DC50013A050 /* LayerCustomUtility.m */; };
+		0D7C6A641DF57F420013A050 /* CustomProfileCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7C6A631DF57F420013A050 /* CustomProfileCollectionCell.m */; };
 		0D7E019A1DEBEBB200B3C720 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7E01991DEBEBB200B3C720 /* HomeViewController.m */; };
 		0D7E019D1DEBFB5E00B3C720 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7E019C1DEBFB5E00B3C720 /* HomeTableViewCell.m */; };
 		0D9BD5C61DEC222F00517379 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9BD5C51DEC222F00517379 /* CollectionViewController.m */; };
@@ -24,6 +30,7 @@
 		0D9BD5DC1DED5D2E00517379 /* SingleCellCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9BD5DB1DED5D2E00517379 /* SingleCellCollectionViewController.m */; };
 		0D9BD5DF1DED633900517379 /* CustomFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9BD5DE1DED633900517379 /* CustomFlowLayout.m */; };
 		0D9BD5E81DED939A00517379 /* FisrtCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9BD5E71DED939A00517379 /* FisrtCollectionViewLayout.m */; };
+		0DB86C331DF58C84005A98DC /* UserSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB86C321DF58C84005A98DC /* UserSettingViewController.m */; };
 		0DC7520D1DF008AA005BA6BB /* RequestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7520C1DF008AA005BA6BB /* RequestObject.m */; };
 		0DC752101DF008F0005BA6BB /* LoginPageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7520F1DF008F0005BA6BB /* LoginPageManager.m */; };
 		0DC752131DF13A4A005BA6BB /* CustomAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC752121DF13A4A005BA6BB /* CustomAlertController.m */; };
@@ -42,6 +49,13 @@
 /* Begin PBXFileReference section */
 		0D086BF81DEFD55700FA3B49 /* SignUpPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpPageViewController.h; sourceTree = "<group>"; };
 		0D086BF91DEFD55700FA3B49 /* SignUpPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpPageViewController.m; sourceTree = "<group>"; };
+		0D086CB51DF65056006D7E2B /* MyCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentViewController.h; sourceTree = "<group>"; };
+		0D086CB61DF65056006D7E2B /* MyCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentViewController.m; sourceTree = "<group>"; };
+		0D086CB81DF6641A006D7E2B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		0D086CBD1DF6A060006D7E2B /* HomeVCManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeVCManager.h; sourceTree = "<group>"; };
+		0D086CBE1DF6A060006D7E2B /* HomeVCManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeVCManager.m; sourceTree = "<group>"; };
+		0D086CC01DF6DFBA006D7E2B /* ProfileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileManager.h; sourceTree = "<group>"; };
+		0D086CC11DF6DFBA006D7E2B /* ProfileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileManager.m; sourceTree = "<group>"; };
 		0D2761031DEEEECD009B92A8 /* LoginPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginPageViewController.h; sourceTree = "<group>"; };
 		0D2761041DEEEECD009B92A8 /* LoginPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginPageViewController.m; sourceTree = "<group>"; };
 		0D44CAB71DF2AE560038A26E /* UserInfoValidationCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoValidationCheck.h; sourceTree = "<group>"; };
@@ -54,6 +68,10 @@
 		0D4F1A431DEE911D002B7296 /* UserInfomation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfomation.h; sourceTree = "<group>"; };
 		0D4F1A441DEE911D002B7296 /* UserInfomation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfomation.m; sourceTree = "<group>"; };
 		0D4F1A471DEEA770002B7296 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		0D7C6A5F1DF55DC50013A050 /* LayerCustomUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayerCustomUtility.h; sourceTree = "<group>"; };
+		0D7C6A601DF55DC50013A050 /* LayerCustomUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayerCustomUtility.m; sourceTree = "<group>"; };
+		0D7C6A621DF57F420013A050 /* CustomProfileCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomProfileCollectionCell.h; sourceTree = "<group>"; };
+		0D7C6A631DF57F420013A050 /* CustomProfileCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomProfileCollectionCell.m; sourceTree = "<group>"; };
 		0D7E01981DEBEBB200B3C720 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		0D7E01991DEBEBB200B3C720 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		0D7E019B1DEBFB5E00B3C720 /* HomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewCell.h; sourceTree = "<group>"; };
@@ -70,6 +88,8 @@
 		0D9BD5DE1DED633900517379 /* CustomFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomFlowLayout.m; sourceTree = "<group>"; };
 		0D9BD5E61DED939A00517379 /* FisrtCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FisrtCollectionViewLayout.h; sourceTree = "<group>"; };
 		0D9BD5E71DED939A00517379 /* FisrtCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FisrtCollectionViewLayout.m; sourceTree = "<group>"; };
+		0DB86C311DF58C84005A98DC /* UserSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettingViewController.h; sourceTree = "<group>"; };
+		0DB86C321DF58C84005A98DC /* UserSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettingViewController.m; sourceTree = "<group>"; };
 		0DC7520B1DF008AA005BA6BB /* RequestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestObject.h; sourceTree = "<group>"; };
 		0DC7520C1DF008AA005BA6BB /* RequestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestObject.m; sourceTree = "<group>"; };
 		0DC7520E1DF008F0005BA6BB /* LoginPageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginPageManager.h; sourceTree = "<group>"; };
@@ -101,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D086CB91DF6641A006D7E2B /* CoreLocation.framework in Frameworks */,
 				33A5BDE845E38066F6881BA7 /* libPods-AnonymousSocial.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -188,6 +209,8 @@
 				0D44CAE21DF2BDA90038A26E /* ValidationSubView.h */,
 				0D44CAE31DF2BDA90038A26E /* ValidationSubView.m */,
 				0D44CAE41DF2BDA90038A26E /* ValidationSubView.xib */,
+				0D7C6A5F1DF55DC50013A050 /* LayerCustomUtility.h */,
+				0D7C6A601DF55DC50013A050 /* LayerCustomUtility.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -195,6 +218,7 @@
 		7B49AC97D993512EDD12F740 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0D086CB81DF6641A006D7E2B /* CoreLocation.framework */,
 				2F08EAD1911CDF7070E6BBC7 /* libPods-AnonymousSocial.a */,
 			);
 			name = Frameworks;
@@ -255,8 +279,16 @@
 				AA1EFB091DEBE63D002183D2 /* Profile.storyboard */,
 				0DC752151DF16014005BA6BB /* ProfileViewController.h */,
 				0DC752161DF16014005BA6BB /* ProfileViewController.m */,
+				0D086CB51DF65056006D7E2B /* MyCommentViewController.h */,
+				0D086CB61DF65056006D7E2B /* MyCommentViewController.m */,
+				0DB86C311DF58C84005A98DC /* UserSettingViewController.h */,
+				0DB86C321DF58C84005A98DC /* UserSettingViewController.m */,
+				0D7C6A621DF57F420013A050 /* CustomProfileCollectionCell.h */,
+				0D7C6A631DF57F420013A050 /* CustomProfileCollectionCell.m */,
 				AA1EFB161DEBEB04002183D2 /* Profile.h */,
 				AA1EFB171DEBEB04002183D2 /* Profile.m */,
+				0D086CC01DF6DFBA006D7E2B /* ProfileManager.h */,
+				0D086CC11DF6DFBA006D7E2B /* ProfileManager.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -275,6 +307,8 @@
 				0D9BD5E21DED934200517379 /* HomeTable */,
 				0D9BD5E31DED935300517379 /* FirstCollectionVIew */,
 				0D9BD5E41DED936C00517379 /* SecondCollectionView */,
+				0D086CBD1DF6A060006D7E2B /* HomeVCManager.h */,
+				0D086CBE1DF6A060006D7E2B /* HomeVCManager.m */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -432,6 +466,7 @@
 			files = (
 				0D44CAB91DF2AE560038A26E /* UserInfoValidationCheck.m in Sources */,
 				0DC7520D1DF008AA005BA6BB /* RequestObject.m in Sources */,
+				0D7C6A641DF57F420013A050 /* CustomProfileCollectionCell.m in Sources */,
 				AA1EFB181DEBEB04002183D2 /* Profile.m in Sources */,
 				AA1EFAF51DEBE4E6002183D2 /* AppDelegate.m in Sources */,
 				0D44CAE51DF2BDA90038A26E /* ValidationSubView.m in Sources */,
@@ -441,14 +476,19 @@
 				0DC752101DF008F0005BA6BB /* LoginPageManager.m in Sources */,
 				AA1EFAF21DEBE4E6002183D2 /* main.m in Sources */,
 				0D7E019D1DEBFB5E00B3C720 /* HomeTableViewCell.m in Sources */,
+				0D086CB71DF65056006D7E2B /* MyCommentViewController.m in Sources */,
 				0D2761051DEEEECD009B92A8 /* LoginPageViewController.m in Sources */,
 				0DC752171DF16014005BA6BB /* ProfileViewController.m in Sources */,
+				0D086CC21DF6DFBA006D7E2B /* ProfileManager.m in Sources */,
 				0DC752131DF13A4A005BA6BB /* CustomAlertController.m in Sources */,
+				0D086CBF1DF6A060006D7E2B /* HomeVCManager.m in Sources */,
 				0D9BD5DF1DED633900517379 /* CustomFlowLayout.m in Sources */,
 				0D9BD5C91DEC4C9A00517379 /* CustomCollectionViewCell.m in Sources */,
 				0D9BD5DC1DED5D2E00517379 /* SingleCellCollectionViewController.m in Sources */,
 				0D9BD5C61DEC222F00517379 /* CollectionViewController.m in Sources */,
 				0D9BD5D91DED5B8100517379 /* CustomCellSingleCollectionView.m in Sources */,
+				0DB86C331DF58C84005A98DC /* UserSettingViewController.m in Sources */,
+				0D7C6A611DF55DC50013A050 /* LayerCustomUtility.m in Sources */,
 				0D7E019A1DEBEBB200B3C720 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

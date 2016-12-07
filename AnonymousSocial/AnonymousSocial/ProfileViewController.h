@@ -10,4 +10,9 @@
 
 @interface ProfileViewController : UIViewController
 
+@property NSArray *myPostDataArray;
+@property (weak, nonatomic) IBOutlet UICollectionView *mainCollectionView;
+
+- (void)setLayoutSubView;
+
 @end

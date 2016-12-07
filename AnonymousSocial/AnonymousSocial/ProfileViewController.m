@@ -9,16 +9,57 @@
 #import "ProfileViewController.h"
 #import "LoginPageManager.h"
 #import "UserInfomation.h"
+#import "LayerCustomUtility.h"
+#import "FisrtCollectionViewLayout.h"
+#import "CustomProfileCollectionCell.h"
+#import "MyCommentViewController.h"
+#import "ProfileManager.h"
 
-@interface ProfileViewController ()
+@interface ProfileViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+
+// IBOutlet
+@property (weak, nonatomic) IBOutlet UIView *userInfoView;
+@property (weak, nonatomic) IBOutlet UIView *userContentsCountView;
+@property (weak, nonatomic) IBOutlet UIView *collectionContentsView;
+@property (weak, nonatomic) IBOutlet UIImageView *userImageView;
+@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *birthLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *genderImage;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *contentsSegControl;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+
+//
+@property (weak) MyCommentViewController *commentVC;
+
 
 @end
 
 @implementation ProfileViewController
 
+
+#pragma mark - View Life Cycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.collectionView.collectionViewLayout = [[FisrtCollectionViewLayout alloc] init];
+    
+    [self setCommentTableViewController];
+    
+    [LoginPageManager sharedLoginManager].profileNavigationVC = self.navigationController;
+    [ProfileManager sharedManager].profileViewController = self;
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    [self setLayoutSubView];
+    [self settingForScrollView];
+    [self setFrameForChildViewController];
+    
+    self.userImageView.layer.cornerRadius = self.userImageView.bounds.size.width / 2.0f;
+    self.userImageView.clipsToBounds = YES;
 }
 
 /*
@@ -29,7 +70,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    NSLog(@"------------------------ProfileViewController viewWillAppear!!!");
+    [[ProfileManager sharedManager] requestMyPostListData];
     
 }
 
@@ -38,12 +79,77 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Button IBAction Method
+#pragma mark - setting Methods
 
-- (IBAction)onTouchLogoutButton:(UIButton *)sender {
+- (void)setLayoutSubView {
     
-    [[LoginPageManager sharedLoginManager] userLogout:[[UserInfomation sharedUserInfomation] gettingUserToken]];
+    [LayerCustomUtility changeTopBottomBorderLine:self.userContentsCountView];
+    [LayerCustomUtility transparentToNavigationBar:self];
+    [LayerCustomUtility shadowEffectForCell:self.userInfoView.layer shadowOffset:0.3f];
+    [LayerCustomUtility shadowEffectForCell:self.userContentsCountView.layer shadowOffset:0.3f];
+    
+}
+- (void)settingForScrollView {
+    
+    [self.scrollView setContentSize:CGSizeMake(self.view.bounds.size.width * 2, self.scrollView.bounds.size.height)];
 }
 
+- (void)setCommentTableViewController {
+    
+    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Profile" bundle:nil];
+    MyCommentViewController *commentVC = [story instantiateViewControllerWithIdentifier:@"MyCommentViewController"];
+    [self addChildViewController:commentVC];
+    self.commentVC = commentVC;
+}
+
+- (void)setFrameForChildViewController {
+    
+    CGRect commentFrame = CGRectMake(self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
+    self.commentVC.view.frame = commentFrame;
+}
+
+#pragma mark - Button IBAction Method
+
+- (IBAction)onChangeSegControl:(UISegmentedControl *)sender {
+    
+    if ([sender isKindOfClass:[UISegmentedControl class]]) {
+        if (sender.selectedSegmentIndex == 0) {
+            // 스크롤링을 애니메이션으로 구현
+            [UIView animateWithDuration:0.5f animations:^{
+                [self.scrollView setContentOffset:CGPointMake(0, 0)];
+            }];
+            
+        } else if (sender.selectedSegmentIndex == 1) {
+            
+            [UIView animateWithDuration:0.5f animations:^{
+                [self.scrollView setContentOffset:CGPointMake(self.scrollView.bounds.size.width, 0)];
+            }];
+        }
+        
+    } else {
+        
+        NSLog(@"Wrong sender");
+    }
+}
+
+
+#pragma mark - Collection View Delegate Method 
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    return [self.myPostDataArray count];
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CustomProfileCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CustomProfileCollectionCell" forIndexPath:indexPath];
+    
+    cell.backgroundImageView.image = [UIImage imageNamed:@"loginImage"];
+    cell.commentLabel.text = [NSString stringWithFormat:@"%@", [self.myPostDataArray[indexPath.row] objectForKey:@"comments_counts"]];
+    cell.likeLabel.text = [NSString stringWithFormat:@"%@", [self.myPostDataArray[indexPath.row] objectForKey:@"like_users_counts"]];
+    
+    
+    return cell;
+}
 
 @end

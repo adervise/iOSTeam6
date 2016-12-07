@@ -10,8 +10,8 @@
 #import <AFNetworking.h>
 #import "LoginPageManager.h"
 #import "UserInfomation.h"
-
-
+#import "HomeVCManager.h"
+#import "ProfileManager.h"
 
 @interface RequestObject ()
 
@@ -125,6 +125,78 @@
             
             NSString *token = [responseObject objectForKey:@"key"];
             [[LoginPageManager sharedLoginManager] completeUserLogout:token];
+        }
+    }];
+    
+    [task resume];
+}
+
++ (void)requestPost {
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager * manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSURL *url = [NSURL URLWithString:@"http://team6-dev.ap-northeast-2.elasticbeanstalk.com/post/"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"GET"];
+    
+    
+    NSURLSessionDataTask *task = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        
+        if (error) {
+            NSLog(@"\n\nLogout process error = %@\n\n", error);
+        } else {
+            
+            NSLog(@"\n\nreponse = %@\n\n,  reponseObject = %@\n\n", response, responseObject);
+            [[HomeVCManager sharedManager] completePostListData:^(HomeViewController *vc, CollectionViewController *collectionVC, SingleCellCollectionViewController *sigleCollectionVC) {
+              
+                vc.postDataArray = responseObject;
+                collectionVC.postDataArray = responseObject;
+                sigleCollectionVC.postDataArray = responseObject;
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [vc.mainTableView reloadData];
+                    [collectionVC.mainCollectionView reloadData];
+                    [sigleCollectionVC.mainCollectionView reloadData];
+                });
+            }];
+        }
+    }];
+    
+    [task resume];
+}
+
++ (void)requestMyPost:(NSString *)token {
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager * manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSURL *url = [NSURL URLWithString:@"http://team6-dev.ap-northeast-2.elasticbeanstalk.com/post/mylist/"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"GET"];
+    
+    NSString *appendToken = @"Token ";
+    NSString *resultToken = [appendToken stringByAppendingString:token];
+    [request setValue:resultToken forHTTPHeaderField:@"Authorization"];
+    
+    
+    NSURLSessionDataTask *task = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        
+        if (error) {
+            NSLog(@"\n\nLogout process error = %@\n\n", error);
+        } else {
+            
+            NSLog(@"\n\nreponse = %@\n\n,  reponseObject = %@\n\n", response, responseObject);
+            [[ProfileManager sharedManager] completeMyPostListData:^(ProfileViewController *profileVC, MyCommentViewController *commentVC) {
+               
+                profileVC.myPostDataArray = responseObject;
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                   
+                    [profileVC.mainCollectionView reloadData];
+                });
+            }];
+            
         }
     }];
     

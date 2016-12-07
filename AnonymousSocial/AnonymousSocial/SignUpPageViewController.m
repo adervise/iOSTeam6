@@ -99,7 +99,19 @@
     
     if (isCorrectEmailValidation && isCorrectPasswordValidation && isCorrectRePasswordValidation) {
        
-        [[LoginPageManager sharedLoginManager] userSignUp:self.idTextField.text password:self.pwTextField.text rePassword:self.rePwTextField.text birthDay:self.birthTextField.text gender:nil];
+        [UserInfomation sharedUserInfomation].userEmail = self.idTextField.text;
+        [UserInfomation sharedUserInfomation].userPassword = self.pwTextField.text;
+        [UserInfomation sharedUserInfomation].userBirthDay = self.birthTextField.text;
+        
+        NSString *userGender;
+        if (self.genderSegment.selectedSegmentIndex == 0)
+            userGender = @"M";
+        else
+            userGender = @"F";
+        
+        [UserInfomation sharedUserInfomation].userGender = userGender;
+        
+        [[LoginPageManager sharedLoginManager] userSignUp:self.idTextField.text password:self.pwTextField.text rePassword:self.rePwTextField.text birthDay:self.birthTextField.text gender:userGender];
     }
 }
 

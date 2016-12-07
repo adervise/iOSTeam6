@@ -19,6 +19,6 @@ typedef NS_ENUM(NSInteger, CustomAlertType) {
 @interface CustomAlertController : UIAlertController
 
 + (void)showCutomAlert:(UIViewController *)vc type:(CustomAlertType)type;
-+ (void)showCustomLogoutAlert:(UITabBarController *)tabBarVC;
++ (void)showCustomLogoutAlert:(UITabBarController *)tabBarVC navigationVC:(UINavigationController *)navigationVC;
 
 @end

@@ -13,5 +13,7 @@
 + (void)requestLogin:(NSDictionary *)userInfo;
 + (void)requestSignUp:(NSDictionary *)userInfo;
 + (void)requestLogout:(NSString *)token;
++ (void)requestPost;
++ (void)requestMyPost:(NSString *)token;
 
 @end

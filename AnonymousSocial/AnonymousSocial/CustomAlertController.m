@@ -24,7 +24,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-+ (void)showCutomAlert:(UIViewController *)vc type:(CustomAlertType)type {
++ (void)showCutomAlert:(UIViewController *)vc type:(CustomAlertType)type{
     
     UIAlertController *alert = nil;
     
@@ -57,26 +57,20 @@
             [alert addAction:cancleAction];
             break;
         }
-            
-//        case CustomAlertTypeCompleteLogout: {
-//            
-//            alert = [UIAlertController alertControllerWithTitle:@"로그아웃 되었습니다." message:nil preferredStyle:UIAlertControllerStyleAlert];
-//            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-//            [alert addAction:okAction];
-//        }
-            
         default:
             break;
     }
     [vc presentViewController:alert animated:YES completion:nil];
 }
 
-+ (void)showCustomLogoutAlert:(UITabBarController *)tabBarVC {
++ (void)showCustomLogoutAlert:(UITabBarController *)tabBarVC navigationVC:(UINavigationController *)navigationVC {
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"로그아웃 되었습니다." message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
         tabBarVC.selectedIndex = 0;
+        [navigationVC popToRootViewControllerAnimated:NO];
+
     }];
     [alert addAction:okAction];
     

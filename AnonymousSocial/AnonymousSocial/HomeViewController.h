@@ -10,4 +10,10 @@
 
 @interface HomeViewController : UIViewController
 
+@property (nonatomic, weak) IBOutlet UITableView *mainTableView;
+
+@property NSArray *postDataArray;
+
+- (void)reloadData;
+
 @end

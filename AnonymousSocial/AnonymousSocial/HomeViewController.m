@@ -14,6 +14,8 @@
 #import "LoginPageViewController.h"
 #import "CustomAlertController.h"
 #import "LoginPageManager.h"
+#import "HomeVCManager.h"
+
 
 @interface HomeViewController ()<UITableViewDataSource, UITableViewDelegate, UITabBarControllerDelegate>
 
@@ -22,12 +24,11 @@
 @property (weak) SingleCellCollectionViewController *singleCollectionViewController;
 
 // IBOulet Property
-@property (nonatomic, weak) IBOutlet UITableView *mainTableView;
+
 @property (nonatomic, weak) IBOutlet UIScrollView *mainScrollView;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *segControl;
 
 @property (nonatomic, weak) IBOutlet UISwitch *tempSwitch;
-
 
 @end
 
@@ -38,33 +39,43 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    [HomeVCManager sharedManager].homeVC = self;
+    self.postDataArray = [[NSArray alloc] init];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     HomeViewController __weak *wSelf = self;
     self.tabBarController.delegate = wSelf;
-    
     [LoginPageManager sharedLoginManager].homeViewController = self.tabBarController;
     
-    [self settingForScrollView];
     [self setRefreshControl];
     [self setChildViewController];
-    [self setFrameCollectionViewCotroller];
-    
+    [self reloadData];
 }
 
-- (void)dealloc {
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
     
-    NSLog(@"HomeVC is dealloc!!!");
+    [self settingForScrollView];
+    [self setFrameCollectionViewCotroller];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.mainTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - DataManager
+
 
 #pragma mark - refresh Table Method
 
@@ -81,12 +92,17 @@
 // Refresh 애니메이션이 끝나는 시점과 reload가 끝나는시점이 같지 않다
 // 수정요망!!
 - (void)refreshTableView:(UIRefreshControl *)sender {
-    if ([sender isKindOfClass:[UIRefreshControl class]]) {
-        
-        [self.mainTableView reloadData];
-        [sender endRefreshing];
-    }
+    
+    [sender endRefreshing];
+    [self reloadData];
 }
+
+- (void)reloadData {
+    
+    // 서버에서 데이터를 가져온 후!! 리로드시킨다 동기화가 중요!
+    [[HomeVCManager sharedManager] requestPostListData];
+}
+
 
 #pragma mark - IBAction Button Methods
 
@@ -163,14 +179,18 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 10;
+    return [self.postDataArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeTableCell" forIndexPath:indexPath];
-    cell.mainTextLabel.text = @"테스트용 글...";
-    cell.backGroundImage.image = [UIImage imageNamed:@"풍경.jpg"];
+    
+    cell.mainTextLabel.text = [self.postDataArray[indexPath.row] objectForKey:@"content"];
+    cell.backGroundImage.image = [UIImage imageNamed:@"loginImage"];
+    cell.commentCountLabel.text = [NSString stringWithFormat:@"%@", [self.postDataArray[indexPath.row] objectForKey:@"comments_counts"]];
+    cell.likeCountlabel.text = [NSString stringWithFormat:@"%@", [self.postDataArray[indexPath.row] objectForKey:@"like_users_counts"]];
+    cell.postTimeLabel.text = [self.postDataArray[indexPath.row] objectForKey:@"modified_date"];
     
     return cell;
 }
@@ -185,6 +205,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSLog(@"Cell is selected!!");
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return self.mainTableView.bounds.size.height / 3.0f;
 }
 
 #pragma mark - TabBarController Delegate Method

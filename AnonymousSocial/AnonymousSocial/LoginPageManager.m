@@ -71,6 +71,7 @@
      오토로그인을 체크하였다면 키체인에 토큰을 등록!!
      */
     [[UserInfomation sharedUserInfomation] settingUserToken:token];
+    [UserInfomation sharedUserInfomation].userLogin = YES;
     
     // 오토로그인설정
     if ([UserInfomation sharedUserInfomation].autoLogin) {
@@ -94,7 +95,7 @@
     
     KeychainItemWrapper *keyChain = [[KeychainItemWrapper alloc] initWithIdentifier:@"AnonymousSocial" accessGroup:nil];
     [keyChain resetKeychainItem];
-    [CustomAlertController showCustomLogoutAlert:self.homeViewController];
+    [CustomAlertController showCustomLogoutAlert:self.homeViewController navigationVC:self.profileNavigationVC];
 }
 
 

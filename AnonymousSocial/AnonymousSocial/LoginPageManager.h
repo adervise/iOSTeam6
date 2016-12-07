@@ -15,6 +15,7 @@
 
 @property UINavigationController *loginNavigationVC;
 @property UITabBarController *homeViewController;
+@property UINavigationController *profileNavigationVC;
 
 + (instancetype)sharedLoginManager;
 

@@ -9,16 +9,24 @@
 #import <UIKit/UIKit.h>
 
 @interface CustomCellSingleCollectionView : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
-@property (weak, nonatomic) IBOutlet UITextView *mainTextView;
-@property (weak, nonatomic) IBOutlet UIVisualEffectView *visualEffectView;
-@property (weak, nonatomic) IBOutlet UIView *infoContentsView;
-@property (weak, nonatomic) IBOutlet UIImageView *locationInfoImage;
-@property (weak, nonatomic) IBOutlet UIImageView *commentImage;
-@property (weak, nonatomic) IBOutlet UILabel *locationInfoLabel;
-@property (weak, nonatomic) IBOutlet UILabel *commentCountLabel;
-@property (weak, nonatomic) IBOutlet UILabel *likeCountLabel;
-@property (weak, nonatomic) IBOutlet UIButton *likeButton;
 
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+
+@property (weak, nonatomic) IBOutlet UIView *textContentsView;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+
+@property (weak, nonatomic) IBOutlet UIView *infoView;
+@property (weak, nonatomic) IBOutlet UIView *infoContentsView;
+
+@property (weak, nonatomic) IBOutlet UILabel *postTimeLabel;
+
+@property (weak, nonatomic) IBOutlet UIImageView *locationImageView;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+
+@property (weak, nonatomic) IBOutlet UIImageView *likeImageView;
+@property (weak, nonatomic) IBOutlet UILabel *likeLabel;
+
+@property (weak, nonatomic) IBOutlet UIImageView *commentImageView;
+@property (weak, nonatomic) IBOutlet UILabel *commentLabel;
 
 @end

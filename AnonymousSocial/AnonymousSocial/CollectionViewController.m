@@ -9,10 +9,11 @@
 #import "CollectionViewController.h"
 #import "CustomCollectionViewCell.h"
 #import "FisrtCollectionViewLayout.h"
+#import "HomeVCManager.h"
 
 @interface CollectionViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
-@property (nonatomic, weak) IBOutlet UICollectionView *mainCollectionView;
+
 
 @end
 
@@ -20,8 +21,12 @@
 
 #pragma mark - View Life Cycle
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.postDataArray = [[NSArray alloc] init];
+    [HomeVCManager sharedManager].collectionVC = self;
     
     // UIRefreshContol
     [self setRefreshControl];
@@ -68,14 +73,18 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return 20;
+    return [self.postDataArray count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     CustomCollectionViewCell *collectionCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionCell" forIndexPath:indexPath];
  
-    collectionCell.mainTextLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
+    collectionCell.mainTextLabel.text = [self.postDataArray[indexPath.row] objectForKey:@"content"];
+    collectionCell.thumbnailImageView.image = [UIImage imageNamed:@"loginImage"];
+    collectionCell.commentCountLabel.text = [NSString stringWithFormat:@"%@", [self.postDataArray[indexPath.row] objectForKey:@"comments_counts"]];
+    collectionCell.likeCountLabel.text = [NSString stringWithFormat:@"%@", [self.postDataArray[indexPath.row] objectForKey:@"like_users_counts"]];
+    collectionCell.postTimeLabel.text = [self.postDataArray[indexPath.row] objectForKey:@"modified_date"];
     
     return collectionCell;
 }
