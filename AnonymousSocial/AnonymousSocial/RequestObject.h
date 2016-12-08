@@ -30,6 +30,6 @@ typedef void(^NetworkCompletion)(BOOL success, id data);
 
 
 
-+ (void)inserMyPost:(NSString *)token postData:(NSDictionary *)postData;
++ (void)inserMyPost:(NSString *)token content:(NSString *)content hashTags:(NSMutableArray *)hashTags backgroundImage:(UIImage *)backgroundImage;
 
 @end

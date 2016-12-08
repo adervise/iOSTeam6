@@ -11,9 +11,12 @@
 @interface PostViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UITextView *postView;
+@property NSMutableArray *hashTags;
+@property (strong, nonatomic) IBOutlet UIImageView *backgroundImage;
 
-
+- (IBAction)imageSelect:(id)sender;
 - (IBAction)savePost:(id)sender;
+- (IBAction)hash:(id)sender;
 
 
 @end

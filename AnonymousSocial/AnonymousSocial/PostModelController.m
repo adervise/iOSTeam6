@@ -15,10 +15,7 @@
 
 + (void)userPost:(NSString *)content hashTags:(NSMutableArray *)hashTags backgroundImage:(UIImage *)backgroundImage {
     
-    NSMutableDictionary *userPostDic = [[NSMutableDictionary alloc] init];
-    [userPostDic setValue:content forKey:@"content"];
-
-    [RequestObject inserMyPost:[[UserInfomation sharedUserInfomation] gettingUserToken] postData:userPostDic];
+    [RequestObject inserMyPost:[[UserInfomation sharedUserInfomation] gettingUserToken] content:content hashTags:hashTags backgroundImage:backgroundImage];
 }
 
 
