@@ -10,6 +10,8 @@
 #import "CustomCollectionViewCell.h"
 #import "FisrtCollectionViewLayout.h"
 #import "HomeVCManager.h"
+#import <UIImageView+WebCache.h>
+#import "CustomParse.h"
 
 @interface CollectionViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -81,12 +83,27 @@
     CustomCollectionViewCell *collectionCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionCell" forIndexPath:indexPath];
  
     collectionCell.mainTextLabel.text = [self.postDataArray[indexPath.row] objectForKey:@"content"];
-    collectionCell.thumbnailImageView.image = [UIImage imageNamed:@"loginImage"];
-    collectionCell.commentCountLabel.text = [NSString stringWithFormat:@"%@", [self.postDataArray[indexPath.row] objectForKey:@"comments_counts"]];
-    collectionCell.likeCountLabel.text = [NSString stringWithFormat:@"%@", [self.postDataArray[indexPath.row] objectForKey:@"like_users_counts"]];
-    collectionCell.postTimeLabel.text = [self.postDataArray[indexPath.row] objectForKey:@"modified_date"];
+    [collectionCell.thumbnailImageView sd_setImageWithURL:[self.postDataArray[indexPath.row] objectForKey:@"img_thumbnail"] placeholderImage:nil];
+    collectionCell.commentLabel.text = [NSString stringWithFormat:@"%@", [self.postDataArray[indexPath.row] objectForKey:@"comments_counts"]];
+    collectionCell.likeLabel.text = [NSString stringWithFormat:@"%@", [self.postDataArray[indexPath.row] objectForKey:@"like_users_counts"]];
+    collectionCell.postTimeLabel.text = [NSString stringWithFormat:@"%@", [CustomParse convert8601DateToNSDate:[_postDataArray[indexPath.row] objectForKey:@"modified_date"]]];
+//    collectionCell.locationLabel.text = 
     
     return collectionCell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSLog(@"collectionCell is selected");
+    
+    [self performSegueWithIdentifier:@"collectionToDetail" sender:nil];
+}
+
+#pragma mark - Segue Method
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    
 }
 
 @end

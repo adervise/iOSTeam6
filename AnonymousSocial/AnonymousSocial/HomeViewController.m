@@ -15,19 +15,18 @@
 #import "CustomAlertController.h"
 #import "LoginPageManager.h"
 #import "HomeVCManager.h"
+#import <UIImageView+WebCache.h>
+#import "CustomParse.h"
 
-
-@interface HomeViewController ()<UITableViewDataSource, UITableViewDelegate, UITabBarControllerDelegate>
+@interface HomeViewController ()<UITableViewDataSource, UITableViewDelegate, UITabBarControllerDelegate, UIScrollViewDelegate>
 
 // ChildViewControllers
 @property (weak) CollectionViewController *collectionViewController;
 @property (weak) SingleCellCollectionViewController *singleCollectionViewController;
 
 // IBOulet Property
-
 @property (nonatomic, weak) IBOutlet UIScrollView *mainScrollView;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *segControl;
-
 @property (nonatomic, weak) IBOutlet UISwitch *tempSwitch;
 
 @end
@@ -187,10 +186,11 @@
     HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeTableCell" forIndexPath:indexPath];
     
     cell.mainTextLabel.text = [self.postDataArray[indexPath.row] objectForKey:@"content"];
-    cell.backGroundImage.image = [UIImage imageNamed:@"loginImage"];
+    [cell.backGroundImage sd_setImageWithURL:[self.postDataArray[indexPath.row] objectForKey:@"img_thumbnail"] placeholderImage:nil];
     cell.commentCountLabel.text = [NSString stringWithFormat:@"%@", [self.postDataArray[indexPath.row] objectForKey:@"comments_counts"]];
     cell.likeCountlabel.text = [NSString stringWithFormat:@"%@", [self.postDataArray[indexPath.row] objectForKey:@"like_users_counts"]];
-    cell.postTimeLabel.text = [self.postDataArray[indexPath.row] objectForKey:@"modified_date"];
+    cell.postTimeLabel.text = [NSString stringWithFormat:@"%@",[CustomParse convert8601DateToNSDate:[_postDataArray[indexPath.row] objectForKey:@"modified_date"]]];
+    cell.locationLabel.text = [CustomParse convertLocationString:[_postDataArray[indexPath.row] objectForKey:@"distance"]];
     
     return cell;
 }
@@ -205,11 +205,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSLog(@"Cell is selected!!");
+    
+    [self performSegueWithIdentifier:@"homeToDetail" sender:nil];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     return self.mainTableView.bounds.size.height / 3.0f;
+}
+
+#pragma mark - ScrollView Delegate Method
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    CGFloat heightOFCell = self.mainTableView.bounds.size.height / 3.0f;
+    
+    
 }
 
 #pragma mark - TabBarController Delegate Method
@@ -226,6 +237,13 @@
         }
     }
     return YES;
+}
+
+#pragma mark - Segue Method
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    
 }
 
 @end

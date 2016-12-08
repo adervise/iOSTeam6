@@ -14,11 +14,12 @@
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnailImageView;
 @property (weak, nonatomic) IBOutlet UIView *infoView;
 @property (weak, nonatomic) IBOutlet UILabel *mainTextLabel;
-@property (weak, nonatomic) IBOutlet UIButton *likeButton;
-@property (weak, nonatomic) IBOutlet UILabel *likeCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *postTimeLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *commentImageView;
-@property (weak, nonatomic) IBOutlet UILabel *commentCountLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *likeLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *commentLabel;
 
 
 @end

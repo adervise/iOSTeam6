@@ -150,9 +150,9 @@
             NSLog(@"\n\nreponse = %@\n\n,  reponseObject = %@\n\n", response, responseObject);
             [[HomeVCManager sharedManager] completePostListData:^(HomeViewController *vc, CollectionViewController *collectionVC, SingleCellCollectionViewController *sigleCollectionVC) {
               
-                vc.postDataArray = responseObject;
-                collectionVC.postDataArray = responseObject;
-                sigleCollectionVC.postDataArray = responseObject;
+                vc.postDataArray = [responseObject objectForKey:@"results"];
+                collectionVC.postDataArray = [responseObject objectForKey:@"results"];
+                sigleCollectionVC.postDataArray = [responseObject objectForKey:@"results"];
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [vc.mainTableView reloadData];

@@ -10,10 +10,10 @@
 #import "CustomFlowLayout.h"
 #import "HomeVCManager.h"
 #import "CustomCellSingleCollectionView.h"
+#import <UIImageView+WebCache.h>
+#import "CustomParse.h"
 
 @interface SingleCellCollectionViewController ()
-
-
 
 @end
 
@@ -63,10 +63,10 @@
     CustomCellSingleCollectionView *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
     cell.textView.text = [self.postDataArray[indexPath.row] objectForKey:@"content"];
-    cell.backgroundImageView.image = [UIImage imageNamed:@"loginImage"];
+    [cell.backgroundImageView sd_setImageWithURL:[_postDataArray[indexPath.row] objectForKey:@"img_thumbnail"] placeholderImage:nil];
     cell.commentLabel.text = [NSString stringWithFormat:@"%@", [self.postDataArray[indexPath.row] objectForKey:@"comments_counts"]];
     cell.likeLabel.text = [NSString stringWithFormat:@"%@", [self.postDataArray[indexPath.row] objectForKey:@"like_users_counts"]];
-    cell.postTimeLabel.text = [NSString stringWithFormat:@"%@", [self.postDataArray[indexPath.row] objectForKey:@"modified_date"]];
+    cell.postTimeLabel.text = [NSString stringWithFormat:@"%@", [CustomParse convert8601DateToNSDate:[_postDataArray[indexPath.row] objectForKey:@"modified_date"]]];
     
     return cell;
 }
@@ -76,7 +76,16 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     NSLog(@"collecionCell is selected!!");
+    
+    [self performSegueWithIdentifier:@"singleToDetail" sender:nil];
 }
 
+
+#pragma mark - Segue Method
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    
+}
 
 @end
