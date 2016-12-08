@@ -11,7 +11,7 @@
 
 @interface PostModelController : NSObject
 
-- (void)userPost:(NSString *)content hashTags:(NSDictionary *)hashTags backgroundImage:(UIImage *)backgroundImage;
++ (void)userPost:(NSString *)content hashTags:(NSDictionary *)hashTags backgroundImage:(UIImage *)backgroundImage;
 
 
 @end
