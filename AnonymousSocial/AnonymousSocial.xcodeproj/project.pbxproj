@@ -31,6 +31,7 @@
 		0D9BD5DC1DED5D2E00517379 /* SingleCellCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9BD5DB1DED5D2E00517379 /* SingleCellCollectionViewController.m */; };
 		0D9BD5DF1DED633900517379 /* CustomFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9BD5DE1DED633900517379 /* CustomFlowLayout.m */; };
 		0D9BD5E81DED939A00517379 /* FisrtCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9BD5E71DED939A00517379 /* FisrtCollectionViewLayout.m */; };
+		0DAE5E711DF97116001DD875 /* HomeDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAE5E701DF97116001DD875 /* HomeDataModel.m */; };
 		0DB86C331DF58C84005A98DC /* UserSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB86C321DF58C84005A98DC /* UserSettingViewController.m */; };
 		0DBDB7C41DF7EF4900EA111A /* DetailHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DBDB7C31DF7EF4900EA111A /* DetailHomeViewController.m */; };
 		0DC7520D1DF008AA005BA6BB /* RequestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7520C1DF008AA005BA6BB /* RequestObject.m */; };
@@ -92,6 +93,8 @@
 		0D9BD5DE1DED633900517379 /* CustomFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomFlowLayout.m; sourceTree = "<group>"; };
 		0D9BD5E61DED939A00517379 /* FisrtCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FisrtCollectionViewLayout.h; sourceTree = "<group>"; };
 		0D9BD5E71DED939A00517379 /* FisrtCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FisrtCollectionViewLayout.m; sourceTree = "<group>"; };
+		0DAE5E6F1DF97116001DD875 /* HomeDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeDataModel.h; sourceTree = "<group>"; };
+		0DAE5E701DF97116001DD875 /* HomeDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeDataModel.m; sourceTree = "<group>"; };
 		0DB86C311DF58C84005A98DC /* UserSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettingViewController.h; sourceTree = "<group>"; };
 		0DB86C321DF58C84005A98DC /* UserSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettingViewController.m; sourceTree = "<group>"; };
 		0DBDB7C21DF7EF4900EA111A /* DetailHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailHomeViewController.h; sourceTree = "<group>"; };
@@ -149,6 +152,8 @@
 			children = (
 				0D4F1A431DEE911D002B7296 /* UserInfomation.h */,
 				0D4F1A441DEE911D002B7296 /* UserInfomation.m */,
+				0DAE5E6F1DF97116001DD875 /* HomeDataModel.h */,
+				0DAE5E701DF97116001DD875 /* HomeDataModel.m */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -490,6 +495,7 @@
 				0D086CB71DF65056006D7E2B /* MyCommentViewController.m in Sources */,
 				0D2761051DEEEECD009B92A8 /* LoginPageViewController.m in Sources */,
 				0DC752171DF16014005BA6BB /* ProfileViewController.m in Sources */,
+				0DAE5E711DF97116001DD875 /* HomeDataModel.m in Sources */,
 				0DBDB7C41DF7EF4900EA111A /* DetailHomeViewController.m in Sources */,
 				0D086CC21DF6DFBA006D7E2B /* ProfileManager.m in Sources */,
 				0DC752131DF13A4A005BA6BB /* CustomAlertController.m in Sources */,

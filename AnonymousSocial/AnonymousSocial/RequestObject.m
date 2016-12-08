@@ -10,7 +10,6 @@
 #import <AFNetworking.h>
 #import "LoginPageManager.h"
 #import "UserInfomation.h"
-#import "HomeVCManager.h"
 #import "ProfileManager.h"
 
 @interface RequestObject ()
@@ -23,7 +22,7 @@
 
 @implementation RequestObject
 
-+ (void)requestLogin:(NSDictionary *)userInfo {
++ (void)requestLogin:(NSDictionary *)userInfo completion:(LoginCompletion)completion {
     
     NSMutableDictionary *bodyParameters = [[NSMutableDictionary alloc] init];
     [bodyParameters setObject:[userInfo objectForKey:@"email"] forKey:@"email"];
@@ -45,42 +44,31 @@
         
         if (error) {
             NSLog(@"\n\nRequestSignUp task error = %@\n\n", error);
+            completion(NO, nil);
             
         }
         else {
             
             NSLog(@"\n\nreponse = %@\n\n, reponseObject = %@\n\n", response, responseObject);
-            
-            NSString *token = [responseObject objectForKey:@"key"];
-            [[LoginPageManager sharedLoginManager] completeLogin:token];
+            completion(YES, responseObject);
         }
     }];
     
     [uploadTask resume];
 }
 
-+ (void)requestSignUp:(NSDictionary *)userInfo {
++ (void)requestSignUp:(NSDictionary *)userInfo completion:(LoginCompletion)completion {
     
     NSMutableDictionary *bodyParameters = [[NSMutableDictionary alloc] init];
     [bodyParameters setObject:[userInfo objectForKey:@"email"] forKey:@"email"];
-    NSData *emailStringData = [[userInfo objectForKey:@"email"] dataUsingEncoding:NSUTF8StringEncoding];
-
     [bodyParameters setObject:[userInfo objectForKey:@"password1"] forKey:@"password1"];
-    NSData *pwStringData = [[userInfo objectForKey:@"password1"] dataUsingEncoding:NSUTF8StringEncoding];
-    
     [bodyParameters setObject:[userInfo objectForKey:@"password2"] forKey:@"password2"];
-    NSData *rePwstringData = [[userInfo objectForKey:@"password2"] dataUsingEncoding:NSUTF8StringEncoding];
+    [bodyParameters setObject:[userInfo objectForKey:@"age"] forKey:@"age"];
+    [bodyParameters setObject:[userInfo objectForKey:@"gender"] forKey:@"gender"];
     
     NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:@"http://team6-dev.ap-northeast-2.elasticbeanstalk.com/member/signup/"
                                                                                              parameters:bodyParameters
-                                                                              constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-                                                                                  
-                                                                                  
-                                                                                  [formData appendPartWithFormData:emailStringData name:@"email"];
-                                                                                  [formData appendPartWithFormData:pwStringData name:@"password1"];
-                                                                                  [formData appendPartWithFormData:rePwstringData name:@"password2"];
-                                                                                  
-                                                                              } error:nil];
+                                                                              constructingBodyWithBlock:nil error:nil];
     
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
@@ -89,14 +77,12 @@
         
         if (error) {
             NSLog(@"\n\nRequestSignUp task error = %@\n\n", error);
-    
+            completion(NO, nil);
         }
         else {
             
             NSLog(@"\n\nreponse = %@\n\n, reponseObject = %@\n\n", response, responseObject);
-            
-            NSString *token = [responseObject objectForKey:@"key"];
-            [[LoginPageManager sharedLoginManager] completeLogin:token];
+            completion(YES, responseObject);
         }
     }];
     [uploadTask resume];
@@ -131,7 +117,7 @@
     [task resume];
 }
 
-+ (void)requestPost {
++ (void)requestPostList:(NSString *)token completion:(NetworkCompletion)completion {
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager * manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
@@ -140,33 +126,46 @@
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"GET"];
     
+    NSURLSessionDataTask *task = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        
+        if (error) {
+            NSLog(@"\n\nLogout process error = %@\n\n", error);
+            completion(NO, nil);
+            
+        } else {
+            completion(YES, responseObject);
+        }
+    }];
+    [task resume];
+}
+
++ (void)requestNextPost:(NSString *)nextURL completion:(NetworkCompletion)completion {
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager * manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSURL *url = [NSURL URLWithString:nextURL];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"GET"];
     
     NSURLSessionDataTask *task = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         if (error) {
             NSLog(@"\n\nLogout process error = %@\n\n", error);
+            completion(NO, nil);
+            
         } else {
             
             NSLog(@"\n\nreponse = %@\n\n,  reponseObject = %@\n\n", response, responseObject);
-            [[HomeVCManager sharedManager] completePostListData:^(HomeViewController *vc, CollectionViewController *collectionVC, SingleCellCollectionViewController *sigleCollectionVC) {
-              
-                vc.postDataArray = [responseObject objectForKey:@"results"];
-                collectionVC.postDataArray = [responseObject objectForKey:@"results"];
-                sigleCollectionVC.postDataArray = [responseObject objectForKey:@"results"];
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [vc.mainTableView reloadData];
-                    [collectionVC.mainCollectionView reloadData];
-                    [sigleCollectionVC.mainCollectionView reloadData];
-                });
-            }];
+            completion(YES, responseObject);
         }
     }];
     
     [task resume];
+
 }
 
-+ (void)requestMyPost:(NSString *)token {
++ (void)requestMyPost:(NSString *)token completion:(NetworkCompletion)completion {
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager * manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
@@ -179,27 +178,17 @@
     NSString *resultToken = [appendToken stringByAppendingString:token];
     [request setValue:resultToken forHTTPHeaderField:@"Authorization"];
     
-    
     NSURLSessionDataTask *task = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         if (error) {
             NSLog(@"\n\nLogout process error = %@\n\n", error);
+            completion(NO, nil);
         } else {
             
             NSLog(@"\n\nreponse = %@\n\n,  reponseObject = %@\n\n", response, responseObject);
-            [[ProfileManager sharedManager] completeMyPostListData:^(ProfileViewController *profileVC, MyCommentViewController *commentVC) {
-               
-                profileVC.myPostDataArray = responseObject;
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                   
-                    [profileVC.mainCollectionView reloadData];
-                });
-            }];
-            
+            completion(YES, responseObject);
         }
     }];
-    
     [task resume];
 }
 

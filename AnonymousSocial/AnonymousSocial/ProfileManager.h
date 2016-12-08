@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "ProfileViewController.h"
 #import "MyCommentViewController.h"
+#import "RequestObject.h"
 
 @interface ProfileManager : NSObject
 
@@ -17,7 +18,11 @@
 @property (weak) MyCommentViewController *commentViewController;
 
 + (instancetype)sharedManager;
-- (void)requestMyPostListData;
+
+
+- (void)requestMyPostListData:(NetworkCompletion)completion;
+
+
 - (void)completeMyPostListData:(void(^)(ProfileViewController *profileVC, MyCommentViewController *commentVC))completion;
 
 @end

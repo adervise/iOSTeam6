@@ -17,6 +17,7 @@
 #import "HomeVCManager.h"
 #import <UIImageView+WebCache.h>
 #import "CustomParse.h"
+#import "HomeDataModel.h"
 
 @interface HomeViewController ()<UITableViewDataSource, UITableViewDelegate, UITabBarControllerDelegate, UIScrollViewDelegate>
 
@@ -29,6 +30,9 @@
 @property (nonatomic, weak) IBOutlet UISegmentedControl *segControl;
 @property (nonatomic, weak) IBOutlet UISwitch *tempSwitch;
 
+// Cell의 높이
+@property CGFloat heightOfCell;
+
 @end
 
 @implementation HomeViewController
@@ -39,8 +43,6 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    [HomeVCManager sharedManager].homeVC = self;
-    self.postDataArray = [[NSArray alloc] init];
 }
 
 - (void)viewDidLoad {
@@ -93,13 +95,29 @@
 - (void)refreshTableView:(UIRefreshControl *)sender {
     
     [sender endRefreshing];
-    [self reloadData];
+    [self.mainTableView reloadData];
 }
 
 - (void)reloadData {
-    
-    // 서버에서 데이터를 가져온 후!! 리로드시킨다 동기화가 중요!
-    [[HomeVCManager sharedManager] requestPostListData];
+
+    [[HomeVCManager sharedManager] requestPostList:[[UserInfomation sharedUserInfomation] gettingUserToken] completion:^(BOOL success, id data) {
+       
+        if (success) {
+            // 데이터 가져오기 성공시
+            [[HomeDataModel sharedHomeDataModel] putPostData:data];
+            [[HomeDataModel sharedHomeDataModel] putNextPostURL:[data objectForKey:@"next"]];
+        
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [_mainTableView reloadData];
+                [_collectionViewController.mainCollectionView reloadData];
+                [_singleCollectionViewController.mainCollectionView reloadData];
+            });
+        } else {
+            // 실패시
+            
+        }
+    }];
 }
 
 
@@ -178,20 +196,21 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return [self.postDataArray count];
+    return [[[HomeDataModel sharedHomeDataModel] getPostData] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeTableCell" forIndexPath:indexPath];
+    NSArray *dataArray = [[HomeDataModel sharedHomeDataModel] getPostData];
     
-    cell.mainTextLabel.text = [self.postDataArray[indexPath.row] objectForKey:@"content"];
-    [cell.backGroundImage sd_setImageWithURL:[self.postDataArray[indexPath.row] objectForKey:@"img_thumbnail"] placeholderImage:nil];
-    cell.commentCountLabel.text = [NSString stringWithFormat:@"%@", [self.postDataArray[indexPath.row] objectForKey:@"comments_counts"]];
-    cell.likeCountlabel.text = [NSString stringWithFormat:@"%@", [self.postDataArray[indexPath.row] objectForKey:@"like_users_counts"]];
-    cell.postTimeLabel.text = [NSString stringWithFormat:@"%@",[CustomParse convert8601DateToNSDate:[_postDataArray[indexPath.row] objectForKey:@"modified_date"]]];
-    cell.locationLabel.text = [CustomParse convertLocationString:[_postDataArray[indexPath.row] objectForKey:@"distance"]];
-    
+    cell.mainTextLabel.text = [dataArray[indexPath.row] objectForKey:@"content"];
+    [cell.backGroundImage sd_setImageWithURL:[dataArray[indexPath.row] objectForKey:@"img_thumbnail"] placeholderImage:nil];
+    cell.commentCountLabel.text = [NSString stringWithFormat:@"%@", [dataArray[indexPath.row] objectForKey:@"comments_counts"]];
+    cell.likeCountlabel.text = [NSString stringWithFormat:@"%@", [dataArray[indexPath.row] objectForKey:@"like_users_counts"]];
+    cell.postTimeLabel.text = [NSString stringWithFormat:@"%@",[CustomParse convert8601DateToNSDate:[dataArray[indexPath.row] objectForKey:@"modified_date"]]];
+    cell.locationLabel.text = [CustomParse convertLocationString:[dataArray[indexPath.row] objectForKey:@"distance"]];
+
     return cell;
 }
 
@@ -211,16 +230,41 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return self.mainTableView.bounds.size.height / 3.0f;
+    _heightOfCell = self.mainTableView.bounds.size.height / 3.0f;
+    return _heightOfCell;
 }
 
 #pragma mark - ScrollView Delegate Method
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
-    CGFloat heightOFCell = self.mainTableView.bounds.size.height / 3.0f;
-    
-    
+    if (scrollView.contentOffset.y > [HomeVCManager sharedManager].currentCellCount * _heightOfCell) {
+        
+        NSLog(@"\n\n\nrequest Next Data\n\n\n");
+        // 현재 스크롤의 y오프셋이 currentCellCount * _heightOfCell 보다 커졋을(내릴)경우 다음 데이터를 서버에 요청
+        // currentCellCout를 10(서버가 보내주는 데이터의 단위)더해준다.
+        [HomeVCManager sharedManager].currentCellCount += 10;
+        
+        // 서버에 다음 데이터 요청
+        [[HomeVCManager sharedManager] requestNextPostListData:[[HomeDataModel sharedHomeDataModel] getNextPostURL] completion:^(BOOL success, id data) {
+           
+            if (success) {
+                
+                [[HomeDataModel sharedHomeDataModel] appendDataArrayFromArray:[data objectForKey:@"results"]];
+                [[HomeDataModel sharedHomeDataModel] putNextPostURL:[data objectForKey:@"next"]];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    [_mainTableView reloadData];
+                    [_collectionViewController.mainCollectionView reloadData];
+                    [_singleCollectionViewController.mainCollectionView reloadData];
+                });
+                
+            } else {
+                
+                
+            }
+        }];
+    }
 }
 
 #pragma mark - TabBarController Delegate Method

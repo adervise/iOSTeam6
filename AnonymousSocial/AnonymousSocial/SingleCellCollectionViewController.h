@@ -11,6 +11,5 @@
 @interface SingleCellCollectionViewController : UIViewController
 
 @property (nonatomic, weak) IBOutlet UICollectionView *mainCollectionView;
-@property NSArray *postDataArray;
 
 @end

@@ -24,9 +24,9 @@
     return manager;
 }
 
-- (void)requestMyPostListData {
+- (void)requestMyPostListData:(NetworkCompletion)completion {
     
-    [RequestObject requestMyPost:[[UserInfomation sharedUserInfomation] gettingUserToken]];
+    [RequestObject requestMyPost:[[UserInfomation sharedUserInfomation] gettingUserToken] completion:completion];
 }
 
 - (void)completeMyPostListData:(void(^)(ProfileViewController *profileVC, MyCommentViewController *commentVC))completion {

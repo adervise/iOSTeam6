@@ -11,6 +11,7 @@
 #import "UserInfomation.h"
 #import "UserInfoValidationCheck.h"
 #import "ValidationSubView.h"
+#import "CustomAlertController.h"
 
 @interface SignUpPageViewController ()<UITextFieldDelegate>
 
@@ -98,20 +99,32 @@
     BOOL isCorrectRePasswordValidation = self.rePwCheckImage.highlighted;
     
     if (isCorrectEmailValidation && isCorrectPasswordValidation && isCorrectRePasswordValidation) {
-       
-        [UserInfomation sharedUserInfomation].userEmail = self.idTextField.text;
-        [UserInfomation sharedUserInfomation].userPassword = self.pwTextField.text;
-        [UserInfomation sharedUserInfomation].userBirthDay = self.birthTextField.text;
         
         NSString *userGender;
         if (self.genderSegment.selectedSegmentIndex == 0)
             userGender = @"M";
         else
             userGender = @"F";
+
+        NSMutableDictionary *userSignUp = [[NSMutableDictionary alloc] init];
+        [userSignUp setObject:_idTextField.text forKey:@"email"];
+        [userSignUp setObject:_pwTextField.text forKey:@"password1"];
+        [userSignUp setObject:_rePwTextField.text forKey:@"password2"];
+        [userSignUp setObject:_birthTextField.text forKey:@"age"];
+        [userSignUp setObject:userGender forKey:@"gender"];
         
-        [UserInfomation sharedUserInfomation].userGender = userGender;
-        
-        [[LoginPageManager sharedLoginManager] userSignUp:self.idTextField.text password:self.pwTextField.text rePassword:self.rePwTextField.text birthDay:self.birthTextField.text gender:userGender];
+        [[LoginPageManager sharedLoginManager] userSignUp:userSignUp completion:^(BOOL success, id data) {
+           
+            if (success) {
+                //회원가입 성공시
+                [CustomAlertController showCutomAlert:self type:CustomAlertTypeCompleteSingup];
+                
+            } else {
+                // 회원가입 실패시
+                
+            }
+            
+        }];
     }
 }
 

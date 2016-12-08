@@ -8,6 +8,7 @@
 
 #import "LoginPageViewController.h"
 #import "UserInfomation.h"
+#import "CustomAlertController.h"
 
 @interface LoginPageViewController () <UITextFieldDelegate>
 
@@ -126,7 +127,22 @@
 
 - (IBAction)onTouchLoginButton:(UIButton *)sender {
     
-    [[LoginPageManager sharedLoginManager] userLogin:self.emailTextField.text password:self.pwTextField.text];
+    NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
+    [userInfo setObject:_emailTextField.text forKey:@"email"];
+    [userInfo setObject:_pwTextField.text forKey:@"password"];
+    
+    [[LoginPageManager sharedLoginManager] userLogin:userInfo completion:^(BOOL success, id data) {
+       
+        if (success) {
+            // 로그인 성공시
+            [CustomAlertController showCutomAlert:self type:CustomAlertTypeCompleteLogin];
+            [[UserInfomation sharedUserInfomation] settingUserToken:[data objectForKey:@"key"]];
+            
+        } else {
+            // 로그인 실패시
+            
+        }
+    }];
 }
 
 - (IBAction)onTouchAutoLoginButton:(UIButton *)sender {

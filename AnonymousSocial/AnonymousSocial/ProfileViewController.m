@@ -70,8 +70,17 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [[ProfileManager sharedManager] requestMyPostListData];
-    
+    [[ProfileManager sharedManager] requestMyPostListData:^(BOOL success, id data) {
+       
+        if (success) {
+            
+            _myPostDataArray = (NSArray *)data;
+        } else {
+            //오류처리
+            
+        }
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
