@@ -7,7 +7,7 @@
 //
 
 #import "HomeVCManager.h"
-#import "RequestObject.h"
+
 
 @interface HomeVCManager ()
 
@@ -27,14 +27,26 @@
     return manager;
 }
 
-- (void)requestPostListData {
+- (instancetype)init {
     
-    [RequestObject requestPost];
+    self = [super init];
+    
+    if (self) {
+        _currentCellCount = 5;
+        _nextPostDataURL = [[NSString alloc] init];
+    }
+    return self;
 }
 
-- (void)completePostListData:(void(^)(HomeViewController *vc, CollectionViewController *collectionVC, SingleCellCollectionViewController *sigleCollectionVC))completion {
+- (void)requestPostList:(NSString *)token completion:(NetworkCompletion)completion {
     
-    completion(self.homeVC, self.collectionVC, self.singleCollectionVC);
+    [RequestObject requestPostList:token completion:completion];
 }
+
+- (void)requestNextPostListData:(NSString *)nextURL completion:(NetworkCompletion)completion {
+    
+    [RequestObject requestNextPost:nextURL completion:completion];
+}
+
 
 @end

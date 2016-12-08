@@ -12,6 +12,7 @@
 #import "CustomCellSingleCollectionView.h"
 #import <UIImageView+WebCache.h>
 #import "CustomParse.h"
+#import "HomeDataModel.h"
 
 @interface SingleCellCollectionViewController ()
 
@@ -26,9 +27,6 @@
 #pragma mark - View Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.postDataArray = [[NSArray alloc] init];
-    [HomeVCManager sharedManager].singleCollectionVC = self;
     
     // Transparent NaviBar
     [self transparentNavigationBar];
@@ -55,18 +53,19 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return [self.postDataArray count];
+    return [[[HomeDataModel sharedHomeDataModel] getPostData] count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     CustomCellSingleCollectionView *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    NSArray *dataArray = [[HomeDataModel sharedHomeDataModel] getPostData];
     
-    cell.textView.text = [self.postDataArray[indexPath.row] objectForKey:@"content"];
-    [cell.backgroundImageView sd_setImageWithURL:[_postDataArray[indexPath.row] objectForKey:@"img_thumbnail"] placeholderImage:nil];
-    cell.commentLabel.text = [NSString stringWithFormat:@"%@", [self.postDataArray[indexPath.row] objectForKey:@"comments_counts"]];
-    cell.likeLabel.text = [NSString stringWithFormat:@"%@", [self.postDataArray[indexPath.row] objectForKey:@"like_users_counts"]];
-    cell.postTimeLabel.text = [NSString stringWithFormat:@"%@", [CustomParse convert8601DateToNSDate:[_postDataArray[indexPath.row] objectForKey:@"modified_date"]]];
+    cell.textView.text = [dataArray[indexPath.row] objectForKey:@"content"];
+    [cell.backgroundImageView sd_setImageWithURL:[dataArray[indexPath.row] objectForKey:@"img_thumbnail"] placeholderImage:nil];
+    cell.commentLabel.text = [NSString stringWithFormat:@"%@", [dataArray[indexPath.row] objectForKey:@"comments_counts"]];
+    cell.likeLabel.text = [NSString stringWithFormat:@"%@", [dataArray[indexPath.row] objectForKey:@"like_users_counts"]];
+    cell.postTimeLabel.text = [NSString stringWithFormat:@"%@", [CustomParse convert8601DateToNSDate:[dataArray[indexPath.row] objectForKey:@"modified_date"]]];
     
     return cell;
 }

@@ -11,6 +11,9 @@
 #import "LoginPageViewController.h"
 #import "HomeViewController.h"
 
+
+typedef void(^LoginCompletion)(BOOL success, id data);
+
 @interface LoginPageManager : NSObject
 
 @property UINavigationController *loginNavigationVC;
@@ -20,9 +23,9 @@
 + (instancetype)sharedLoginManager;
 
 // 회원가입 프로세스
-- (void)userSignUp:(NSString *)email password:(NSString *)userPW rePassword:(NSString *)rePW birthDay:(NSString *)birthDay gender:(NSString *)gender;
+- (void)userLogin:(NSDictionary *)userInfo completion:(LoginCompletion)completion;
+- (void)userSignUp:(NSDictionary *)userInfo completion:(LoginCompletion)completion;
 
-- (void)userLogin:(NSString *)email password:(NSString *)password;
 - (void)userLogout:(NSString *)token;
 
 - (void)completeLogin:(NSString *)token;

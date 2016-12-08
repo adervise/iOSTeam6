@@ -34,24 +34,15 @@
 }
 
 // RequestObject에 유저에대한 정보를담아 회원가입메소드를 호출
-- (void)userSignUp:(NSString *)email password:(NSString *)userPW rePassword:(NSString *)rePW birthDay:(NSString *)birthDay gender:(NSString *)gender {
+- (void)userSignUp:(NSDictionary *)userInfo completion:(LoginCompletion)completion {
     
-    NSMutableDictionary *userInfoDic = [[NSMutableDictionary alloc] init];
-    [userInfoDic setObject:email forKey:@"email"];
-    [userInfoDic setObject:userPW forKey:@"password1"];
-    [userInfoDic setObject:rePW forKey:@"password2"];
-    
-    [RequestObject requestSignUp:userInfoDic];
+    [RequestObject requestSignUp:userInfo completion:completion];
 }
 
 
-- (void)userLogin:(NSString *)email password:(NSString *)password {
+- (void)userLogin:(NSDictionary *)userInfo completion:(LoginCompletion)completion {
     
-    NSMutableDictionary *userInfoDic = [[NSMutableDictionary alloc] init];
-    [userInfoDic setObject:email forKey:@"email"];
-    [userInfoDic setObject:password forKey:@"password"];
-    
-    [RequestObject requestLogin:userInfoDic];
+    [RequestObject requestLogin:userInfo completion:completion];
 }
 
 - (void)userLogout:(NSString *)token {
