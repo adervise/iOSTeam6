@@ -46,6 +46,8 @@
 		AA1EFB0A1DEBE63D002183D2 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA1EFB091DEBE63D002183D2 /* Profile.storyboard */; };
 		AA1EFB0E1DEBE65A002183D2 /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA1EFB0D1DEBE65A002183D2 /* Post.storyboard */; };
 		AA1EFB181DEBEB04002183D2 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1EFB171DEBEB04002183D2 /* Profile.m */; };
+		AA9494951DF80D9B00C01DCD /* PostModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9494941DF80D9B00C01DCD /* PostModelController.m */; };
+		AAA58B591DF7EFF9002E8169 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA58B581DF7EFF9002E8169 /* PostViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,6 +121,10 @@
 		AA1EFB0D1DEBE65A002183D2 /* Post.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
 		AA1EFB161DEBEB04002183D2 /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
 		AA1EFB171DEBEB04002183D2 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
+		AA9494931DF80D9B00C01DCD /* PostModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostModelController.h; sourceTree = "<group>"; };
+		AA9494941DF80D9B00C01DCD /* PostModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostModelController.m; sourceTree = "<group>"; };
+		AAA58B571DF7EFF9002E8169 /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
+		AAA58B581DF7EFF9002E8169 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
 		EC7A886A7E98AB8525606FCB /* Pods-AnonymousSocial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnonymousSocial.release.xcconfig"; path = "Pods/Target Support Files/Pods-AnonymousSocial/Pods-AnonymousSocial.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -307,6 +313,10 @@
 			isa = PBXGroup;
 			children = (
 				AA1EFB0D1DEBE65A002183D2 /* Post.storyboard */,
+				AAA58B571DF7EFF9002E8169 /* PostViewController.h */,
+				AAA58B581DF7EFF9002E8169 /* PostViewController.m */,
+				AA9494931DF80D9B00C01DCD /* PostModelController.h */,
+				AA9494941DF80D9B00C01DCD /* PostModelController.m */,
 			);
 			name = Post;
 			sourceTree = "<group>";
@@ -479,6 +489,7 @@
 				0D7C6A641DF57F420013A050 /* CustomProfileCollectionCell.m in Sources */,
 				AA1EFB181DEBEB04002183D2 /* Profile.m in Sources */,
 				AA1EFAF51DEBE4E6002183D2 /* AppDelegate.m in Sources */,
+				AAA58B591DF7EFF9002E8169 /* PostViewController.m in Sources */,
 				0D44CAE51DF2BDA90038A26E /* ValidationSubView.m in Sources */,
 				0D9BD5E81DED939A00517379 /* FisrtCollectionViewLayout.m in Sources */,
 				0D086BFA1DEFD55700FA3B49 /* SignUpPageViewController.m in Sources */,
@@ -498,6 +509,7 @@
 				0D9BD5C91DEC4C9A00517379 /* CustomCollectionViewCell.m in Sources */,
 				0D9BD5DC1DED5D2E00517379 /* SingleCellCollectionViewController.m in Sources */,
 				0D9BD5C61DEC222F00517379 /* CollectionViewController.m in Sources */,
+				AA9494951DF80D9B00C01DCD /* PostModelController.m in Sources */,
 				0D9BD5D91DED5B8100517379 /* CustomCellSingleCollectionView.m in Sources */,
 				0DB86C331DF58C84005A98DC /* UserSettingViewController.m in Sources */,
 				0D7C6A611DF55DC50013A050 /* LayerCustomUtility.m in Sources */,
