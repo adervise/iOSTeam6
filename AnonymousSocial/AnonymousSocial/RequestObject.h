@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface RequestObject : NSObject
 
@@ -16,6 +17,6 @@
 + (void)requestPost;
 + (void)requestMyPost:(NSString *)token;
 
-+ (void)inserMyPost:(NSString *)token postData:(NSDictionary *)postData;
++ (void)inserMyPost:(NSString *)token content:(NSString *)content hashTags:(NSMutableArray *)hashTags backgroundImage:(UIImage *)backgroundImage;
 
 @end

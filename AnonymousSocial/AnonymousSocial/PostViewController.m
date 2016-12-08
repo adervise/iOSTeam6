@@ -12,7 +12,7 @@
 #import "CustomAlertController.h"
 #import "UserInfomation.h"
 
-@interface PostViewController ()
+@interface PostViewController () <UIImagePickerControllerDelegate>
 
 @end
 
@@ -21,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _hashTags = [NSMutableArray array];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,8 +30,28 @@
 }
 
 // save 버튼 눌렀을 때 
+- (IBAction)imageSelect:(id)sender {
+    
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    [imagePicker setDelegate:self];
+    [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    
+    [self presentViewController:imagePicker animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    
+    UIImage *rectImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+    [self.backgroundImage setImage:rectImage];
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (IBAction)savePost:(id)sender {
-    [PostModelController userPost:self.postView.text hashTags:nil backgroundImage:nil];
+    [PostModelController userPost:self.postView.text hashTags:self.hashTags backgroundImage:self.backgroundImage.image];
+}
+
+- (IBAction)hash:(id)sender {
+    [self decorateTags:self.postView.text];
 }
 
 - (NSMutableAttributedString*)decorateTags:(NSString *)stringWithTags{
@@ -44,14 +65,14 @@
     //NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"@(\\w+)" options:0 error:&error];
     
     NSArray *matches = [regex matchesInString:stringWithTags options:0 range:NSMakeRange(0, stringWithTags.length)];
-    NSMutableAttributedString *attString=[[NSMutableAttributedString alloc] initWithString:stringWithTags];
+    
+    NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:stringWithTags];
     
     NSInteger stringLength=[stringWithTags length];
-    
+
     for (NSTextCheckingResult *match in matches) {
         
         NSRange wordRange = [match rangeAtIndex:1];
-        
         NSString* word = [stringWithTags substringWithRange:wordRange];
         
         //Set Font
@@ -59,7 +80,7 @@
         [attString addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, stringLength)];
         
         //Set Background Color
-        UIColor *backgroundColor=[UIColor orangeColor];
+        UIColor *backgroundColor=[UIColor yellowColor];
         [attString addAttribute:NSBackgroundColorAttributeName value:backgroundColor range:wordRange];
         
         //Set Foreground Color
@@ -67,14 +88,12 @@
         [attString addAttribute:NSForegroundColorAttributeName value:foregroundColor range:wordRange];
         
         NSLog(@"Found tag %@", word);
-        
+        [self.hashTags addObject:word];
+        NSLog(@"%@",self.hashTags);
     }
-
+    
     self.postView.attributedText = attString;
     return attString;
 }
-
-
-
 
 @end

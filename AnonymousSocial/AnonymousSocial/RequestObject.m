@@ -210,14 +210,18 @@
 
 + (void)inserMyPost:(NSString *)token postData:(NSDictionary *)postData {
     
+    NSLog(@"postData LOGS!!!! %@",postData);
+    
     NSMutableDictionary *bodyParameters = [[NSMutableDictionary alloc] init];
     [bodyParameters setObject:[postData objectForKey:@"content"] forKey:@"content"];
     NSData *contentData = [[postData objectForKey:@"content"] dataUsingEncoding:NSUTF8StringEncoding];
     
-    
+    for (NSString *tag in [postData objectForKey:@"hashtags"]) {
+        [bodyParameters setObject:tag forKey:@"hashtags"];
+    }
 
-    
-    
+    //
+//    NSLog(@"%@",hashTagsData);
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager * manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
@@ -249,8 +253,51 @@
         }
     }];
     [uploadTask resume];
-    
-    
 }
+
++ (void)inserMyPost:(NSString *)token content:(NSString *)content hashTags:(NSMutableArray *)hashTags backgroundImage:(UIImage *)backgroundImage {
+    
+    NSMutableDictionary *bodyParameters = [[NSMutableDictionary alloc] init];
+    [bodyParameters setObject:content forKey:@"content"];
+    [bodyParameters setObject:[NSSet setWithArray:hashTags]  forKey:@"hashtags"];
+    NSData *imageData = UIImageJPEGRepresentation(backgroundImage, 0.1);
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager * manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST"
+                                                                URLString:@"http://team6-dev.ap-northeast-2.elasticbeanstalk.com/post/add/"
+                                                                parameters:bodyParameters
+                                                                constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+                                                                    [formData appendPartWithFileData:imageData
+                                                                                                name:@"img"
+                                                                                            fileName:@"image.jpeg"
+                                                                                            mimeType:@"image/jpeg"];
+                                                                 } error:nil];
+    
+    NSString *appendToken = @"Token ";
+    NSString *resultToken = [appendToken stringByAppendingString:token];
+    [request setValue:resultToken forHTTPHeaderField:@"Authorization"];
+    
+    NSURLSessionUploadTask *uploadTask;
+    uploadTask = [manager uploadTaskWithStreamedRequest:request progress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        
+        if (error) {
+            NSLog(@"\n\nRequestPostUp task error = %@\n\n", error);
+        }
+        else {
+            
+            NSLog(@"\n\nreponse = %@\n\n, reponseObject = %@\n\n", response, responseObject);
+            
+            NSString *token = [responseObject objectForKey:@"key"];
+            [[LoginPageManager sharedLoginManager] completeLogin:token];
+        }
+    }];
+    [uploadTask resume];
+}
+
+
+
+
 
 @end
