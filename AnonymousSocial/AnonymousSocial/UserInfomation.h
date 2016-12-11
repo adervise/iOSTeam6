@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+typedef void(^LocationUpdateCompletion)(BOOL, NSDictionary *);
 
 @interface UserInfomation : NSObject
 
@@ -14,6 +17,7 @@
 @property (getter=isAutoLogin) BOOL autoLogin;
 @property (getter=isUserLocation) BOOL userLocation;
 
+@property NSString *userID;
 @property NSString *userEmail;
 @property NSString *userPassword;
 @property NSString *userBirthDay;
@@ -24,7 +28,7 @@
 - (NSString *)gettingUserToken;
 
 // Location
-- (void)confirmUserLocation;
+- (void)confirmUserLocation:(BOOL)confirm;
 
 // UpdateUserInfomation
 

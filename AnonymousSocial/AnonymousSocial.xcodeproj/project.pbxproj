@@ -110,6 +110,7 @@
 		0DC752151DF16014005BA6BB /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		0DC752161DF16014005BA6BB /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		0DC752181DF16F89005BA6BB /* AnonymousSocial.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AnonymousSocial.entitlements; sourceTree = "<group>"; };
+		0DE6DD821DFA8395005C80D4 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		2F08EAD1911CDF7070E6BBC7 /* libPods-AnonymousSocial.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AnonymousSocial.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B7CBD849F3533FF7B6FD88A /* Pods-AnonymousSocial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnonymousSocial.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AnonymousSocial/Pods-AnonymousSocial.debug.xcconfig"; sourceTree = "<group>"; };
 		AA1EFAED1DEBE4E6002183D2 /* AnonymousSocial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnonymousSocial.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -269,6 +270,7 @@
 				0DC752181DF16F89005BA6BB /* AnonymousSocial.entitlements */,
 				AA1EFAF31DEBE4E6002183D2 /* AppDelegate.h */,
 				AA1EFAF41DEBE4E6002183D2 /* AppDelegate.m */,
+				0DE6DD821DFA8395005C80D4 /* PrefixHeader.pch */,
 				0DC752141DF13A4F005BA6BB /* Utilities */,
 				0D086BFC1DF004C100FA3B49 /* NetworkObjects */,
 				0D4F1A461DEEA766002B7296 /* Login */,
@@ -643,6 +645,8 @@
 				CODE_SIGN_ENTITLEMENTS = AnonymousSocial/AnonymousSocial.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = NN7QXHC8A3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = AnonymousSocial/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -659,6 +663,8 @@
 				CODE_SIGN_ENTITLEMENTS = AnonymousSocial/AnonymousSocial.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = NN7QXHC8A3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = AnonymousSocial/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

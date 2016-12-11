@@ -40,11 +40,6 @@
 
 #pragma mark - View Life Cycle
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -67,7 +62,10 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self.mainTableView reloadData];
+//    [self.mainTableView reloadData];
+    
+    // 선택된 segcontrol의 값에따라 스크롤뷰의 x오프셋을 바꿔준다.
+    [self changeContentsOffsetOfScrollView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,7 +73,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - DataManager
+- (void)changeContentsOffsetOfScrollView {
+    
+    if (_segControl.selectedSegmentIndex == 0) {
+        
+        [_mainScrollView setContentOffset:CGPointMake(0, 0)];
+    } else if (_segControl.selectedSegmentIndex == 1){
+        [_mainScrollView setContentOffset:CGPointMake(_mainScrollView.bounds.size.width,0)];
+    } else {
+        [_mainScrollView setContentOffset:CGPointMake(_mainScrollView.bounds.size.width*2, 0)];
+    }
+}
 
 
 #pragma mark - refresh Table Method
@@ -95,29 +103,34 @@
 - (void)refreshTableView:(UIRefreshControl *)sender {
     
     [sender endRefreshing];
-    [self.mainTableView reloadData];
+//    [self.mainTableView reloadData];
+    [self reloadData];
 }
 
 - (void)reloadData {
 
-    [[HomeVCManager sharedManager] requestPostList:[[UserInfomation sharedUserInfomation] gettingUserToken] completion:^(BOOL success, id data) {
-       
+    [[HomeVCManager sharedManager] requestPostList:^(BOOL success, id data) {
         if (success) {
             // 데이터 가져오기 성공시
             [[HomeDataModel sharedHomeDataModel] putPostData:data];
             [[HomeDataModel sharedHomeDataModel] putNextPostURL:[data objectForKey:@"next"]];
-        
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                [_mainTableView reloadData];
-                [_collectionViewController.mainCollectionView reloadData];
-                [_singleCollectionViewController.mainCollectionView reloadData];
-            });
+            [[HomeDataModel sharedHomeDataModel] setCurrentCellCount:5];
+            [self reloadDataWithNextData];
         } else {
             // 실패시
-            
+            NSLog(@"실패!!");
         }
     }];
+}
+
+- (void)reloadDataWithNextData {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [_mainTableView reloadData];
+        [_collectionViewController.mainCollectionView reloadData];
+        [_singleCollectionViewController.mainCollectionView reloadData];
+    });
 }
 
 
@@ -192,6 +205,16 @@
     
 }
 
+- (void)setStatusBarBackgroundColor:(UIColor *)color {
+    
+    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
+    
+    if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
+//        statusBar.backgroundColor = [UIColor];
+//        statusBar.backgroundColor = [UIColor colorwithHexCode:keyColor alpha:1.0f];
+    }
+}
+
 #pragma mark - Table DataSource Delegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -205,10 +228,11 @@
     NSArray *dataArray = [[HomeDataModel sharedHomeDataModel] getPostData];
     
     cell.mainTextLabel.text = [dataArray[indexPath.row] objectForKey:@"content"];
+    cell.mainTextLabel.attributedText = [CustomParse parseToContentsString:[dataArray[indexPath.row] objectForKey:@"content"]];
     [cell.backGroundImage sd_setImageWithURL:[dataArray[indexPath.row] objectForKey:@"img_thumbnail"] placeholderImage:nil];
     cell.commentCountLabel.text = [NSString stringWithFormat:@"%@", [dataArray[indexPath.row] objectForKey:@"comments_counts"]];
     cell.likeCountlabel.text = [NSString stringWithFormat:@"%@", [dataArray[indexPath.row] objectForKey:@"like_users_counts"]];
-    cell.postTimeLabel.text = [NSString stringWithFormat:@"%@",[CustomParse convert8601DateToNSDate:[dataArray[indexPath.row] objectForKey:@"modified_date"]]];
+    cell.postTimeLabel.text = [CustomParse convert8601DateToNSDate:[dataArray[indexPath.row] objectForKey:@"created_date"]];
     cell.locationLabel.text = [CustomParse convertLocationString:[dataArray[indexPath.row] objectForKey:@"distance"]];
 
     return cell;
@@ -238,30 +262,20 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
-    if (scrollView.contentOffset.y > [HomeVCManager sharedManager].currentCellCount * _heightOfCell) {
+    BOOL existNextPost = ![[[HomeDataModel sharedHomeDataModel] getNextPostURL] isEqual:nil];
+    
+    if (scrollView.contentOffset.y > [[HomeDataModel sharedHomeDataModel] getCurrentCellCount] * _heightOfCell && existNextPost) {
         
-        NSLog(@"\n\n\nrequest Next Data\n\n\n");
         // 현재 스크롤의 y오프셋이 currentCellCount * _heightOfCell 보다 커졋을(내릴)경우 다음 데이터를 서버에 요청
         // currentCellCout를 10(서버가 보내주는 데이터의 단위)더해준다.
-        [HomeVCManager sharedManager].currentCellCount += 10;
-        
+        [[HomeDataModel sharedHomeDataModel] appendCurrentCellCount:10];
         // 서버에 다음 데이터 요청
         [[HomeVCManager sharedManager] requestNextPostListData:[[HomeDataModel sharedHomeDataModel] getNextPostURL] completion:^(BOOL success, id data) {
            
             if (success) {
-                
                 [[HomeDataModel sharedHomeDataModel] appendDataArrayFromArray:[data objectForKey:@"results"]];
                 [[HomeDataModel sharedHomeDataModel] putNextPostURL:[data objectForKey:@"next"]];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    
-                    [_mainTableView reloadData];
-                    [_collectionViewController.mainCollectionView reloadData];
-                    [_singleCollectionViewController.mainCollectionView reloadData];
-                });
-                
-            } else {
-                
-                
+                [self reloadDataWithNextData];
             }
         }];
     }
@@ -276,7 +290,7 @@
         // 로그인상태가 아니면
         if (![UserInfomation sharedUserInfomation].isUserLogin) {
             
-            [CustomAlertController showCutomAlert:self type:CustomAlertTypeRequiredLogin];
+            [CustomAlertController showCutomAlert:self type:CustomAlertTypeRequiredLogin completion:nil];
             return NO;
         }
     }

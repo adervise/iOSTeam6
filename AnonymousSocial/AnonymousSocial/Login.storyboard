@@ -101,9 +101,9 @@
                                                 </connections>
                                             </textField>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email" translatesAutoresizingMaskIntoConstraints="NO" id="PCD-VP-Z2D">
-                                                <rect key="frame" x="10" y="12.5" width="33.5" height="25"/>
+                                                <rect key="frame" x="10" y="12.5" width="25" height="25"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="PCD-VP-Z2D" secondAttribute="height" multiplier="23:17" id="GfV-DZ-lXQ"/>
+                                                    <constraint firstAttribute="width" secondItem="PCD-VP-Z2D" secondAttribute="height" multiplier="1:1" id="GfV-DZ-lXQ"/>
                                                 </constraints>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호를 입력하세요" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E7x-lA-HEe">
@@ -116,7 +116,7 @@
                                                 </connections>
                                             </textField>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="password" translatesAutoresizingMaskIntoConstraints="NO" id="kkV-Yr-iYD">
-                                                <rect key="frame" x="9.5" y="62.5" width="33.5" height="25"/>
+                                                <rect key="frame" x="9.5" y="65.5" width="25" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="kkV-Yr-iYD" secondAttribute="height" multiplier="23:17" id="k68-1i-XDl"/>
                                                 </constraints>
@@ -142,22 +142,17 @@
                                             <constraint firstItem="E7x-lA-HEe" firstAttribute="height" secondItem="wtT-mw-tAU" secondAttribute="height" multiplier="0.5" id="pkD-Ty-O8T"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwl-7n-HYv">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwl-7n-HYv">
                                         <rect key="frame" x="56" y="443.5" width="263" height="40"/>
                                         <color key="backgroundColor" red="0.0" green="0.50196078431372548" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="로그인">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="onTouchLoginButton:" destination="E8q-Hq-7YL" eventType="touchUpInside" id="1QO-zO-8Ls"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pnj-Ft-Zkz">
-                                        <rect key="frame" x="306" y="83" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="나감"/>
-                                        <connections>
-                                            <action selector="onTouchExit:" destination="E8q-Hq-7YL" eventType="touchUpInside" id="kGl-nC-C9R"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -193,8 +188,13 @@
                             <constraint firstItem="mJo-Wz-FaI" firstAttribute="centerY" secondItem="Os9-eT-aQ1" secondAttribute="centerY" id="ilC-9p-cYI"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="aeN-Vz-1tv"/>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationItem key="navigationItem" id="aeN-Vz-1tv">
+                        <barButtonItem key="rightBarButtonItem" title="나가기" id="iuW-ZT-QG7">
+                            <connections>
+                                <action selector="onTouchExit:" destination="E8q-Hq-7YL" id="8Bf-Jd-KLx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="backgroundImageView" destination="FIZ-xF-Wsq" id="Odc-tw-T4c"/>
                         <outlet property="emailImage" destination="PCD-VP-Z2D" id="R3L-ab-Jij"/>
@@ -432,11 +432,14 @@
                                             <constraint firstItem="Jgb-ZX-4kG" firstAttribute="top" secondItem="8Tk-u6-WGb" secondAttribute="top" constant="10" id="wv0-ji-FFr"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bda-vQ-jY4">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bda-vQ-jY4">
                                         <rect key="frame" x="10" y="350" width="280" height="50"/>
                                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="회원가입">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="onTouchSignUpButton:" destination="C22-Eu-1jn" eventType="touchUpInside" id="jV9-ph-0py"/>

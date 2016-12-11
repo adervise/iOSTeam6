@@ -8,11 +8,13 @@
 
 #import "UserInfomation.h"
 #import "CoreLocation/CoreLocation.h"
+#import "RequestObject.h"
 
 @interface UserInfomation ()<CLLocationManagerDelegate>
 
-@property NSString *userToken;
+@property __block NSString *userToken;
 @property CLLocationManager *locationManager;
+@property NSTimer *locationUpdateTimer;
 
 @end
 
@@ -27,7 +29,6 @@
         
         info = [[UserInfomation alloc] init];
     });
-    
     return info;
 }
 
@@ -39,6 +40,9 @@
         
         // 여기에서 초기화값을 설정!!
         _userLogin = NO;
+        _locationManager = [[CLLocationManager alloc] init];
+        _locationManager.delegate = self;
+//        _locationUpdateTimer = [[NSTimer alloc] init];
     }
     return self;
 }
@@ -54,40 +58,26 @@
     return self.userToken;
 }
 
-- (void)denyUserLocation {
+- (void)confirmUserLocation:(BOOL)confirm {
     
-    if (self.userLogin) {
-        
-        self.userLocation = NO;
-    }
-}
-
-- (void)confirmUserLocation {
-    
-    UserInfomation __weak *wSelf = self;
-    
-    if (self.userLogin) {
-        
-        self.locationManager = [[CLLocationManager alloc] init];
-        self.locationManager.delegate = wSelf;
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+    if (confirm && self.userLogin) {
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
         [self.locationManager requestWhenInUseAuthorization];
         self.userLocation = YES;
+        
+        _locationUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:30.0f target:self selector:@selector(updatingUserLocation) userInfo:nil repeats:YES];
+    } else if (!confirm) {
+        _userLocation = NO;
+        [_locationUpdateTimer invalidate];
     }
-    //임시
-    [self updatingUserLocation];
 }
 
 - (void)updatingUserLocation {
     
-    if ([self isUserLocation]) {
-        dispatch_queue_t concurrent_queue = dispatch_queue_create("locationQueue", DISPATCH_QUEUE_CONCURRENT);
-        dispatch_async(concurrent_queue, ^{
-            
-            [self.locationManager startUpdatingLocation];
-        });
-    }
+    [self.locationManager startUpdatingLocation];
+    
 }
+
 
 #pragma mark - CLLocationManager Delegate Method
 
@@ -96,9 +86,14 @@
     CLLocation *userNowLocation = locations.lastObject;
     CLLocationDegrees latitude = userNowLocation.coordinate.latitude;
     CLLocationDegrees longitude = userNowLocation.coordinate.longitude;
-    
-    NSLog(@"latitude = %.4f ,   longitude = %.4f", latitude, longitude);
     [self.locationManager stopUpdatingLocation];
+    
+    NSString *latitudeString = [NSString stringWithFormat:@"%lf", latitude];
+    NSString *longitudeString = [NSString stringWithFormat:@"%lf", longitude];
+    NSString *userToken = [[UserInfomation sharedUserInfomation] gettingUserToken];
+    // 여기에 받아온 위치정보를 서버로 업데이트 시키자!!
+    [RequestObject updateUserLocation:userToken latitude:latitudeString hardness:longitudeString];
+    
 }
 
 @end

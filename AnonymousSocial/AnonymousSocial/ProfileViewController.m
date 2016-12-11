@@ -70,23 +70,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [[ProfileManager sharedManager] requestMyPostListData:^(BOOL success, id data) {
-       
-        if (success) {
-            
-            _myPostDataArray = (NSArray *)data;
-        } else {
-            //오류처리
-            
-        }
-        
-    }];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 #pragma mark - setting Methods
 
@@ -156,7 +146,6 @@
     cell.backgroundImageView.image = [UIImage imageNamed:@"loginImage"];
     cell.commentLabel.text = [NSString stringWithFormat:@"%@", [self.myPostDataArray[indexPath.row] objectForKey:@"comments_counts"]];
     cell.likeLabel.text = [NSString stringWithFormat:@"%@", [self.myPostDataArray[indexPath.row] objectForKey:@"like_users_counts"]];
-    
     
     return cell;
 }

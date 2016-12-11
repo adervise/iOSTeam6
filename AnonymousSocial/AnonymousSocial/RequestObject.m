@@ -8,7 +8,6 @@
 
 #import "RequestObject.h"
 #import <AFNetworking.h>
-#import "LoginPageManager.h"
 #import "UserInfomation.h"
 #import "ProfileManager.h"
 
@@ -45,10 +44,8 @@
         if (error) {
             NSLog(@"\n\nRequestSignUp task error = %@\n\n", error);
             completion(NO, nil);
-            
         }
         else {
-            
             NSLog(@"\n\nreponse = %@\n\n, reponseObject = %@\n\n", response, responseObject);
             completion(YES, responseObject);
         }
@@ -88,7 +85,7 @@
     [uploadTask resume];
 }
 
-+ (void)requestLogout:(NSString *)token {
++ (void)requestLogout:(NSString *)token completion:(NetworkCompletion)completion {
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager * manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
@@ -104,20 +101,18 @@
     NSURLSessionDataTask *task = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         if (error) {
-            NSLog(@"\n\nLogout process error = %@\n\n", error);
+            
+            completion(NO, nil);
         } else {
             
-            NSLog(@"\n\nreponse = %@\n\n,  reponseObject = %@\n\n", response, responseObject);
-            
-            NSString *token = [responseObject objectForKey:@"key"];
-            [[LoginPageManager sharedLoginManager] completeUserLogout:token];
+            completion(YES, responseObject);
         }
     }];
     
     [task resume];
 }
 
-+ (void)requestPostList:(NSString *)token completion:(NetworkCompletion)completion {
++ (void)requestPostList:(NetworkCompletion)completion {
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager * manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
@@ -129,11 +124,12 @@
     NSURLSessionDataTask *task = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         if (error) {
-            NSLog(@"\n\nLogout process error = %@\n\n", error);
+            NSLog(@"\n RequestPostList Error\n");
             completion(NO, nil);
             
         } else {
             completion(YES, responseObject);
+            NSLog(@"\n RequestPostList success\n");
         }
     }];
     [task resume];
@@ -151,12 +147,11 @@
     NSURLSessionDataTask *task = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         if (error) {
-            NSLog(@"\n\nLogout process error = %@\n\n", error);
+            NSLog(@"\nNextPost Error!!\n");
             completion(NO, nil);
             
         } else {
-            
-            NSLog(@"\n\nreponse = %@\n\n,  reponseObject = %@\n\n", response, responseObject);
+            NSLog(@"\nSuccessNextPost\n");
             completion(YES, responseObject);
         }
     }];
@@ -191,11 +186,6 @@
     }];
     [task resume];
 }
-
-
-
-
-
 
 + (void)inserMyPost:(NSString *)token postData:(NSDictionary *)postData {
     
@@ -285,7 +275,38 @@
     [uploadTask resume];
 }
 
-
++ (void)updateUserLocation:(NSString *)token latitude:(NSString *)latitude hardness:(NSString *)hardness {
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager * manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSMutableDictionary *bodyParameters = [[NSMutableDictionary alloc] init];
+    [bodyParameters setObject:latitude forKey:@"latitude"];
+    [bodyParameters setObject:hardness forKey:@"hardness"];
+    
+    NSString *url = @"http://team6-dev.ap-northeast-2.elasticbeanstalk.com/member/update/";
+    NSString *urlWithUserID = [url stringByAppendingString:[NSString stringWithFormat:@"%@/", [UserInfomation sharedUserInfomation].userID]];
+    
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"PATCH" URLString:urlWithUserID parameters:bodyParameters constructingBodyWithBlock:nil error:nil];
+    
+    NSString *appendToken = @"Token ";
+    NSString *resultToken = [appendToken stringByAppendingString:token];
+    [request setValue:resultToken forHTTPHeaderField:@"Authorization"];
+    
+    NSURLSessionUploadTask *uploadTask;
+    uploadTask = [manager uploadTaskWithStreamedRequest:request progress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        
+        if (error) {
+        
+            NSLog(@"\nLocationUpdate Error\n");
+        }
+        else {
+            
+            NSLog(@"\nLocationUpdate Success\n");
+        }
+    }];
+    [uploadTask resume];
+}
 
 
 

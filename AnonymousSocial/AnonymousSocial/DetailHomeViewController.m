@@ -17,14 +17,19 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self transparentNavigationBar];
-    [self.tabBarController.tabBar setHidden:YES];
+    [self.tabBarController.tabBar setHidden:NO];
+}
+
+- (void)dealloc {
+    
+    NSLog(@"dealloc!!");
+    [self.tabBarController.tabBar setHidden:NO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,7 +46,6 @@
     self.navigationController.view.backgroundColor = [UIColor clearColor];
 }
 
-
 #pragma mark - TableView Datasource Method
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -53,7 +57,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"customCell" forIndexPath:indexPath];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
     
     return cell;
 }

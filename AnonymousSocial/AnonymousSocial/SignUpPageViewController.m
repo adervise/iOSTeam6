@@ -117,12 +117,15 @@
            
             if (success) {
                 //회원가입 성공시
-                [CustomAlertController showCutomAlert:self type:CustomAlertTypeCompleteSingup];
-                
-            } else {
-                // 회원가입 실패시
-                
+                [CustomAlertController showCutomAlert:self type:CustomAlertTypeCompleteSingup completion:nil];
+                [UserInfomation sharedUserInfomation].userLogin = YES;
+                [[UserInfomation sharedUserInfomation] settingUserToken:[data objectForKey:@"key"]];
+                [UserInfomation sharedUserInfomation].userID = [data objectForKey:@"user"];
             }
+
+            else
+                // 회원가입 실패시
+                [CustomAlertController showCutomAlert:self type:CustomAlertTypeFailSignup completion:nil];
             
         }];
     }
@@ -201,9 +204,13 @@
     
     [self.emailCheckImage setHidden:NO];
     
+    BOOL emailValidationCheck = [UserInfoValidationCheck userEmailValidationCheck:_idTextField.text];
+    BOOL passwordValidationCheck = [UserInfoValidationCheck userPasswordValidationCheck:_pwTextField.text];
+    BOOL rePasswordValidationCheck = [UserInfoValidationCheck userPasswordValidationCheck:_rePwTextField.text];
+    
     if (textField == self.idTextField) {
         
-        if ([UserInfoValidationCheck userEmailValidationCheck:textField.text]) {
+        if (emailValidationCheck) {
             
             [self.emailCheckImage setHighlighted:YES];
             
@@ -214,11 +221,11 @@
             [errorView addSubViewFromOriginView:self.contentsView];
         }
         
-    } else if (textField == self.pwTextField) {
+    } else if (textField == _pwTextField) {
         
         [self.pwCheckImage setHidden:NO];
         
-        if ([UserInfoValidationCheck userPasswordValidationCheck:textField.text]) {
+        if (passwordValidationCheck) {
             
             [self.pwCheckImage setHighlighted:YES];
             
@@ -246,6 +253,11 @@
             [errorView addSubViewFromOriginView:self.contentsView];
         }
     }
+    
+    if (emailValidationCheck && passwordValidationCheck && rePasswordValidationCheck)
+        _signupButton.enabled = YES;
+    else
+        _signupButton.enabled = NO;
 }
 
 #pragma mark - setSubViewLayout

@@ -10,7 +10,8 @@
 
 @interface CustomParse : NSObject
 
-+ (NSDate *)convert8601DateToNSDate:(NSString *)dateString;
++ (NSString *)convert8601DateToNSDate:(NSString *)dateString;
 + (NSString *)convertLocationString:(id)location;
++ (NSMutableAttributedString *)parseToContentsString:(NSString *)contentString;
 
 @end

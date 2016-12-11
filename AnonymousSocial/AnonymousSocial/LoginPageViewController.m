@@ -9,6 +9,7 @@
 #import "LoginPageViewController.h"
 #import "UserInfomation.h"
 #import "CustomAlertController.h"
+#import <KeychainItemWrapper.h>
 
 @interface LoginPageViewController () <UITextFieldDelegate>
 
@@ -135,12 +136,22 @@
        
         if (success) {
             // 로그인 성공시
-            [CustomAlertController showCutomAlert:self type:CustomAlertTypeCompleteLogin];
+            [CustomAlertController showCutomAlert:self type:CustomAlertTypeCompleteLogin completion:nil];
+            [UserInfomation sharedUserInfomation].userLogin = YES;
             [[UserInfomation sharedUserInfomation] settingUserToken:[data objectForKey:@"key"]];
+            [UserInfomation sharedUserInfomation].userID = [data objectForKey:@"user"];
+            // 오토로그인설정
+            if ([UserInfomation sharedUserInfomation].autoLogin) {
+                KeychainItemWrapper *keyChain = [[KeychainItemWrapper alloc] initWithIdentifier:@"AnonymousSocial" accessGroup:nil];
+                [keyChain setObject:[[UserInfomation sharedUserInfomation] gettingUserToken] forKey:(__bridge id)(kSecAttrAccount)];
+                [keyChain setObject:[UserInfomation sharedUserInfomation].userID forKey:(__bridge id)(kSecAttrLabel)];
+                NSLog(@"\n--------keyChain token = %@\n", [keyChain objectForKey:(__bridge id)(kSecAttrAccount)]);
+                NSLog(@"\n========keyChain userID = %@", [keyChain objectForKey:(__bridge id)(kSecAttrLabel)]);
+            }
             
         } else {
             // 로그인 실패시
-            
+            [CustomAlertController showCutomAlert:self type:CustomAlertTypeFailLogin completion:nil];
         }
     }];
 }
@@ -174,9 +185,17 @@
     return YES;
 }
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
     
-    return YES;
+    BOOL existEmailText = [_emailTextField.text length] > 0 && ![_emailTextField.text isEqualToString:@""];
+    BOOL existPasswordText = [_pwTextField.text length] > 0 && ![_pwTextField.text isEqualToString:@""];
+    
+    if (existEmailText && existPasswordText)
+        _loginButton.enabled = YES;
+    else
+        _loginButton.enabled = NO;
+    
 }
 
 #pragma mark - Memory Issue

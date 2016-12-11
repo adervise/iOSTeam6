@@ -11,14 +11,17 @@
 
 typedef NS_ENUM(NSInteger, CustomAlertType) {
     CustomAlertTypeCompleteLogin = 1,
+    CustomAlertTypeFailLogin,
     CustomAlertTypeCompleteSingup,
+    CustomAlertTypeFailSignup,
     CustomAlertTypeRequiredLogin,
+    CustomAlertTypeLogout,
     CustomAlertTypeCompleteLogout
 };
 
 @interface CustomAlertController : UIAlertController
 
-+ (void)showCutomAlert:(UIViewController *)vc type:(CustomAlertType)type;
-+ (void)showCustomLogoutAlert:(UITabBarController *)tabBarVC navigationVC:(UINavigationController *)navigationVC;
++ (void)showCutomAlert:(UIViewController *)vc type:(CustomAlertType)type completion:(AlertCompletion)completion;
+
 
 @end

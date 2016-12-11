@@ -24,7 +24,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-+ (void)showCutomAlert:(UIViewController *)vc type:(CustomAlertType)type{
++ (void)showCutomAlert:(UIViewController *)vc type:(CustomAlertType)type completion:(AlertCompletion)completion {
     
     UIAlertController *alert = nil;
     
@@ -40,7 +40,14 @@
             break;
         }
             
-        case CustomAlertTypeCompleteSingup:
+        case CustomAlertTypeCompleteSingup:{
+            alert = [UIAlertController alertControllerWithTitle:@"회원가입 되었습니다." message:nil preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAciton = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+                [vc.navigationController dismissViewControllerAnimated:YES completion:nil];
+            }];
+            [alert addAction:okAciton];
+        }
             break;
             
         case CustomAlertTypeRequiredLogin: {
@@ -55,26 +62,50 @@
             UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleCancel handler:nil];
             [alert addAction:okAction];
             [alert addAction:cancleAction];
-            break;
         }
+            break;
+            
+        case CustomAlertTypeFailLogin: {
+            alert = [UIAlertController alertControllerWithTitle:@"로그인이 실패 하였습니다." message:@"다시 시도해 주세요." preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleDefault handler:nil];
+            [alert addAction:okAction];
+            
+        }
+            break;
+            
+        case CustomAlertTypeFailSignup: {
+            alert = [UIAlertController alertControllerWithTitle:@"회원가입에 실패 하였습니다." message:@"다시 시도해 주세요." preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleDefault handler:nil];
+            [alert addAction:okAction];
+        }
+            break;
+            
+        case CustomAlertTypeLogout: {
+            alert = [UIAlertController alertControllerWithTitle:@"로그아웃 하시겠습니까?" message:nil preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                completion(okAction);
+            }];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"아니오" style:UIAlertActionStyleDefault handler:nil];
+            [alert addAction:okAction];
+            [alert addAction:cancelAction];
+            
+        }
+            break;
+            
+        case CustomAlertTypeCompleteLogout: {
+            
+            alert = [UIAlertController alertControllerWithTitle:@"로그아웃 되었습니다." message:nil preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                completion(okAction);
+            }];
+            [alert addAction:okAction];
+        }
+            break;
+            
         default:
             break;
     }
     [vc presentViewController:alert animated:YES completion:nil];
-}
-
-+ (void)showCustomLogoutAlert:(UITabBarController *)tabBarVC navigationVC:(UINavigationController *)navigationVC {
-    
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"로그아웃 되었습니다." message:nil preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-        tabBarVC.selectedIndex = 0;
-        [navigationVC popToRootViewControllerAnimated:NO];
-
-    }];
-    [alert addAction:okAction];
-    
-    [tabBarVC presentViewController:alert animated:YES completion:nil];
 }
 
 @end

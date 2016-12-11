@@ -14,7 +14,9 @@
 #import "CustomParse.h"
 #import "HomeDataModel.h"
 
-@interface CollectionViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@class HomeViewController;
+
+@interface CollectionViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate>
 
 @end
 
@@ -30,7 +32,6 @@
     
     // CollecionViewFlowLayout
     [self settCustomCollecionFlowLayout];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,6 +67,12 @@
         NSLog(@"Wrong sender");
 }
 
+#pragma mark - Segue Method
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+}
+
 #pragma mark - CollectionView Delegate Method
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -79,10 +86,12 @@
     NSArray *dataArray = [[HomeDataModel sharedHomeDataModel] getPostData];
     
     collectionCell.mainTextLabel.text = [dataArray[indexPath.row] objectForKey:@"content"];
+    collectionCell.mainTextLabel.attributedText = [CustomParse parseToContentsString:[dataArray[indexPath.row] objectForKey:@"content"]];
     [collectionCell.thumbnailImageView sd_setImageWithURL:[dataArray[indexPath.row] objectForKey:@"img_thumbnail"] placeholderImage:nil];
     collectionCell.commentLabel.text = [NSString stringWithFormat:@"%@", [dataArray[indexPath.row] objectForKey:@"comments_counts"]];
     collectionCell.likeLabel.text = [NSString stringWithFormat:@"%@", [dataArray[indexPath.row] objectForKey:@"like_users_counts"]];
-    collectionCell.postTimeLabel.text = [NSString stringWithFormat:@"%@", [CustomParse convert8601DateToNSDate:[dataArray[indexPath.row] objectForKey:@"modified_date"]]];
+    collectionCell.postTimeLabel.text = [CustomParse convert8601DateToNSDate:[dataArray[indexPath.row] objectForKey:@"created_date"]];
+    collectionCell.locationLabel.text = [CustomParse convertLocationString:[dataArray[indexPath.row] objectForKey:@"distance"]];
     
     return collectionCell;
 }
@@ -94,10 +103,29 @@
     [self performSegueWithIdentifier:@"collectionToDetail" sender:nil];
 }
 
-#pragma mark - Segue Method
+#pragma mark - ScrollView Delete Method
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
+    BOOL existNextPost = ![[[HomeDataModel sharedHomeDataModel] getNextPostURL] isEqual:nil];
+    NSInteger indexOfPage = [[HomeDataModel sharedHomeDataModel] getCurrentCellCount] / 4;
+    
+    if (scrollView.contentOffset.y > indexOfPage * scrollView.bounds.size.height && existNextPost) {
+        
+        NSLog(@"indexOfPage = %ld", (long)indexOfPage);
+        [[HomeDataModel sharedHomeDataModel] appendCurrentCellCount:10];
+        [[HomeVCManager sharedManager] requestNextPostListData:[[HomeDataModel sharedHomeDataModel] getNextPostURL] completion:^(BOOL success, id data) {
+           
+            if (success) {
+                
+                [[HomeDataModel sharedHomeDataModel] appendDataArrayFromArray:[data objectForKey:@"results"]];
+                [[HomeDataModel sharedHomeDataModel] putNextPostURL:[data objectForKey:@"next"]];
+                   
+                HomeViewController *homeVC = (HomeViewController *)self.parentViewController;
+                [homeVC reloadDataWithNextData];
+            }
+        }];
+    }
     
 }
 

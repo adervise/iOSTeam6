@@ -20,4 +20,8 @@
 
 - (void)appendDataArrayFromArray:(NSArray *)array;
 
+- (NSInteger)getCurrentCellCount;
+- (void)appendCurrentCellCount:(NSInteger)plusCount;
+- (void)setCurrentCellCount:(NSInteger)count;
+
 @end

@@ -7,12 +7,11 @@
 //
 
 #import "LoginPageManager.h"
-#import "RequestObject.h"
 #import "UserInfomation.h"
 #import "CustomAlertController.h"
-
 #import <KeychainItemWrapper.h>
 
+@class RequestObject;
 
 @interface LoginPageManager ()
 
@@ -45,9 +44,9 @@
     [RequestObject requestLogin:userInfo completion:completion];
 }
 
-- (void)userLogout:(NSString *)token {
+- (void)userLogout:(NSString *)token completion:(NetworkCompletion)completion {
     
-    [RequestObject requestLogout:token];
+    [RequestObject requestLogout:token completion:completion];
 }
 
 #pragma mark - Complete Method
@@ -72,7 +71,7 @@
     }
 
     //이부분에 "로그인되었습니다" 란 얼럿창 띄우기
-    [CustomAlertController showCutomAlert:self.loginNavigationVC type:CustomAlertTypeCompleteLogin];
+    [CustomAlertController showCutomAlert:self.loginNavigationVC type:CustomAlertTypeCompleteLogin completion:nil];
     
 }
 
@@ -80,13 +79,13 @@
     
     // 로그아웃 되었으니 유저정보를 다시세팅!!
     // 오토로그인상태였다면 키체인을 지운다!!
-    [[UserInfomation sharedUserInfomation] settingUserToken:nil];
-    [UserInfomation sharedUserInfomation].userLogin = NO;
-    [UserInfomation sharedUserInfomation].autoLogin = NO;
-    
-    KeychainItemWrapper *keyChain = [[KeychainItemWrapper alloc] initWithIdentifier:@"AnonymousSocial" accessGroup:nil];
-    [keyChain resetKeychainItem];
-    [CustomAlertController showCustomLogoutAlert:self.homeViewController navigationVC:self.profileNavigationVC];
+//    [[UserInfomation sharedUserInfomation] settingUserToken:nil];
+//    [UserInfomation sharedUserInfomation].userLogin = NO;
+//    [UserInfomation sharedUserInfomation].autoLogin = NO;
+//    
+//    KeychainItemWrapper *keyChain = [[KeychainItemWrapper alloc] initWithIdentifier:@"AnonymousSocial" accessGroup:nil];
+//    [keyChain resetKeychainItem];
+//    [CustomAlertController showCustomLogoutAlert:self.homeViewController navigationVC:self.profileNavigationVC];
 }
 
 

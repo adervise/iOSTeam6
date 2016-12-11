@@ -13,5 +13,6 @@
 @property (nonatomic, weak) IBOutlet UITableView *mainTableView;
 
 - (void)reloadData;
+- (void)reloadDataWithNextData;
 
 @end

@@ -27,6 +27,7 @@
         
         [UserInfomation sharedUserInfomation].userLogin = YES;
         [[UserInfomation sharedUserInfomation] settingUserToken:[keyChain objectForKey:(__bridge id)(kSecAttrAccount)]];
+        [UserInfomation sharedUserInfomation].userID = [keyChain objectForKey:(__bridge id)(kSecAttrLabel)];
     }
     
     [self setStatusBarBackgroundColor:[UIColor clearColor]];

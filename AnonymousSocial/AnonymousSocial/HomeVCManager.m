@@ -8,7 +8,6 @@
 
 #import "HomeVCManager.h"
 
-
 @interface HomeVCManager ()
 
 @end
@@ -32,15 +31,15 @@
     self = [super init];
     
     if (self) {
-        _currentCellCount = 5;
         _nextPostDataURL = [[NSString alloc] init];
     }
     return self;
 }
 
-- (void)requestPostList:(NSString *)token completion:(NetworkCompletion)completion {
+
+- (void)requestPostList:(NetworkCompletion)completion {
     
-    [RequestObject requestPostList:token completion:completion];
+    [RequestObject requestPostList:completion];
 }
 
 - (void)requestNextPostListData:(NSString *)nextURL completion:(NetworkCompletion)completion {

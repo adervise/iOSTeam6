@@ -10,9 +10,8 @@
 #import <Foundation/Foundation.h>
 #import "LoginPageViewController.h"
 #import "HomeViewController.h"
+#import "HomeVCManager.h"
 
-
-typedef void(^LoginCompletion)(BOOL success, id data);
 
 @interface LoginPageManager : NSObject
 
@@ -26,10 +25,9 @@ typedef void(^LoginCompletion)(BOOL success, id data);
 - (void)userLogin:(NSDictionary *)userInfo completion:(LoginCompletion)completion;
 - (void)userSignUp:(NSDictionary *)userInfo completion:(LoginCompletion)completion;
 
-- (void)userLogout:(NSString *)token;
+- (void)userLogout:(NSString *)token completion:(NetworkCompletion)completion;
 
 - (void)completeLogin:(NSString *)token;
 - (void)completeUserLogout:(NSString *)token;
-
 
 @end

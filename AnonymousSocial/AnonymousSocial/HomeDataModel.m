@@ -8,9 +8,11 @@
 
 #import "HomeDataModel.h"
 
+static NSInteger currentCellCount = 5;
+
 @interface HomeDataModel ()
 
-@property (atomic) __block NSMutableArray *postDataArray;
+@property (atomic) NSMutableArray *postDataArray;
 @property (atomic) NSString *nextPostListURL;
 
 @end
@@ -36,6 +38,20 @@
     }
     
     return self;
+}
+
+- (NSInteger)getCurrentCellCount {
+    
+    return currentCellCount;
+}
+
+- (void)setCurrentCellCount:(NSInteger)count {
+    currentCellCount = count;
+}
+
+- (void)appendCurrentCellCount:(NSInteger)plusCount {
+    
+    currentCellCount += plusCount;
 }
 
 - (void)putPostData:(id)data {
