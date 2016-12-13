@@ -29,9 +29,5 @@
     [RequestObject requestMyPost:[[UserInfomation sharedUserInfomation] gettingUserToken] completion:completion];
 }
 
-- (void)completeMyPostListData:(void(^)(ProfileViewController *profileVC, MyCommentViewController *commentVC))completion {
-    
-    completion(self.profileViewController, self.commentViewController);
-}
 
 @end

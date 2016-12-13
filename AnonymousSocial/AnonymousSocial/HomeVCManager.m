@@ -36,7 +36,6 @@
     return self;
 }
 
-
 - (void)requestPostList:(NetworkCompletion)completion {
     
     [RequestObject requestPostList:completion];
@@ -47,5 +46,19 @@
     [RequestObject requestNextPost:nextURL completion:completion];
 }
 
+- (void)requestPostDetail:(NSString *)detailURL completion:(NetworkCompletion)completion {
+    
+    [RequestObject requestPostDetail:detailURL completion:completion];
+}
+
+- (void)requestCommentList:(NSString *)postID completion:(NetworkCompletion)completion {
+    
+    [RequestObject requestCommentList:postID completion:completion];
+}
+
+- (void)uploadComment:(NSString *)token postID:(NSString *)postID content:(NSString *)content completion:(NetworkCompletion)completion {
+    
+    [RequestObject uploadComment:token postID:postID content:content completion:completion];
+}
 
 @end

@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *commentLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
+@property NSString *postID;
 
 @end

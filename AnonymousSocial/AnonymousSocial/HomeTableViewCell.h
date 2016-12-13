@@ -17,8 +17,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *likeCountlabel;
 @property (weak, nonatomic) IBOutlet UIImageView *commentImage;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
-
 @property (weak, nonatomic) IBOutlet UIImageView *likeImage;
 @property (weak, nonatomic) IBOutlet UIView *infoContentsView;
+
+@property NSString *postID;
 
 @end

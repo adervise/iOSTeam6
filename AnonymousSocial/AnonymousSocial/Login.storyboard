@@ -224,7 +224,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OxU-lD-QX6">
-                                <rect key="frame" x="37" y="217" width="300" height="400"/>
+                                <rect key="frame" x="37" y="133.5" width="300" height="400"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pNA-vS-zlv" userLabel="idVIew">
                                         <rect key="frame" x="10" y="10" width="280" height="50"/>
@@ -470,16 +470,16 @@
                                 </constraints>
                             </view>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nonCheckMark" highlightedImage="checkMark" translatesAutoresizingMaskIntoConstraints="NO" id="LBu-hI-lOc">
-                                <rect key="frame" x="332" y="239.5" width="25" height="25"/>
+                                <rect key="frame" x="332" y="156" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="LBu-hI-lOc" secondAttribute="height" multiplier="1:1" id="Nzp-G1-PBq"/>
                                 </constraints>
                             </imageView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nonCheckMark" highlightedImage="checkMark" translatesAutoresizingMaskIntoConstraints="NO" id="d87-r8-SfG">
-                                <rect key="frame" x="332" y="304" width="25" height="25"/>
+                                <rect key="frame" x="332" y="221" width="25" height="25"/>
                             </imageView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nonCheckMark" highlightedImage="checkMark" translatesAutoresizingMaskIntoConstraints="NO" id="tr3-8w-mBz">
-                                <rect key="frame" x="332" y="369.5" width="25" height="25"/>
+                                <rect key="frame" x="332" y="286" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tr3-8w-mBz" secondAttribute="height" multiplier="1:1" id="MwZ-K3-LpQ"/>
                                 </constraints>
@@ -489,8 +489,8 @@
                         <constraints>
                             <constraint firstItem="d87-r8-SfG" firstAttribute="leading" secondItem="2Yy-lz-Mzy" secondAttribute="trailing" constant="5" id="2LV-Ip-cnm"/>
                             <constraint firstItem="LBu-hI-lOc" firstAttribute="centerY" secondItem="6nr-uU-gsf" secondAttribute="centerY" id="A36-dt-k1F"/>
-                            <constraint firstItem="OUK-hV-2dB" firstAttribute="top" secondItem="OxU-lD-QX6" secondAttribute="bottom" constant="50" id="H6O-g8-yby"/>
                             <constraint firstItem="LBu-hI-lOc" firstAttribute="leading" secondItem="6nr-uU-gsf" secondAttribute="trailing" constant="5" id="ObM-FS-UiE"/>
+                            <constraint firstItem="OxU-lD-QX6" firstAttribute="centerY" secondItem="7kM-0h-seH" secondAttribute="centerY" id="Qxa-AD-1w5"/>
                             <constraint firstItem="d87-r8-SfG" firstAttribute="centerY" secondItem="2Yy-lz-Mzy" secondAttribute="centerY" id="Rxd-mg-JPz"/>
                             <constraint firstItem="d87-r8-SfG" firstAttribute="width" secondItem="d87-r8-SfG" secondAttribute="height" multiplier="1:1" id="cl7-Xf-ddh"/>
                             <constraint firstItem="tr3-8w-mBz" firstAttribute="leading" secondItem="1y0-LU-oZS" secondAttribute="trailing" constant="5" id="dak-5m-8ZY"/>

@@ -22,4 +22,9 @@
 // 다음데이터 요청
 - (void)requestNextPostListData:(NSString *)nextURL completion:(NetworkCompletion)completion;
 
+- (void)requestPostDetail:(NSString *)detailURL completion:(NetworkCompletion)completion;
+- (void)requestCommentList:(NSString *)postID completion:(NetworkCompletion)completion;
+
+- (void)uploadComment:(NSString *)token postID:(NSString *)postID content:(NSString *)content completion:(NetworkCompletion)completion;
+
 @end

@@ -27,6 +27,10 @@
 // 내가쓴글 요청
 + (void)requestMyPost:(NSString *)token completion:(NetworkCompletion)completion;
 
++ (void)requestPostDetail:(NSString *)postID completion:(NetworkCompletion)completion;
++ (void)requestCommentList:(NSString *)postID completion:(NetworkCompletion)completion;
++ (void)uploadComment:(NSString *)token postID:(NSString *)postID content:(NSString *)content completion:(NetworkCompletion)completion;
+
 + (void)inserMyPost:(NSString *)token content:(NSString *)content hashTags:(NSMutableArray *)hashTags backgroundImage:(UIImage *)backgroundImage;
 
 + (void)updateUserLocation:(NSString *)token latitude:(NSString *)latitude hardness:(NSString *)hardness;

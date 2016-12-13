@@ -14,14 +14,20 @@
 
 @interface PostViewController () <UIImagePickerControllerDelegate>
 
+@property UIImagePickerController *imagePicker;
+
 @end
 
 @implementation PostViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
     _hashTags = [NSMutableArray array];
+    
+    PostViewController __weak *wSelf = self;
+    _imagePicker = [[UIImagePickerController alloc] init];
+    [_imagePicker setDelegate:wSelf];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,11 +38,9 @@
 // save 버튼 눌렀을 때 
 - (IBAction)imageSelect:(id)sender {
     
-    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-    [imagePicker setDelegate:self];
-    [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    [_imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     
-    [self presentViewController:imagePicker animated:YES completion:nil];
+    [self presentViewController:_imagePicker animated:YES completion:nil];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {

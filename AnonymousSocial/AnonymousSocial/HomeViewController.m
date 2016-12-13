@@ -18,6 +18,7 @@
 #import <UIImageView+WebCache.h>
 #import "CustomParse.h"
 #import "HomeDataModel.h"
+#import "DetailHomeViewController.h"
 
 @interface HomeViewController ()<UITableViewDataSource, UITableViewDelegate, UITabBarControllerDelegate, UIScrollViewDelegate>
 
@@ -62,8 +63,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-//    [self.mainTableView reloadData];
-    
+    [self.tabBarController.tabBar setHidden:NO];
     // 선택된 segcontrol의 값에따라 스크롤뷰의 x오프셋을 바꿔준다.
     [self changeContentsOffsetOfScrollView];
 }
@@ -110,15 +110,18 @@
 - (void)reloadData {
 
     [[HomeVCManager sharedManager] requestPostList:^(BOOL success, id data) {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         if (success) {
             // 데이터 가져오기 성공시
             [[HomeDataModel sharedHomeDataModel] putPostData:data];
             [[HomeDataModel sharedHomeDataModel] putNextPostURL:[data objectForKey:@"next"]];
             [[HomeDataModel sharedHomeDataModel] setCurrentCellCount:5];
             [self reloadDataWithNextData];
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         } else {
             // 실패시
             NSLog(@"실패!!");
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         }
     }];
 }
@@ -204,16 +207,16 @@
     [self.mainScrollView addSubview:self.singleCollectionViewController.view];
     
 }
-
-- (void)setStatusBarBackgroundColor:(UIColor *)color {
-    
-    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
-    
-    if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
-//        statusBar.backgroundColor = [UIColor];
-//        statusBar.backgroundColor = [UIColor colorwithHexCode:keyColor alpha:1.0f];
-    }
-}
+//
+//- (void)setStatusBarBackgroundColor {
+//    
+//    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
+//    
+//    if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
+//        statusBar.backgroundColor = [UIColor colorwithHexString:keyColor alpha:1.0f];
+//        self.navigationController.navigationBar.backgroundColor = [UIColor colorwithHexString:keyColor alpha:1.0f];
+//    }
+//}
 
 #pragma mark - Table DataSource Delegate
 
@@ -227,6 +230,7 @@
     HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeTableCell" forIndexPath:indexPath];
     NSArray *dataArray = [[HomeDataModel sharedHomeDataModel] getPostData];
     
+    cell.postID = [dataArray[indexPath.row] objectForKey:@"id"];
     cell.mainTextLabel.text = [dataArray[indexPath.row] objectForKey:@"content"];
     cell.mainTextLabel.attributedText = [CustomParse parseToContentsString:[dataArray[indexPath.row] objectForKey:@"content"]];
     [cell.backGroundImage sd_setImageWithURL:[dataArray[indexPath.row] objectForKey:@"img_thumbnail"] placeholderImage:nil];
@@ -247,9 +251,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"Cell is selected!!");
+    HomeTableViewCell *cell = (HomeTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    NSDictionary *tempDic = [NSDictionary dictionaryWithObject:cell.postID forKey:@"postID"];
     
-    [self performSegueWithIdentifier:@"homeToDetail" sender:nil];
+    [self performSegueWithIdentifier:@"homeToDetail" sender:tempDic];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -262,10 +267,11 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
-    BOOL existNextPost = ![[[HomeDataModel sharedHomeDataModel] getNextPostURL] isEqual:nil];
+    BOOL existNextPost = ![[[HomeDataModel sharedHomeDataModel] getNextPostURL] isEqual:[NSNull null]];
     
     if (scrollView.contentOffset.y > [[HomeDataModel sharedHomeDataModel] getCurrentCellCount] * _heightOfCell && existNextPost) {
         
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         // 현재 스크롤의 y오프셋이 currentCellCount * _heightOfCell 보다 커졋을(내릴)경우 다음 데이터를 서버에 요청
         // currentCellCout를 10(서버가 보내주는 데이터의 단위)더해준다.
         [[HomeDataModel sharedHomeDataModel] appendCurrentCellCount:10];
@@ -275,7 +281,10 @@
             if (success) {
                 [[HomeDataModel sharedHomeDataModel] appendDataArrayFromArray:[data objectForKey:@"results"]];
                 [[HomeDataModel sharedHomeDataModel] putNextPostURL:[data objectForKey:@"next"]];
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                 [self reloadDataWithNextData];
+            } else {
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             }
         }];
     }
@@ -301,7 +310,11 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    
+    if ([sender isKindOfClass:[NSDictionary class]]) {
+        
+        DetailHomeViewController *vc = (DetailHomeViewController *)segue.destinationViewController;
+        vc.postID = [sender objectForKey:@"postID"];
+    }
 }
 
 @end

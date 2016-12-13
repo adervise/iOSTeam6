@@ -12,8 +12,10 @@
 		0D086CB91DF6641A006D7E2B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D086CB81DF6641A006D7E2B /* CoreLocation.framework */; };
 		0D086CBF1DF6A060006D7E2B /* HomeVCManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D086CBE1DF6A060006D7E2B /* HomeVCManager.m */; };
 		0D086CC21DF6DFBA006D7E2B /* ProfileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D086CC11DF6DFBA006D7E2B /* ProfileManager.m */; };
+		0D13D26C1DFD7DE20017EF75 /* DatailTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D13D26B1DFD7DE20017EF75 /* DatailTableCell.m */; };
 		0D24925C1DF8FB8B003B2021 /* CustomParse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D24925B1DF8FB8B003B2021 /* CustomParse.m */; };
 		0D2761051DEEEECD009B92A8 /* LoginPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2761041DEEEECD009B92A8 /* LoginPageViewController.m */; };
+		0D2A6F271DFD640D00B33D97 /* UIColor+withHexCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2A6F261DFD640D00B33D97 /* UIColor+withHexCode.m */; };
 		0D44CAB91DF2AE560038A26E /* UserInfoValidationCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D44CAB81DF2AE560038A26E /* UserInfoValidationCheck.m */; };
 		0D44CAE51DF2BDA90038A26E /* ValidationSubView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D44CAE31DF2BDA90038A26E /* ValidationSubView.m */; };
 		0D44CAE61DF2BDA90038A26E /* ValidationSubView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D44CAE41DF2BDA90038A26E /* ValidationSubView.xib */; };
@@ -61,10 +63,14 @@
 		0D086CBE1DF6A060006D7E2B /* HomeVCManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeVCManager.m; sourceTree = "<group>"; };
 		0D086CC01DF6DFBA006D7E2B /* ProfileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileManager.h; sourceTree = "<group>"; };
 		0D086CC11DF6DFBA006D7E2B /* ProfileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileManager.m; sourceTree = "<group>"; };
+		0D13D26A1DFD7DE20017EF75 /* DatailTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatailTableCell.h; sourceTree = "<group>"; };
+		0D13D26B1DFD7DE20017EF75 /* DatailTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatailTableCell.m; sourceTree = "<group>"; };
 		0D24925A1DF8FB8B003B2021 /* CustomParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomParse.h; sourceTree = "<group>"; };
 		0D24925B1DF8FB8B003B2021 /* CustomParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomParse.m; sourceTree = "<group>"; };
 		0D2761031DEEEECD009B92A8 /* LoginPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginPageViewController.h; sourceTree = "<group>"; };
 		0D2761041DEEEECD009B92A8 /* LoginPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginPageViewController.m; sourceTree = "<group>"; };
+		0D2A6F251DFD640D00B33D97 /* UIColor+withHexCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+withHexCode.h"; sourceTree = "<group>"; };
+		0D2A6F261DFD640D00B33D97 /* UIColor+withHexCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+withHexCode.m"; sourceTree = "<group>"; };
 		0D44CAB71DF2AE560038A26E /* UserInfoValidationCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoValidationCheck.h; sourceTree = "<group>"; };
 		0D44CAB81DF2AE560038A26E /* UserInfoValidationCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoValidationCheck.m; sourceTree = "<group>"; };
 		0D44CAE21DF2BDA90038A26E /* ValidationSubView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidationSubView.h; sourceTree = "<group>"; };
@@ -189,6 +195,8 @@
 				0D7E019C1DEBFB5E00B3C720 /* HomeTableViewCell.m */,
 				0DBDB7C21DF7EF4900EA111A /* DetailHomeViewController.h */,
 				0DBDB7C31DF7EF4900EA111A /* DetailHomeViewController.m */,
+				0D13D26A1DFD7DE20017EF75 /* DatailTableCell.h */,
+				0D13D26B1DFD7DE20017EF75 /* DatailTableCell.m */,
 			);
 			name = HomeTable;
 			sourceTree = "<group>";
@@ -233,6 +241,8 @@
 				0D7C6A601DF55DC50013A050 /* LayerCustomUtility.m */,
 				0D24925A1DF8FB8B003B2021 /* CustomParse.h */,
 				0D24925B1DF8FB8B003B2021 /* CustomParse.m */,
+				0D2A6F251DFD640D00B33D97 /* UIColor+withHexCode.h */,
+				0D2A6F261DFD640D00B33D97 /* UIColor+withHexCode.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -511,6 +521,7 @@
 				0DAE5E711DF97116001DD875 /* HomeDataModel.m in Sources */,
 				0DBDB7C41DF7EF4900EA111A /* DetailHomeViewController.m in Sources */,
 				0D086CC21DF6DFBA006D7E2B /* ProfileManager.m in Sources */,
+				0D2A6F271DFD640D00B33D97 /* UIColor+withHexCode.m in Sources */,
 				0DC752131DF13A4A005BA6BB /* CustomAlertController.m in Sources */,
 				0D086CBF1DF6A060006D7E2B /* HomeVCManager.m in Sources */,
 				0D9BD5DF1DED633900517379 /* CustomFlowLayout.m in Sources */,
@@ -522,6 +533,7 @@
 				0DB86C331DF58C84005A98DC /* UserSettingViewController.m in Sources */,
 				0D7C6A611DF55DC50013A050 /* LayerCustomUtility.m in Sources */,
 				0D7E019A1DEBEBB200B3C720 /* HomeViewController.m in Sources */,
+				0D13D26C1DFD7DE20017EF75 /* DatailTableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

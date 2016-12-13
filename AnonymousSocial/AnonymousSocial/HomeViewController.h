@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIColor+withHexCode.h"
 
 @interface HomeViewController : UIViewController
 

@@ -47,7 +47,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setSubViewLayout];
+    
     [self addObserverForKeyboard];
     
 }
@@ -55,6 +55,7 @@
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     
+    [self setSubViewLayout];
 }
 
 - (void)dealloc {

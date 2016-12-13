@@ -19,10 +19,9 @@
 
 + (instancetype)sharedManager;
 
-
 - (void)requestMyPostListData:(NetworkCompletion)completion;
 
 
-- (void)completeMyPostListData:(void(^)(ProfileViewController *profileVC, MyCommentViewController *commentVC))completion;
+
 
 @end

@@ -176,15 +176,103 @@
     NSURLSessionDataTask *task = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         if (error) {
-            NSLog(@"\n\nLogout process error = %@\n\n", error);
+            NSLog(@"\nMyPost Error\n");
             completion(NO, nil);
         } else {
-            
-            NSLog(@"\n\nreponse = %@\n\n,  reponseObject = %@\n\n", response, responseObject);
+            NSLog(@"\nMyPost Success\n");
             completion(YES, responseObject);
         }
     }];
     [task resume];
+}
+
++ (void)requestPostDetail:(NSString *)postID completion:(NetworkCompletion)completion {
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager * manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSString *urlString = @"http://team6-dev.ap-northeast-2.elasticbeanstalk.com/post/";
+    NSString *resultString = [urlString stringByAppendingString:[NSString stringWithFormat:@"%@/", postID]];
+    
+    NSURL *url = [NSURL URLWithString:resultString];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"GET"];
+    
+    NSURLSessionDataTask *task = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        
+        if (error) {
+            NSLog(@"\nDetail Post Error\n");
+            completion(NO, nil);
+            
+        } else {
+            NSLog(@"\nDetail Post Success\n");
+            completion(YES, responseObject);
+        }
+    }];
+    
+    [task resume];
+
+}
+
++ (void)requestCommentList:(NSString *)postID completion:(NetworkCompletion)completion {
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager * manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSString *urlString = @"http://team6-dev.ap-northeast-2.elasticbeanstalk.com/post/";
+    NSString *resultString = [urlString stringByAppendingString:[NSString stringWithFormat:@"%@/comment/", postID]];
+    
+    NSURL *url = [NSURL URLWithString:resultString];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"GET"];
+    
+    NSURLSessionDataTask *task = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        
+        if (error) {
+            NSLog(@"\nComment List Error\n");
+            completion(NO, nil);
+            
+        } else {
+            NSLog(@"\nComment List Success\n");
+            completion(YES, responseObject);
+        }
+    }];
+    
+    [task resume];
+    
+}
+
++ (void)uploadComment:(NSString *)token postID:(NSString *)postID content:(NSString *)content completion:(NetworkCompletion)completion {
+    
+    NSString *urlString = @"http://team6-dev.ap-northeast-2.elasticbeanstalk.com/post/";
+    NSString *resultString = [urlString stringByAppendingString:[NSString stringWithFormat:@"%@/comment/", postID]];
+    NSString *appendToken = @"Token ";
+    NSString *resultToken = [appendToken stringByAppendingString:token];
+    
+    NSMutableDictionary *bodyParameters = [[NSMutableDictionary alloc] init];
+    [bodyParameters setObject:content forKey:@"content"];
+    
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:resultString
+                                                                                             parameters:bodyParameters
+                                                                              constructingBodyWithBlock:nil error:nil];
+    [request setValue:resultToken forHTTPHeaderField:@"Authorization"];
+    
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    
+    NSURLSessionUploadTask *uploadTask;
+    uploadTask = [manager uploadTaskWithStreamedRequest:request progress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        
+        if (error) {
+            
+            NSLog(@"\nuploadComment error!\n");
+            completion(NO, nil);
+        }
+        else {
+            NSLog(@"\nuploadComment success\n");
+            completion(YES, responseObject);
+        }
+    }];
+    [uploadTask resume];
 }
 
 + (void)inserMyPost:(NSString *)token postData:(NSDictionary *)postData {

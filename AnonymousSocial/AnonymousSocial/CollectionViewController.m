@@ -13,6 +13,7 @@
 #import <UIImageView+WebCache.h>
 #import "CustomParse.h"
 #import "HomeDataModel.h"
+#import "DetailHomeViewController.h"
 
 @class HomeViewController;
 
@@ -71,6 +72,11 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
+    if ([sender isKindOfClass:[NSDictionary class]]) {
+        
+        DetailHomeViewController *vc = (DetailHomeViewController *)segue.destinationViewController;
+        vc.postID = [sender objectForKey:@"postID"];
+    }
 }
 
 #pragma mark - CollectionView Delegate Method
@@ -85,6 +91,7 @@
     CustomCollectionViewCell *collectionCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionCell" forIndexPath:indexPath];
     NSArray *dataArray = [[HomeDataModel sharedHomeDataModel] getPostData];
     
+    collectionCell.postID = [dataArray[indexPath.row] objectForKey:@"id"];
     collectionCell.mainTextLabel.text = [dataArray[indexPath.row] objectForKey:@"content"];
     collectionCell.mainTextLabel.attributedText = [CustomParse parseToContentsString:[dataArray[indexPath.row] objectForKey:@"content"]];
     [collectionCell.thumbnailImageView sd_setImageWithURL:[dataArray[indexPath.row] objectForKey:@"img_thumbnail"] placeholderImage:nil];
@@ -98,21 +105,22 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"collectionCell is selected");
+    CustomCollectionViewCell *cell = (CustomCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    NSDictionary *tempDic = [NSDictionary dictionaryWithObject:cell.postID forKey:@"postID"];
     
-    [self performSegueWithIdentifier:@"collectionToDetail" sender:nil];
+    [self performSegueWithIdentifier:@"collectionToDetail" sender:tempDic];
 }
 
 #pragma mark - ScrollView Delete Method
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
-    BOOL existNextPost = ![[[HomeDataModel sharedHomeDataModel] getNextPostURL] isEqual:nil];
+    BOOL existNextPost = ![[[HomeDataModel sharedHomeDataModel] getNextPostURL] isEqual:[NSNull null]];
     NSInteger indexOfPage = [[HomeDataModel sharedHomeDataModel] getCurrentCellCount] / 4;
     
     if (scrollView.contentOffset.y > indexOfPage * scrollView.bounds.size.height && existNextPost) {
         
-        NSLog(@"indexOfPage = %ld", (long)indexOfPage);
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         [[HomeDataModel sharedHomeDataModel] appendCurrentCellCount:10];
         [[HomeVCManager sharedManager] requestNextPostListData:[[HomeDataModel sharedHomeDataModel] getNextPostURL] completion:^(BOOL success, id data) {
            
@@ -120,9 +128,11 @@
                 
                 [[HomeDataModel sharedHomeDataModel] appendDataArrayFromArray:[data objectForKey:@"results"]];
                 [[HomeDataModel sharedHomeDataModel] putNextPostURL:[data objectForKey:@"next"]];
-                   
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                 HomeViewController *homeVC = (HomeViewController *)self.parentViewController;
                 [homeVC reloadDataWithNextData];
+            } else {
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             }
         }];
     }

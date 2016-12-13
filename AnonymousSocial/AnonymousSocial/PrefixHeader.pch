@@ -17,6 +17,6 @@ typedef void(^NetworkCompletion)(BOOL, id);
 typedef void(^LoginCompletion)(BOOL, id);
 typedef void(^AlertCompletion)(UIAlertAction *);
 
-//NSString *const keyColor = @"804000";
+static NSString *const keyColor = @"804000";
 
 #endif /* PrefixHeader_pch */

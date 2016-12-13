@@ -74,6 +74,7 @@
 
 - (void)updatingUserLocation {
     
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     [self.locationManager startUpdatingLocation];
     
 }
@@ -93,7 +94,7 @@
     NSString *userToken = [[UserInfomation sharedUserInfomation] gettingUserToken];
     // 여기에 받아온 위치정보를 서버로 업데이트 시키자!!
     [RequestObject updateUserLocation:userToken latitude:latitudeString hardness:longitudeString];
-    
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
 
 @end

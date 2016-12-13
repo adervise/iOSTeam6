@@ -61,6 +61,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="postIcon" id="zyT-Ce-enp"/>
                     <navigationItem key="navigationItem" id="0zd-Uq-UfF"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -73,4 +74,7 @@
             <point key="canvasLocation" x="1056.8" y="84.107946026986511"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="postIcon" width="25" height="25"/>
+    </resources>
 </document>

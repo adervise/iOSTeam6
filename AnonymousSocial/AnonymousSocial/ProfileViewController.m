@@ -14,6 +14,8 @@
 #import "CustomProfileCollectionCell.h"
 #import "MyCommentViewController.h"
 #import "ProfileManager.h"
+#import "DetailHomeViewController.h"
+#import <UIImageView+WebCache.h>
 
 @interface ProfileViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -49,6 +51,8 @@
     
     [LoginPageManager sharedLoginManager].profileNavigationVC = self.navigationController;
     [ProfileManager sharedManager].profileViewController = self;
+    
+    [self getMyPostData];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -70,11 +74,29 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    self.tabBarController.tabBar.hidden = NO;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Get Data From Server API
+
+- (void)getMyPostData {
+    
+    [[ProfileManager sharedManager] requestMyPostListData:^(BOOL success, id data) {
+      
+        if (success) {
+            _myPostDataArray = (NSArray *)data;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_mainCollectionView reloadData];
+            });
+        } else {
+            
+        }
+    }];
 }
 
 
@@ -124,13 +146,11 @@
                 [self.scrollView setContentOffset:CGPointMake(self.scrollView.bounds.size.width, 0)];
             }];
         }
-        
     } else {
         
         NSLog(@"Wrong sender");
     }
 }
-
 
 #pragma mark - Collection View Delegate Method 
 
@@ -143,11 +163,30 @@
     
     CustomProfileCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CustomProfileCollectionCell" forIndexPath:indexPath];
     
-    cell.backgroundImageView.image = [UIImage imageNamed:@"loginImage"];
+    cell.postID = [_myPostDataArray[indexPath.row] objectForKey:@"id"];
+    [cell.backgroundImageView sd_setImageWithURL:[_myPostDataArray[indexPath.row] objectForKey:@"img_thumbnail"] placeholderImage:nil];
     cell.commentLabel.text = [NSString stringWithFormat:@"%@", [self.myPostDataArray[indexPath.row] objectForKey:@"comments_counts"]];
     cell.likeLabel.text = [NSString stringWithFormat:@"%@", [self.myPostDataArray[indexPath.row] objectForKey:@"like_users_counts"]];
     
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CustomProfileCollectionCell *cell = (CustomProfileCollectionCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    NSDictionary *tempDic = [NSDictionary dictionaryWithObject:cell.postID forKey:@"postID"];
+    
+    [self performSegueWithIdentifier:@"segueToDetail" sender:tempDic];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([sender isKindOfClass:[NSDictionary class]]) {
+        
+        DetailHomeViewController *vc = (DetailHomeViewController *)segue.destinationViewController;
+        vc.postID = [sender objectForKey:@"postID"];
+    }
+
 }
 
 @end
